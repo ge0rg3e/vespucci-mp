@@ -1,0 +1,113 @@
+.layout-toasts {
+	position: fixed;
+	top: 80px;
+	right: 30px;
+
+	@media (max-width: $tablet_responsive_breakpoint) {
+		bottom: 20px;
+		left: 50%;
+		right: unset;
+		top: unset;
+		transform: translateX(-50%);
+	}
+
+	z-index: 9999999;
+
+	.entry {
+		pointer-events: all !important;
+		animation: bounceIn;
+		animation-duration: 0.8s;
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 350px;
+		max-width: 80vw;
+		border-radius: 8px;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+		cursor: pointer;
+		margin-bottom: 12px;
+		background-color: rgba(0, 0, 0, 0.7);
+		padding: 6px 6px 6px 6px;
+		overflow: hidden;
+		transition: opacity 0.2s ease-in;
+
+		.progress-bar {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+			background: rgba(0, 0, 0, 0.25) !important;
+
+			.value {
+				height: 5px;
+				width: 100%;
+				transition: all 0.1s ease-in;
+				background: rgba(255, 255, 255, 0.4) !important;
+			}
+		}
+
+		.icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 8px;
+			line-height: 22px;
+			font-size: 22px;
+		}
+
+		.message {
+			display: flex;
+			align-items: center;
+			font-size: 13px;
+			font-weight: 500;
+			line-height: 22px;
+			min-height: 45px;
+			padding-top: 4px;
+			padding-bottom: 4px;
+			flex: 1;
+		}
+
+		@media (max-width: 1400px) {
+			width: 450px;
+			.icon {
+				height: 30px;
+				width: 30px;
+				font-size: 16px;
+			}
+			.message {
+				font-size: 11px;
+				min-height: 40px;
+			}
+		}
+
+		&.success {
+			background: rgba(#488e47, 0.8);
+			box-shadow: #488e47 0px 0px 5px;
+			color: #fff;
+		}
+
+		&.error {
+			background: rgba(#ca5344, 0.8);
+			box-shadow: #ca5344 0px 0px 5px;
+			color: #fff;
+		}
+
+		&.warning {
+			background: rgba(#b9a136, 0.8);
+			box-shadow: #b97136 0px 0px 5px;
+			color: #fff;
+		}
+
+		&.info {
+			background: rgba(#3388b9, 0.8);
+			box-shadow: #3388b9 0px 0px 5px;
+			color: #fff;
+		}
+	}
+}

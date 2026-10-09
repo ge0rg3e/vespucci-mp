@@ -1,0 +1,18 @@
+@import '../core/variables.scss';
+
+.phone-mockup .screen-content .app-component-form {
+	padding: 0px;
+
+	.entry {
+		padding: 8px 13px;
+	}
+
+	.arrow-right.form-arrow {
+		margin-left: 4px;
+		.elm {
+			color: #534f4d !important;
+			font-size: 11px !important;
+			line-height: 11px !important;
+		}
+	}
+}

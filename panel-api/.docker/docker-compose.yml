@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  panel_memcache:
+    container_name: panel_memcache
+    image: 'bitnami/memcached:latest'
+    environment:
+      - MEMCACHED_USERNAME=root
+      - MEMCACHED_PASSWORD=3G7Mcpcx8TBiL9gXKxPcL0S
+    ports:
+      - 11211:11211
+  panel_api:
+    container_name: panel_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: panel_api:latest
+    restart: always
+    depends_on:
+      - panel_memcache
+    ports:
+      - 3025:5000
+    networks:
+      - my-proxy-net 
+      
+networks:
+  my-proxy-net:
+    name: proxynet
+    external: true

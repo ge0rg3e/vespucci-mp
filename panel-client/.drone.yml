@@ -1,0 +1,152 @@
+# Pipeline definition
+kind: pipeline
+type: docker
+name: deployment
+
+# Parameters
+clone:
+  disable: true
+
+# Run this pipeline only on master branch and releases.
+trigger:
+  branch:
+    - master
+  event:
+    - tag
+
+# Steps
+steps:
+  - name: fetch
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      - ls
+      - git clone https://github.com/vespucci-mp/panel-client.git .
+      - git checkout $DRONE_COMMIT
+      - git submodule update --init --recursive
+
+  - name: install
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      # This checks if the dependencies are installing right before we proceed any further.
+      - pnpm install
+
+  - name: environment variables
+    image: hurdock/nodejs_ragemp:latest
+    environment:
+      # Mandatory
+      NEXT_PUBLIC_ENVIRONMENT:
+        from_secret: NEXT_PUBLIC_ENVIRONMENT
+      NEXT_PUBLIC_ASSETS_PATH:
+        from_secret: NEXT_PUBLIC_ASSETS_PATH
+      NEXT_PUBLIC_PANEL_API:
+        from_secret: NEXT_PUBLIC_PANEL_API
+
+      # Logz
+      NEXT_PUBLIC_LOGZ_HOST:
+        from_secret: NEXT_PUBLIC_LOGZ_HOST
+      NEXT_PUBLIC_LOGZ_KEY:
+        from_secret: NEXT_PUBLIC_LOGZ_KEY
+
+      # Amplitude
+      NEXT_PUBLIC_AMPLITUDE_GUESTS:
+        from_secret: NEXT_PUBLIC_AMPLITUDE_GUESTS
+      NEXT_PUBLIC_AMPLITUDE_USERS:
+        from_secret: NEXT_PUBLIC_AMPLITUDE_USERS
+
+    commands:
+      # Creating the env file to inject the variables
+      - touch ./.env
+
+      # Mandatory
+      - echo "NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT" >> ./.env
+      - echo "NEXT_PUBLIC_ASSETS_PATH=$NEXT_PUBLIC_ASSETS_PATH" >> ./.env
+      - echo "NEXT_PUBLIC_PANEL_API=$NEXT_PUBLIC_PANEL_API" >> ./.env
+
+      # Amplitude
+      - echo "NEXT_PUBLIC_AMPLITUDE_GUESTS=$NEXT_PUBLIC_AMPLITUDE_GUESTS" >> ./.env
+      - echo "NEXT_PUBLIC_AMPLITUDE_USERS=$NEXT_PUBLIC_AMPLITUDE_USERS" >> ./.env
+
+      # Logz
+      - echo "NEXT_PUBLIC_LOGZ_HOST=$NEXT_PUBLIC_LOGZ_HOST" >> ./.env
+      - echo "NEXT_PUBLIC_LOGZ_KEY=$NEXT_PUBLIC_LOGZ_KEY" >> ./.env
+
+  - name: build
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      # Build the css.
+      - pnpm build-scss
+
+      # Build the application source code..
+      - pnpm build
+
+  - name: copy
+    image: hurdock/nodejs_ragemp:latest
+    volumes:
+      - name: panel-client
+        path: /panel-client
+    commands:
+      # This is a check that will make sure that the old docker compose is still there.
+      - if [ ! -f /panel-client/docker-compose.yml ]; then echo "Previous docker compose is not present. Please add one to know what to decompose."; exit 1; fi
+
+      # Cleaning the directory for the source in case of any blockers.
+      - rm -rf /panel-client/source
+      - mkdir -p /panel-client/source
+
+      # Copying over the server dependencies.
+      - mv * /panel-client/source
+
+      # Move the other hidden required dependencies
+      - mv -T .env /panel-client/source/.env
+      - mv -T .docker/Dockerfile /panel-client/Dockerfile
+      - mv -T .docker/docker-compose.yml /panel-client/docker-compose-new.yml
+
+  - name: shutdown
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: panel-client
+        path: /panel-client
+    commands:
+      - cd /panel-client
+
+      # Running docker compose according to old configuration (In case things changed in the new one)
+      - docker compose down --rmi all
+
+      # Delete the old docker compose
+      - rm -rf /panel-client/docker-compose.yml
+
+      # Rename the new docker compose accordingly
+      - mv -T /panel-client/docker-compose-new.yml /panel-client/docker-compose.yml
+
+  - name: deploy
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: panel-client
+        path: /panel-client
+    commands:
+      - cd /panel-client
+      # Start the building process
+      - docker compose up -d --build
+
+  - name: cleanup
+    image: hurdock/nodejs_ragemp:latest
+    volumes:
+      - name: panel-client
+        path: /panel-client
+    commands:
+      # Delete the source code folder
+      - rm -rf /panel-client/source
+
+      # Delete the dockerfile cause it may be outdated
+      - rm /panel-client/Dockerfile
+
+volumes:
+  - name: panel-client
+    host:
+      path: /home/apps/panel-client
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock

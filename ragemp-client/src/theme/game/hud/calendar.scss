@@ -1,0 +1,73 @@
+@import '../../core/variables.scss';
+
+.game-hud .component-calendar {
+	// Positioning
+	position: absolute;
+	bottom: 13px;
+	right: 15px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-shadow: $chat_text_shadow;
+
+	&.speedometerVisible {
+		right: 240px;
+		bottom: 20px;
+
+		@media (max-width: 1600px) {
+			right: 195px;
+			bottom: 13px;
+		}
+	}
+
+	&.hideCalendar {
+		display: none;
+	}
+
+	// Small resolutions respponsiveness..
+
+	@media (max-width: 1300px) {
+		// Transform
+		transform: scale(0.7);
+	}
+
+	@media (max-width: 1600px) {
+		// Transform
+		transform: scale(0.8);
+
+		transform-origin: bottom right;
+	}
+
+	.icon {
+		margin-right: 6px;
+
+		color: rgb(209, 208, 208);
+		color: $color_primary;
+
+		.elm {
+			font-size: 16px;
+			line-height: 1;
+		}
+	}
+
+	.text {
+		color: rgb(209, 208, 208);
+		color: $color_primary;
+		font-family: 'Chalet Comprime - Cologne Eigthy';
+		font-size: 20px;
+		line-height: 1;
+
+		.grey {
+			color: #c76783;
+		}
+	}
+
+	&.dark-mode {
+		.text {
+			.grey {
+				color: #ab6b7b;
+			}
+		}
+	}
+}

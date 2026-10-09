@@ -1,0 +1,14 @@
+{
+	"files.exclude": {
+		"node_modules": true,
+		"package-lock.json": true,
+		".npmrc": true,
+		// ".docker": true,
+		"tsconfig.json": true,
+		// ".gitignore": true,
+		"next-env.d.ts": true
+		// "dist": true
+		// ".eslintrc.js": true,
+		// "next.config.js": true
+	}
+}

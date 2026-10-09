@@ -1,0 +1,407 @@
+.component-vespify-music.player-controls {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	.container {
+		// Is important
+		height: 210px;
+		width: 250px;
+
+		// To not cover up the queue
+		padding-bottom: 95px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	// Debugging
+	// background-color: red;
+
+	.component-progress-bar {
+		// Bugfix
+		width: 100%;
+
+		.rc-slider {
+			border-radius: 8px;
+			margin: 0px;
+			padding: 0px;
+			height: 5px;
+		}
+
+		.rc-slider-disabled {
+			background-color: transparent;
+		}
+
+		.rc-slider .rc-slider-rail {
+			background: #161515;
+
+			border-radius: 8px;
+			height: 5px !important;
+		}
+
+		// Progress
+		.rc-slider .rc-slider-track {
+			background-color: darken(white, 30%);
+			height: 3px !important;
+			border-radius: 8px;
+		}
+
+		// Button
+		.rc-slider-handle {
+			height: 9px;
+			width: 9px;
+			background-color: white;
+			margin-top: -3px !important;
+			&:hover,
+			&:active {
+				border: none;
+				box-shadow: 0px 0px 0px 3px rgb(102, 102, 102);
+			}
+		}
+	}
+
+	.component-times {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		justify-content: space-between;
+		margin-top: 8px;
+
+		.text {
+			font-size: 10px;
+			line-height: 1;
+			font-weight: 450;
+			color: #535353;
+		}
+	}
+
+	.vespify-music-controls {
+		// Spacing
+		margin-top: 20px;
+		margin-bottom: 34px;
+	}
+
+	.component-volume-bar {
+		display: flex;
+
+		flex-direction: row;
+		width: 80%;
+		align-items: center;
+
+		.icon {
+			.elm {
+				font-size: 14px;
+				line-height: 1;
+				color: rgba(255, 255, 255, 0.493);
+			}
+		}
+
+		.slider {
+			flex: 1;
+			margin: 0px 16px;
+
+			.rc-slider {
+				border-radius: 8px;
+				margin: 0px;
+				padding: 0px;
+				height: 5px;
+			}
+
+			.rc-slider-disabled {
+				background-color: transparent;
+			}
+
+			.rc-slider .rc-slider-rail {
+				background: #161515;
+				border-radius: 8px;
+				height: 5px !important;
+			}
+
+			// Progress
+			.rc-slider .rc-slider-track {
+				background-color: darken(white, 30%);
+				height: 4px !important;
+				border-radius: 8px;
+				margin-top: 1px;
+			}
+
+			// Button
+			.rc-slider-handle {
+				height: 9px;
+				width: 9px;
+				background-color: white;
+				margin-top: -1.8px !important;
+				&:hover,
+				&:active {
+					border: none;
+					box-shadow: 0px 0px 0px 3px rgb(102, 102, 102);
+				}
+			}
+		}
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100%;
+
+		// Spacing
+		margin-top: 10px;
+		margin-bottom: 18px;
+
+		.entry {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.icon {
+				// Typography
+				color: white;
+				font-size: 20px;
+				line-height: 1;
+			}
+
+			&.inactive {
+				opacity: 0.4;
+			}
+
+			.disabled {
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+.component-vespify-music.lockscreen-controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 0px 12px;
+
+	.container {
+		background-color: rgba(#020202, 0.6);
+		border-radius: 14px;
+		padding: 12px;
+		color: white;
+		width: 100%;
+
+		.component-header {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			position: relative;
+
+			.thumbnail {
+				height: 50px;
+				width: 50px;
+				border-radius: 12px;
+
+				// Background
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+
+				// In case is not loading
+				background-color: #232323;
+				margin-right: 8px;
+			}
+
+			.details {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				margin-right: 30px;
+				width: 64%;
+
+				.from {
+					font-size: 10px;
+					line-height: 1;
+					font-weight: 300;
+					color: rgba(#fff, 0.4);
+				}
+
+				.title {
+					font-size: 12px;
+					line-height: 1.6;
+					font-weight: 500;
+				}
+
+				.artist {
+					font-size: 11px;
+					line-height: 1.2;
+					color: rgba(#fff, 0.6);
+				}
+			}
+
+			.icon {
+				position: absolute;
+				top: 30%;
+				right: 8px;
+				transform: translateY(-30%);
+			}
+		}
+
+		.component-times {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			justify-content: space-between;
+			margin-top: 8px;
+
+			.text {
+				font-size: 10px;
+				line-height: 1;
+				font-weight: 450;
+				color: #7f7f7f;
+			}
+		}
+
+		.component-progress-bar {
+			margin-top: 16px;
+
+			.slider {
+				.rc-slider {
+					border-radius: 8px;
+					margin: 0px;
+					padding: 0px;
+					height: 5px;
+				}
+
+				.rc-slider-disabled {
+					background-color: transparent;
+				}
+
+				.rc-slider .rc-slider-rail {
+					background-color: #8a8a8a63;
+
+					border-radius: 8px;
+					height: 4px !important;
+				}
+
+				// Progress
+				.rc-slider .rc-slider-track {
+					background-color: #7f7f7f;
+					height: 4px !important;
+					border-radius: 8px;
+				}
+
+				// Button
+				.rc-slider-handle {
+					height: 9px;
+					width: 9px;
+					background-color: white;
+					margin-top: -2.6px !important;
+					&:hover,
+					&:active {
+						border: none;
+						box-shadow: 0px 0px 0px 3px rgb(102, 102, 102);
+					}
+				}
+			}
+		}
+
+		.component-volume-bar {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			// Spacing and size
+			margin-bottom: 4px;
+			width: 100%;
+
+			.icon {
+				.elm {
+					font-size: 14px;
+					line-height: 1;
+					color: rgba(255, 255, 255, 0.493);
+				}
+			}
+
+			.slider {
+				flex: 1;
+				margin: 0px 16px;
+
+				.rc-slider {
+					border-radius: 8px;
+					margin: 0px;
+					padding: 0px;
+					height: 5px;
+				}
+
+				.rc-slider-disabled {
+					background-color: transparent;
+				}
+
+				.rc-slider .rc-slider-rail {
+					background-color: #8a8a8a63;
+					border-radius: 8px;
+					height: 4px !important;
+				}
+
+				// Progress
+				.rc-slider .rc-slider-track {
+					background-color: #7f7f7f;
+					height: 4px !important;
+					border-radius: 8px;
+				}
+
+				// Button
+				.rc-slider-handle {
+					height: 9px;
+					width: 9px;
+					background-color: white;
+					margin-top: -2.6px !important;
+					&:hover,
+					&:active {
+						border: none;
+						box-shadow: 0px 0px 0px 3px rgb(102, 102, 102);
+					}
+				}
+			}
+		}
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100%;
+
+		// Spacing
+		margin-top: 10px;
+		margin-bottom: 18px;
+
+		.entry {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.icon {
+				// Typography
+				color: white;
+				font-size: 20px;
+				line-height: 1;
+			}
+
+			&.inactive {
+				opacity: 0.4;
+			}
+
+			.disabled {
+				pointer-events: none;
+			}
+		}
+	}
+}

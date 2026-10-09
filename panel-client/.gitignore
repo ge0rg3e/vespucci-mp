@@ -1,0 +1,12 @@
+package-lock.json
+npm-debug.log*
+/node_modules
+*.tsbuildinfo
+next-env.d.ts
+/coverage
+.vercel
+/.next/
+/dist
+/out/
+.env
+public/assets/css/style.css

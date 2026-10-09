@@ -1,0 +1,26 @@
+// Texts
+$rarity_color_common: #fff;
+$rarity_color_uncommon: #57aa46;
+$rarity_color_rare: #2a6dc5;
+$rarity_color_epic: #bd64c9;
+$rarity_color_mythic: #e7c040;
+$rarity_color_legendary: #ffa500;
+$rarity_color_celestial: #b12727;
+
+// Text shadows
+$rarity_shadow_common: #fff 0px 0px 8px;
+$rarity_shadow_uncommon: #4d8b41 0.5px 0.5px 8px;
+$rarity_shadow_rare: #2c4d79 0.5px 0.5px 8px;
+$rarity_shadow_epic: #964ba0 0.5px 0.5px 8px;
+$rarity_shadow_mythic: rgb(236, 219, 65) 0.5px 0.5px 8px;
+$rarity_shadow_legendary: #ffa500 0.5px 0.5px 8px;
+$rarity_shadow_celestial: #ff0000 0.5px 0.5px 8px;
+
+// Gradients
+$rarity_gradient_common: linear-gradient(90deg, #dddddd, #86948e);
+$rarity_gradient_uncommon: linear-gradient(90deg, #70fa54, rgb(104, 219, 154));
+$rarity_gradient_rare: linear-gradient(90deg, rgb(81, 152, 245), rgb(96, 163, 250));
+$rarity_gradient_epic: linear-gradient(90deg, #964ba0, #cc66da);
+$rarity_gradient_mythic: linear-gradient(90deg, #e7c040, #e2bd58);
+$rarity_gradient_legendary: linear-gradient(90deg, #ffa500, #f0b03a);
+$rarity_gradient_celestial: linear-gradient(90deg, #b12727, #b12727);

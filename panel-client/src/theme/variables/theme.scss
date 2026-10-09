@@ -1,0 +1,32 @@
+// Resolutions
+$mobile_responsive_breakpoint: 600px;
+$tablet_responsive_breakpoint: 1100px;
+$laptop_responsive_breakpoint: 1300px;
+
+// Background colors..
+$background_card: #151825;
+$background_card_children: #181b2a;
+$background_card_radius: 8px;
+$background_card_padding: 16px;
+$background_inventory_item: linear-gradient(180deg, #1f233377 0%, #151824a9 50%, #161822a6 100%);
+
+// Colors
+$color_primary: #f195ac;
+$color_coins: rgb(255, 134, 201);
+$color_link: #efa8ba;
+$color_link_faded: #efa8bab3;
+$color_text: #888c9f;
+$color_label: #ccc;
+$color_online_status: #66b376;
+$color_offline_status: #df5656;
+$tpb_color_body: #aaadbb;
+
+// Shadows
+$card_shadow: rgba(0, 0, 0, 0.199) 0px 2px 1px -1px, rgba(0, 0, 0, 0.247) 0px 1px 1px 0px, rgba(0, 0, 0, 0.226) 0px 1px 3px 0px;
+$layout_box_shadow: 0px 0px 10px #05040863;
+$layout_box_sidebar_shadow: 0px 10px 10px #05040863;
+$text_shadow_general: 0px 0px 5px #090909;
+
+// Borders
+$border_card_children: #1b2030b0;
+$border_inventory_item: #1c213185;

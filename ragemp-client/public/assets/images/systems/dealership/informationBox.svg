@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 503.96 305.79" preserveAspectRatio="none">
+  <g id="Pink_bg" data-name="Pink bg">
+    <path d="M79.7,265.24" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M83.73,261.09" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M79.31,321" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M546.91,266.63a99.9,99.9,0,0,1,20.18,38.77c2.14,8.2,10.65,40.87-4.75,54.59a15.07,15.07,0,0,1-4.48,2.86c-14.1,5.6-26.53,4.41-36.27,3.47-30.15-2.92-35.63,11.48-57.35,5.27-11.77-3.36-20.14-10.45-25.32-15.82" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M198.38,197" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M363.35,403.51" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M278.69,203.33" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M261.29,201" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M66.65,294.32" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M82.47,272.16A55.91,55.91,0,0,1,69.39,249a53.43,53.43,0,0,1-2-16.38A61.19,61.19,0,0,1,83.26,197c11.54-12.4,27.5-16.09,64.27-18.87,60.29-4.56,71.05,1.69,101.26-4.24,24.48-4.8,23.31-9.37,71-28.32C379.31,122,446.33,96.07,471,121a32.4,32.4,0,0,1,7.91,14.25" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+    <path d="M368.89,279.29" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+  </g>
+  <g id="BG">
+    <g id="Info_bg" data-name="Info bg">
+      <path d="M612,82.54" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M488.07,97.9" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M506.16,108.38" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M420.58,112.74" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M583.31,136.67" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M506.43,72.25" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M594.19,191.07" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M544.14,100.08" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M551.36,93.45" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M557,97.11" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M574.6,163" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M574,228.22" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M601.31,197.79" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M573.55,134.76" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M584.23,142" transform="translate(-67.4 -110.86)" fill="#151825"/>
+      <path d="M584.23,142" transform="translate(-67.4 -110.86)" fill="#151825"/>
+    </g>
+    <path id="Card_BG" data-name="Card BG" d="M390,134.86c24.64-7.27,70.54-16.35,118,2.33,13.73,5.4,28.23,11.26,40.53,25.59,28.92,33.69,16.61,83.91,8.92,115.92-6.89,28.65-20.66,85.95-59.66,97.9-19.18,5.88-27.47-4.42-56.18-9.89-58-11-80.05,20.4-188,41.93-63.72,12.71-83.93,7.31-93.83,3.91-50.43-17.32-72.19-77.86-74.22-83.81-11.77-34.43-17.66-92.85,15.43-127,9.91-10.24,20.42-16.23,26.11-18.2,33.59-11.65,65.39-8.3,87-7.91,20.84.37,51.37-1.66,89.32-13.76,12.81-4.08,26.33-7.58,26.33-7.58,12.85-4.05,23.84-8,32.58-11.42Z" transform="translate(-67.4 -110.86)" fill="#151825"/>
+    <path d="M51.62,241.84" transform="translate(-67.4 -110.86)" fill="#151825"/>
+    <path d="M-277.12-98.38" transform="translate(-67.4 -110.86)" fill="#f395ac"/>
+  </g>
+</svg>

@@ -1,0 +1,1114 @@
+@import '../core/variables.scss';
+@import '../../core/variables.scss';
+
+$color_secondary: #606060;
+
+.phone-app-route-vespify {
+	display: flex;
+	background-color: #fff;
+	color: $color_text_light;
+
+	.status-bar {
+		color: $color_text_light;
+		background-color: white !important;
+
+		.battery {
+			.shape,
+			.dot {
+				background-color: $battery_dark_background !important;
+			}
+			.text {
+				color: $battery_dark_bg_text_color !important;
+			}
+		}
+	}
+
+	.component-view {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+
+	.closing-area {
+		bottom: -8px !important;
+	}
+
+	.component-scrollable-view {
+		display: flex;
+		flex: 1;
+		position: relative;
+
+		.--component-container {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			height: 100%;
+			width: 100%;
+			// padding-bottom: 20px;
+
+			// Scrollbar
+			max-height: 100%;
+			overflow-y: auto;
+
+			// Content
+			display: flex;
+			flex-direction: column;
+
+			&::-webkit-scrollbar {
+				width: 1.2px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: rgba(10, 10, 10, 0.521);
+			}
+
+			&::-webkit-scrollbar-track {
+				background: rgba(rgb(194, 194, 194), 0.2);
+			}
+		}
+	}
+
+	.component-having-difficulties {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+		flex: 1;
+		min-height: 60%;
+		width: 100%;
+		padding: 16px;
+
+		.icon {
+			.elm {
+				font-size: 20px;
+				line-height: 1;
+			}
+			margin-bottom: 4px;
+			color: grey;
+		}
+
+		.heading {
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 1.5;
+		}
+
+		.message {
+			display: block;
+			font-size: 12px;
+			line-height: 1.3;
+			width: 100%;
+
+			.bold {
+				font-weight: 500;
+			}
+		}
+	}
+}
+
+.phone-app-route-vespify .component-appbar {
+	// Appearance
+	background-color: white;
+	padding: 8px 10px;
+
+	// Content
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+
+	// Adjustment
+	margin-top: -12px;
+
+	// Box shadow
+	box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+
+	.logo {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		justify-content: flex-start;
+		margin-right: 4px; // Adjustment to make sure we don't glitch the search bar when we hide the "go back"icon
+
+		.image {
+			display: block;
+			content: ' ';
+			background-image: url('/assets/images/phone/apps/vespify/logo.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+
+			height: 23px;
+			width: 23px;
+		}
+
+		.text {
+			margin-left: 4px;
+
+			font-size: 14px;
+			line-height: 1;
+			font-weight: 500;
+			color: #2e2e2e;
+		}
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex: 1;
+		justify-content: flex-end;
+
+		.entry {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 28px;
+			width: 28px;
+			border-radius: 100%;
+		}
+	}
+
+	.component-btn-cancel-search {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 26px;
+		width: 26px;
+		border-radius: 100%;
+		margin-right: 6px;
+	}
+
+	.component-search-bar {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		flex: 1;
+
+		.input {
+			width: 100%;
+			// Clear natives
+			background-color: transparent;
+			border: none;
+			outline: none;
+
+			border-radius: 16px;
+			background-color: rgb(231, 229, 229);
+			padding: 6px 10px;
+			padding-right: 32px;
+
+			// typography
+			color: #2c2b2b;
+			font-family: 'iOS';
+			font-size: 13px;
+			line-height: 1;
+			font-weight: 450;
+
+			&::placeholder {
+				color: #535353;
+			}
+		}
+
+		.icon-appendment {
+			// Positioning
+			position: absolute;
+			top: 50%;
+			right: 4px;
+			transform: translateY(-50%);
+
+			// Appearance
+			height: 28px;
+			width: 28px;
+			border-radius: 100%;
+			cursor: pointer;
+
+			// Debugging
+			// background-color: red;
+
+			// Content
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.elm {
+				font-size: 13px;
+				color: rgb(82, 82, 82);
+			}
+		}
+	}
+
+	&.withSearchBar {
+		.component-search-bar {
+			margin-left: 6px;
+		}
+	}
+}
+
+.phone-app-route-vespify .component-videoThumbnail {
+	display: flex;
+	flex-direction: column;
+
+	.thumbnail {
+		position: relative;
+		height: 180px;
+		width: 100%;
+
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+
+		border-radius: 4px;
+
+		margin-bottom: 8px;
+
+		.duration {
+			position: absolute;
+			bottom: 5px;
+			right: 5px;
+
+			background-color: rgba(#000, 0.5);
+			padding: 4px;
+			font-size: 11px;
+			line-height: 1;
+			color: white;
+			border-radius: 3px;
+		}
+	}
+
+	.details {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 100%;
+
+		.avatar {
+			display: block;
+			height: 35px;
+			width: 35px;
+
+			border-radius: 100%;
+			background-size: cover;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-color: grey;
+
+			margin-right: 8px;
+		}
+
+		.information {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			color: rgb(15, 15, 15);
+
+			.heading {
+				font-size: 12px;
+				font-weight: 450;
+				line-height: 1.3;
+			}
+
+			.additionals {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				font-size: 11px;
+				opacity: 0.6;
+				line-height: 1.2;
+				flex-wrap: wrap;
+
+				.spacing {
+					margin: 0px 4px;
+
+					.icon {
+						font-size: 3.5px;
+						line-height: 1;
+					}
+				}
+			}
+		}
+	}
+
+	&.ghost {
+		.thumbnail {
+			background-color: rgb(167, 167, 167);
+		}
+
+		.details {
+			background-color: rgb(189, 189, 189);
+			height: 35px;
+			content: ' ';
+			width: 100%;
+		}
+	}
+}
+
+.phone-app-route-vespify .component-channelCard {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+
+	padding: 4px 0px;
+
+	.avatar {
+		position: relative;
+		height: 50px;
+		width: 50px;
+
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-color: grey;
+
+		border-radius: 100%;
+
+		margin-right: 12px;
+	}
+
+	.details {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+
+		.name {
+			font-size: 14px;
+			line-height: 1;
+			font-weight: 550;
+			margin-bottom: 4px;
+		}
+
+		.tag {
+			font-size: 11px;
+			line-height: 1;
+			color: #828184;
+			margin-bottom: 2px;
+		}
+
+		.subscribers {
+			font-size: 11px;
+			line-height: 1;
+			color: #828184;
+			margin-bottom: 2px;
+		}
+	}
+
+	.button {
+		background-color: #000;
+		color: white;
+
+		font-size: 10px;
+		line-height: 1;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		padding: 8px 12px;
+
+		border-radius: 14px;
+	}
+}
+
+.phone-app-route-vespify .screen-home {
+	.component-banner-currently-playing {
+		// Positioning
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+
+		// Size
+		min-height: 50px;
+		width: 90%;
+
+		// Appearance
+		background-color: rgba(#fff, 0.95);
+		border: solid 1px rgba(#fff, 0.12);
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.18);
+		border-radius: 8px;
+
+		// Typography
+		font-size: 13px;
+		line-height: 1;
+		color: #333;
+
+		// Content
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		padding: 8px 8px;
+
+		cursor: pointer;
+
+		.thumbnail {
+			background-size: cover;
+			background-repeat: no-repeat;
+
+			height: 35px;
+			width: 60px;
+
+			margin-right: 8px;
+		}
+
+		.details {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+
+			.title {
+				font-size: 11px;
+				line-height: 1.2;
+				font-weight: 450;
+			}
+
+			.author {
+				font-size: 10px;
+				line-height: 1;
+			}
+		}
+
+		.actions {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-left: 8px;
+
+			.entry {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 12px;
+
+				&:last-of-type {
+					margin-right: 0px;
+				}
+
+				.icon {
+					font-size: 20px;
+					line-height: 1;
+				}
+			}
+		}
+	}
+}
+
+.phone-app-route-vespify .screen-home,
+.phone-app-route-vespify .screen-search {
+	.entries {
+		display: flex;
+		flex-direction: column;
+
+		padding: 8px 4px;
+
+		// Making sure bottom is scrollable
+		padding-bottom: 30px;
+
+		.entry {
+			// Spacing
+			margin-bottom: 16px;
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
+		}
+	}
+}
+
+.phone-app-route-vespify .screen-video .component-ghosts {
+	.video {
+		background-color: rgb(167, 167, 167);
+		height: 165px;
+		width: 100%;
+	}
+
+	.sections {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		flex-direction: column;
+
+		.icon {
+			.elm {
+				font-size: 25px;
+				line-height: 1;
+			}
+		}
+
+		.heading {
+			font-size: 13px;
+			line-height: 1;
+			font-weight: 550;
+			margin-bottom: 4px;
+			color: #4d4c4c;
+			margin-top: 10px;
+		}
+
+		.message {
+			font-size: 11px;
+			line-height: 1;
+			color: #707070;
+		}
+	}
+}
+
+.phone-app-route-vespify .screen-video .section-information {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	overflow: hidden;
+
+	// Scroll
+	max-height: 100%;
+	overflow-y: auto;
+
+	&.modalVisible {
+		display: none;
+	}
+
+	// Fix
+	padding-bottom: 30px;
+
+	// Custom scroll
+	&::-webkit-scrollbar {
+		width: 2px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgba(48, 47, 47, 0.521);
+	}
+
+	&::-webkit-scrollbar-track {
+		background: rgba(rgb(194, 194, 194), 0.2);
+	}
+
+	.component-video-details {
+		padding: 0px 12px;
+		margin-top: 12px;
+
+		.title {
+			font-size: 14px;
+			line-height: 1.5;
+			font-weight: 550;
+		}
+
+		.short-inline-info {
+			margin-top: 3px;
+
+			// Typography
+			font-size: 12px;
+			line-height: 1.2;
+			color: $color_secondary;
+
+			// Content
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+
+			.spacing {
+				margin: 0px 6px;
+				.icon {
+					font-size: 4px;
+				}
+			}
+
+			.more-details {
+				margin-left: 4px;
+			}
+		}
+
+		.channel {
+			margin-top: 10px;
+
+			display: flex;
+			justify-content: space-between;
+
+			.author {
+				// Content
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				flex-direction: row;
+				flex-wrap: wrap;
+
+				.avatar {
+					display: block;
+					height: 30px;
+					width: 30px;
+
+					border-radius: 100%;
+					background-size: cover;
+					background-position: center center;
+					background-repeat: no-repeat;
+					background-color: grey;
+
+					margin-right: 8px;
+				}
+
+				.details {
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+					flex-direction: row;
+					flex-wrap: wrap;
+					flex: 1;
+
+					.name {
+						font-weight: 550;
+						font-size: 13px;
+						line-height: 1;
+						margin-right: 4px;
+						flex: 1;
+					}
+
+					.subscribers {
+						font-size: 11px;
+						line-height: 1;
+						font-weight: 400;
+						color: $color_secondary;
+					}
+				}
+			}
+		}
+	}
+
+	.component-buttons {
+		margin-top: 11px;
+		padding: 0px 11px;
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		.entry {
+			cursor: pointer;
+			background-color: #f2f2f2;
+			color: #535353;
+			border-radius: 16px;
+			padding: 9px 12px;
+			margin-right: 8px;
+			min-width: 60px;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:last-of-type {
+				margin-right: 0px;
+			}
+
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			// Typography
+			font-size: 11px;
+			line-height: 1;
+			font-weight: 550;
+
+			.icon {
+				margin-right: 4px;
+			}
+
+			&.no-click {
+				cursor: default;
+			}
+		}
+	}
+
+	.component-comment-highlight {
+		background-color: #f2f2f2;
+		color: #535353;
+		margin-top: 16px;
+		margin-left: 12px;
+		margin-right: 12px;
+		border-radius: 12px;
+		padding: 12px;
+
+		display: flex;
+		flex-direction: column;
+
+		.header {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-bottom: 8px;
+
+			.text {
+				font-weight: 550;
+				font-size: 12px;
+				line-height: 1;
+			}
+
+			.count {
+				margin-left: 6px;
+				font-weight: 300;
+				font-size: 12px;
+				line-height: 1;
+			}
+		}
+
+		.entry {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+
+			.avatar {
+				display: block;
+				height: 30px;
+				width: 30px;
+
+				border-radius: 100%;
+				background-size: cover;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-color: grey;
+
+				margin-right: 8px;
+			}
+
+			.text {
+				flex: 1;
+				font-size: 12px;
+				line-height: 1.4;
+			}
+		}
+	}
+
+	.component-next-videos {
+		margin-top: 12px;
+		padding: 0px 12px;
+
+		.title {
+			font-size: 13px;
+			line-height: 1;
+			font-weight: 450;
+			margin-bottom: 12px;
+			color: $color_secondary;
+		}
+
+		.entries {
+			display: flex;
+			flex-direction: column;
+
+			.component-videoThumbnail {
+				margin-bottom: 12px;
+				&:last-of-type {
+					margin-bottom: 0px;
+				}
+			}
+		}
+	}
+}
+
+.phone-app-route-vespify .screen-video .section-modals {
+	position: relative;
+	display: none;
+	flex: 1;
+
+	overflow: hidden;
+
+	&.visible {
+		display: flex;
+	}
+
+	.component-modal-content {
+		flex-direction: column;
+		flex: 1;
+
+		// Scroll
+		max-height: 100%;
+		overflow-y: auto;
+
+		// Custom scroll
+		&::-webkit-scrollbar {
+			width: 2px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: rgba(48, 47, 47, 0.521);
+		}
+
+		&::-webkit-scrollbar-track {
+			background: rgba(rgb(194, 194, 194), 0.2);
+		}
+
+		.header {
+			padding: 10px 10px;
+			box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+
+			// Content
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+
+			.title {
+				font-size: 14px;
+				line-height: 1;
+				font-weight: 560;
+				color: rgb(48, 48, 48);
+			}
+
+			.close {
+				// background-color: red;
+				width: 25px;
+				height: 25px;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				cursor: pointer;
+
+				.icon {
+					color: rgb(48, 48, 48);
+					font-size: 15px;
+				}
+			}
+		}
+
+		.content {
+			padding: 10px;
+		}
+
+		&.--description {
+			.content .description {
+				font-size: 12px;
+				line-height: 1.3;
+				padding-bottom: 20px;
+			}
+		}
+
+		&.--comments {
+			.entries {
+				display: flex;
+				flex-direction: column;
+				padding-bottom: 20px;
+				.entry {
+					margin-bottom: 8px;
+					&:last-of-type {
+						margin-bottom: 0px;
+					}
+
+					// Content
+					display: flex;
+					flex-direction: row;
+					align-items: flex-start;
+					justify-content: flex-start;
+					flex-wrap: wrap;
+
+					padding: 12px 8px;
+					border-bottom: solid 1px rgba(#333, 0.12);
+
+					&:last-of-type {
+						border-bottom: none;
+					}
+
+					.avatar {
+						display: block;
+						height: 35px;
+						width: 35px;
+
+						border-radius: 100%;
+						background-size: cover;
+						background-position: center center;
+						background-repeat: no-repeat;
+						background-color: grey;
+
+						margin-right: 8px;
+					}
+
+					.comment-content {
+						flex: 1;
+
+						.--header {
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+
+							font-weight: 400;
+							color: #828184;
+							font-size: 11px;
+							line-height: 1;
+							margin-bottom: 5px;
+						}
+
+						.--message {
+							font-weight: 400;
+							color: #39393a;
+							font-size: 12px;
+							line-height: 1;
+						}
+
+						.--likes {
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							margin-top: 6px;
+
+							.icon {
+								margin-right: 2px;
+
+								.elm {
+									font-size: 11px;
+									line-height: 1;
+									color: #828184;
+								}
+							}
+
+							.text {
+								font-weight: 400;
+								font-size: 11px;
+								line-height: 1;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.phone-app-route-vespify .screen-channel .component-header {
+	width: 100%;
+
+	.banner {
+		height: 90px;
+		width: 100%;
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+		display: block;
+		background-color: grey;
+		content: ' ';
+	}
+
+	.author-details {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 8px 8px;
+		flex-direction: column;
+
+		&.no-banner {
+			padding: 13px 8px;
+		}
+
+		.avatar {
+			height: 50px;
+			width: 50px;
+			border-radius: 100%;
+			background-size: cover;
+			background-position: center center;
+			background-repeat: no-repeat;
+			display: block;
+			content: ' ';
+			margin-bottom: 6px;
+			background-color: grey;
+		}
+
+		.name {
+			color: #000;
+			font-size: 13px;
+			line-height: 1;
+			font-weight: 450;
+		}
+
+		.inline-details {
+			color: $color_secondary;
+			font-size: 10px;
+			line-height: 1;
+
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-top: 4px;
+
+			.spacing {
+				margin: 0px 4px;
+
+				.icon {
+					font-size: 3px;
+					line-height: 1;
+				}
+			}
+		}
+
+		.description {
+			color: $color_secondary;
+			font-size: 11px;
+			line-height: 1.3;
+			margin-top: 6px;
+			text-align: center;
+		}
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+
+		.entry {
+			background-color: #000;
+			color: white;
+
+			font-size: 10px;
+			line-height: 1;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			padding: 8px 12px;
+
+			border-radius: 14px;
+		}
+	}
+}
+
+.phone-app-route-vespify .screen-channel .component-tabs {
+	padding: 0px 12px;
+	margin-top: 12px;
+	padding-bottom: 8px;
+	.text {
+		font-size: 14px;
+		font-weight: 550;
+		line-height: 1;
+		color: #4b4a4a;
+	}
+	border-bottom: solid 1px rgba(#333, 0.12);
+}
+
+.phone-app-route-vespify .screen-channel .component-videos {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 12px 12px;
+	.entry {
+		margin-bottom: 16px;
+		&:last-of-type {
+			margin-bottom: 0px;
+		}
+	}
+
+	.no-entries {
+		font-size: 13px;
+		line-height: 1;
+		font-weight: 450;
+	}
+}

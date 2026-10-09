@@ -1,0 +1,10 @@
+// @Explanation: This overwrites material ui nasty theme
+@import './components/overwrites.scss';
+
+// @Explanation: This reset small stuff and sets the right font sizes.
+@import './components/reset.scss';
+
+// Fonts..
+@import './components/fonts.scss';
+
+@import './components/cssVariables.scss';

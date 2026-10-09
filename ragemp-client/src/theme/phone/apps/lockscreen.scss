@@ -1,0 +1,214 @@
+@import '../core/variables.scss';
+
+$phone_border_color: #020202;
+
+.phone-app-route-lockscreen {
+	background-image: url('/assets/images/phone/apps/lockscreen/wallpaper-2.jpg') !important;
+	background-position: center center;
+	background-size: cover;
+	object-fit: cover;
+	color: white !important;
+	animation: fadeIn;
+	/* referring directly to the animation's @keyframe declaration */
+	animation-duration: 0.8s;
+	/* don't forget to set a duration! */
+
+	.screen-content {
+		display: flex;
+		flex: 1;
+		color: black;
+		// background-color: blue;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+
+		.time-and-date {
+			height: 95px;
+			width: 100%;
+
+			// background-color: purple;
+
+			.time {
+				color: white;
+				font-size: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: 400;
+				line-height: 40px;
+				margin-top: 8px;
+			}
+
+			.date {
+				color: white;
+				font-size: 16px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: 400;
+			}
+		}
+
+		.component-header {
+			display: flex;
+			justify-content: space-between;
+			padding-bottom: 10px;
+			align-items: center;
+			width: 100%;
+
+			.label {
+				margin-left: 8px;
+				font-weight: 400;
+				line-height: 1px;
+				font-size: 15px;
+				color: white;
+			}
+
+			.clear {
+				display: flex;
+				background-color: rgba(#020202, 0.4);
+				justify-content: center;
+				margin-right: 18.5px;
+				align-items: center;
+				border-radius: 100%;
+				color: white;
+				outline: none;
+				height: 25px;
+				border: none;
+				width: 25px;
+
+				i {
+					margin-top: 0.5px;
+					font-size: 14px;
+					line-height: 1;
+				}
+			}
+		}
+
+		.notifications {
+			display: block;
+			flex: 1;
+			position: relative;
+			width: 100%;
+
+			.--container {
+				// Position
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				height: 100%;
+				width: 100%;
+				max-height: 100%;
+				overflow-y: auto;
+				overflow-x: hidden;
+				margin-bottom: 8px;
+				padding: 8px;
+
+				// Scrolllbar
+				&::-webkit-scrollbar {
+					width: 4px;
+				}
+
+				&::-webkit-scrollbar-thumb {
+					background: white;
+				}
+
+				&::-webkit-scrollbar-track {
+					background: rgba(0, 0, 0, 0.2);
+				}
+
+				.entry {
+					animation: bounceInLeft;
+					/* referring directly to the animation's @keyframe declaration */
+					animation-duration: 0.8s;
+					/* don't forget to set a duration! */
+					margin-bottom: 8px;
+
+					&:last-of-type {
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			.notification-entry {
+				display: block;
+				background-color: rgba($phone_border_color, 0.6);
+				border-radius: 14px;
+				padding: 12px;
+				color: white;
+				width: 100%;
+				cursor: pointer;
+
+				.header {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					margin-bottom: 6px;
+					align-items: center;
+					width: 100%;
+
+					.source {
+						font-size: 12px;
+						line-height: 12px;
+						font-weight: 300;
+					}
+
+					.time {
+						font-size: 12px;
+						line-height: 12px;
+						font-weight: 400;
+					}
+				}
+
+				.title {
+					font-size: 12px;
+					line-height: 12px;
+					margin-bottom: 2px;
+					font-weight: 600;
+				}
+
+				.message {
+					font-size: 12px;
+				}
+			}
+		}
+
+		.unlock-area {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 8px;
+			padding-bottom: 14px;
+			box-sizing: border-box;
+
+			.button {
+				background: #0b0c0c;
+				border-radius: 6px;
+				width: 98%;
+				height: 55px;
+				position: relative;
+				color: white;
+				display: flex;
+				justify-content: space-between;
+				padding: 0px 24px;
+				align-items: center;
+				cursor: pointer;
+
+				.text {
+					line-height: 13px;
+					font-size: 13px;
+					font-weight: 500;
+					// background-color: red;
+					flex: 1;
+					text-align: center;
+				}
+
+				.icon {
+					font-size: 22px;
+					line-height: 22px;
+				}
+			}
+		}
+	}
+}

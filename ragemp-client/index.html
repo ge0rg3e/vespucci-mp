@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/assets/images/branding/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Vespucci - Client interface</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script>
+			if (!window.mp) {
+				window.mp = { fake: true, trigger: () => {} };
+			} // @silent-warnings on dev server
+			window.phone = {};
+		</script>
+		<script src="/assets/js/rage-rpc.umd.js">
+			window.rpc = rpc;
+		</script>
+		<script type="module" src="/src/main.tsx"></script>
+	</body>
+</html>

@@ -1,0 +1,14 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@src/*": ["./*"],
+			"@natives/*": ["./natives/*"],
+			"@routes/*": ["./routes/*"],
+			"@utils/*": ["./utils/*"],
+			"@modules/*": ["../modules/*"]
+		},
+		"types": []
+	}
+}

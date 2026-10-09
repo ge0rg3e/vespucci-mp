@@ -1,0 +1,64 @@
+@import '../variables/theme.scss';
+
+.page-404 {
+	.layout-content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.content {
+		max-width: 400px;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.image {
+			height: 120px;
+			width: 100%;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-image: url('/assets/images/pages/404/image.png');
+			opacity: 0.8;
+			background-position: center center;
+			margin-bottom: 8px;
+		}
+
+		h1 {
+			margin-bottom: 4px;
+			text-shadow: rgba(#000, 0.4) 0px 0px 4px;
+			.primary {
+				color: $color_primary;
+			}
+		}
+
+		.description {
+			text-shadow: rgba(#000, 0.4) 0px 0px 4px;
+			font-weight: 400;
+			font-size: 14px;
+		}
+
+		.buttons {
+			margin-top: 16px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.MuiButton-root {
+				margin-right: 8px;
+				&:last-of-type {
+					margin-right: 0px;
+				}
+			}
+		}
+
+		.code {
+			font-size: 16px;
+
+			font-weight: 800;
+
+			margin-top: 8px;
+		}
+	}
+}

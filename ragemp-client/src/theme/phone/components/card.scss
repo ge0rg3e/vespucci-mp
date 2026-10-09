@@ -1,0 +1,28 @@
+.phone-mockup .screen-content .app-component-card {
+	padding: 15px 16px;
+	background-color: white;
+	margin-bottom: 6px;
+	border-radius: 8px;
+	box-shadow: $ios_light_card_shadow;
+
+	.title {
+		letter-spacing: 0.3px;
+		font-size: 13px;
+		line-height: 14px;
+		margin-bottom: 2px;
+		color: darken(#848484, 17%);
+		font-weight: 500;
+	}
+
+	.content {
+		font-size: 14px;
+		line-height: 18px;
+		letter-spacing: 0.3px;
+		font-weight: 400;
+		color: #848484;
+	}
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}

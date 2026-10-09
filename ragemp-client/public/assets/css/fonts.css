@@ -1,0 +1,152 @@
+@font-face {
+	font-family: 'SignPainter';
+	src: url('/assets/fonts/signpainter.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Pricedown Bl';
+	src: url('/assets/fonts/pricedown.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-weight: 100;
+	src: url('/assets/fonts/iOS/Thin.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-style: italic;
+	font-weight: 100;
+	src: url('/assets/fonts/iOS/ThinItalic.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-weight: 200;
+	src: url('/assets/fonts/iOS/UltraLight.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-style: italic;
+	font-weight: 200;
+	src: url('/assets/fonts/iOS/UltraLightItalic.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-weight: 300;
+	src: url('/assets/fonts/iOS/Light.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-style: italic;
+	font-weight: 300;
+	src: url('/assets/fonts/iOS/LightItalic.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-weight: 400;
+	src: url('/assets/fonts/iOS/Regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-style: italic;
+	font-weight: 400;
+	src: url('/assets/fonts/iOS/RegularItalic.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-weight: 500;
+	src: url('/assets/fonts/iOS/Medium.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-style: italic;
+	font-weight: 500;
+	src: url('/assets/fonts/iOS/MediumItalic.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-weight: 600;
+	src: url('/assets/fonts/iOS/SemiBold.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-style: italic;
+	font-weight: 600;
+	src: url('/assets/fonts/iOS/SemiBoldItalic.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-weight: 700;
+	src: url('/assets/fonts/iOS/Bold.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-style: italic;
+	font-weight: 700;
+	src: url('/assets/fonts/iOS/BoldItalic.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-weight: 900;
+	src: url('/assets/fonts/iOS/Black.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'iOS';
+	font-style: italic;
+	font-weight: 900;
+	src: url('/assets/fonts/iOS/BlackItalic.otf') format('opentype');
+}
+
+/* Chalet Comprime fonts */
+
+@font-face {
+	font-family: 'Chalet Comprime - Hong Kong Sixty';
+	src: url('/assets/fonts/Chalet Comprime/ChaletComprime-HongKongSixty.woff2') format('woff2'),
+		url('/assets/fonts/Chalet Comprime/ChaletComprime-HongKongSixty.woff') format('woff'),
+		url('/assets/fonts/Chalet Comprime/ChaletComprime-HongKongSixty.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Chalet Comprime - Hong Kong Eighty';
+	src: url('/assets/fonts/Chalet Comprime/ChaletComprime-HongKongEighty.woff2') format('woff2'),
+		url('/assets/fonts/Chalet Comprime/ChaletComprime-HongKongEighty.woff') format('woff'),
+		url('/assets/fonts/Chalet Comprime/ChaletComprime-HongKongEighty.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Chalet Comprime - Cologne Sixty';
+	src: url('/assets/fonts/Chalet Comprime/ChaletComprime-CologneSixty.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Chalet Comprime - Cologne Eigthy';
+	src: url('/assets/fonts/Chalet Comprime/ChaletComprime-CologneEighty.woff2') format('woff2'),
+		url('/assets/fonts/Chalet Comprime/ChaletComprime-CologneEighty.woff') format('woff'),
+		url('/assets/fonts/Chalet Comprime/ChaletComprime-CologneEighty.ttf') format('truetype');
+}
+
+/* Chalet London */
+@font-face {
+	font-family: 'Chalet London - Sixty';
+	src: url('/assets/fonts/Chalet London/Chalet LondonNineteenSixty.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Chalet London - Eigthy';
+	src: url('/assets/fonts/Chalet London/Chalet LondonNineteenEighty.ttf') format('truetype');
+}

@@ -1,0 +1,36 @@
+.component-avatar {
+	&.has-redirect {
+		cursor: pointer;
+	}
+
+	&.variant-circular {
+		border-radius: 100%;
+		&.size-small {
+			height: 32px;
+			width: 32px;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		}
+
+		&.size-medium {
+			height: 40px;
+			width: 40px;
+			box-shadow: 0 2.5px 7.5px rgba(0, 0, 0, 0.4);
+		}
+
+		&.size-large {
+			height: 120px;
+			width: 120px;
+
+			@media (max-width: 1400px) {
+				height: 110px;
+				width: 110px;
+			}
+
+			box-shadow: 0 2.5px 7.5px rgba(0, 0, 0, 0.4);
+		}
+	}
+
+	// 	&.large {
+	// 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+	// 	}
+}

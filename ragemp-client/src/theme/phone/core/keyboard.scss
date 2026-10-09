@@ -1,0 +1,119 @@
+.phone-mockup .device-component-keyboard {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 80;
+	width: 100%;
+
+	// background-color: #cfd2d7;
+	display: flex;
+	flex-direction: column;
+
+	.component-content {
+		animation: slideInUp;
+		animation-duration: 0.3s;
+		border-top: solid 1px rgba(#000, 0.14);
+		background-color: #e9e9e9;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 12px 24px;
+		position: relative;
+		width: 100%;
+		min-height: 170px;
+		padding-top: 16px;
+
+		.instructions {
+			font-size: 13px;
+			line-height: 16px;
+			margin-bottom: 16px;
+			color: #1a181a;
+			font-weight: 500;
+			text-align: center;
+		}
+	}
+
+	.component-validation {
+		animation: slideInUp;
+		animation-duration: 0.3s;
+		width: 100%;
+		min-height: 38px;
+		background-color: #be2f49;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-top: solid 1px rgba(#000, 0.14);
+		padding: 3px 4px;
+		.message {
+			color: rgb(226, 77, 77);
+			color: white;
+			font-weight: 500;
+			font-size: 13px;
+			line-height: 14px;
+		}
+	}
+
+	// Sub-components
+
+	.component-input {
+		color: #191919;
+		font-size: 13px;
+		line-height: 13px;
+		border: none !important;
+		outline: none !important;
+		padding: 9px 8px;
+		background-color: #f7f7f7;
+		border-radius: 6px;
+		box-shadow: $ios_light_card_shadow;
+	}
+
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+	}
+
+	.app-component-button {
+		margin-top: 8px;
+	}
+
+	&.dark {
+		.component-input {
+			box-shadow: $ios_dark_card_shadow;
+		}
+
+		.app-component-button {
+			box-shadow: $ios_dark_card_shadow;
+		}
+
+		.component-content {
+			background: $background_elevated_dark;
+			border-top: solid 1px rgba(#fff, 0.05);
+		}
+
+		.instructions {
+			color: $text_elevated_dark_1;
+		}
+
+		input {
+			background-color: rgba(#fff, 0.04);
+			color: #fff;
+		}
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		.app-component-button {
+			&:last-of-type {
+				margin-left: 8px;
+			}
+		}
+	}
+}

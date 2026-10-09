@@ -1,0 +1,75 @@
+{
+	"name": "next-panel",
+	"version": "1.0.9",
+	"private": true,
+	"author": "Vatto",
+	"contributors": [
+		"George"
+	],
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"watch-scss": "node-sass ./src/theme/index.scss ./public/assets/css/style.css -w --output-style compressed",
+		"build-scss": "node-sass ./src/theme/index.scss ./public/assets/css/style.css --output-style compressed"
+	},
+	"dependencies": {
+		"@emotion/react": "11.10.4",
+		"@emotion/styled": "11.10.4",
+		"@mui/icons-material": "5.11.9",
+		"@mui/material": "5.10.7",
+		"@types/amplitude-js": "^8.16.2",
+		"@vmp/i18n": "github:vespucci-mp/i18n#build",
+		"amplitude-js": "^8.21.6",
+		"axios": "0.27.2",
+		"chart.js": "4.2.1",
+		"frappe-charts": "1.6.2",
+		"frappe-gantt": "0.6.1",
+		"lodash": "4.17.21",
+		"moment": "2.29.4",
+		"moment-timezone": "0.5.43",
+		"next": "12.3.1",
+		"node-sass": "8.0.0",
+		"react": "18.2.0",
+		"react-chartjs-2": "5.2.0",
+		"react-dom": "18.2.0",
+		"sass": "1.55.0",
+		"yup": "0.32.11"
+	},
+	"devDependencies": {
+		"@types/chart.js": "2.9.37",
+		"@types/lodash": "4.14.192",
+		"@types/moment-timezone": "0.5.30",
+		"@types/node": "18.7.23",
+		"@types/react": "18.0.21",
+		"@types/react-dom": "18.0.6",
+		"@typescript-eslint/eslint-plugin": "5.38.1",
+		"@typescript-eslint/parser": "5.38.1",
+		"eslint": "8.24.0",
+		"eslint-config-next": "12.3.1",
+		"eslint-plugin-next": "0.0.0",
+		"eslint-plugin-react": "7.31.8",
+		"typescript": "4.8.3"
+	},
+	"prettier": {
+		"$schema": "http://json.schemastore.org/prettierrc",
+		"endOfLine": "lf",
+		"printWidth": 200,
+		"quoteProps": "as-needed",
+		"semi": true,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "none",
+		"useTabs": true,
+		"overrides": [
+			{
+				"files": "*.yml",
+				"options": {
+					"tabWidth": 2,
+					"useTabs": false
+				}
+			}
+		]
+	}
+}

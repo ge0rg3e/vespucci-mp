@@ -1,0 +1,41 @@
+.component-alert {
+	display: flex;
+	justify-content: flex-start;
+	animation: fadeIn 0.3s;
+	flex-direction: row;
+	align-items: center;
+	border-radius: 5px;
+	flex-wrap: wrap;
+	padding: 16px;
+	margin-bottom: 16px;
+	width: 100%;
+
+	.icon {
+		width: 16px;
+		line-height: 1;
+		text-align: center;
+		margin-right: 8px;
+		font-size: 16px;
+	}
+
+	.message {
+		flex: 1;
+		line-height: 1.5;
+		font-size: 14px;
+	}
+
+	&.success {
+		background-color: rgba(#179669, 0.1);
+		color: #1c9b6f;
+	}
+
+	&.error {
+		background-color: rgba(#f34549, 0.1);
+		color: #f34549;
+	}
+
+	&.warning {
+		background-color: rgba(#f78b04, 0.1);
+		color: #f78b04;
+	}
+}

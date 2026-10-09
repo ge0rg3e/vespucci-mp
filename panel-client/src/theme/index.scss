@@ -1,0 +1,19 @@
+// Components of the app
+@import './core/index.scss';
+@import './layout/index.scss';
+
+// Pages
+@import './pages/404.scss';
+
+@import './pages/authentication.scss';
+@import './pages/homepage.scss';
+@import './pages/settings.scss';
+@import './pages/playerList.scss';
+@import './pages/profiles.scss';
+
+// Components
+@import './components/avatar.scss';
+@import './components/username.scss';
+@import './components/alert.scss';
+@import './components/rarity.scss';
+@import './components/helpers.scss';

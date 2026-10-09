@@ -1,0 +1,64 @@
+@import '../core/variables.scss';
+
+// Fake background
+body {
+	// background-image: url('https://i.ibb.co/nsPxhwC/R-G-ulti-la-er-27-10-2022-20-32-53.png') !important;
+	// background-size: cover !important;
+	// background-repeat: no-repeat !important;
+}
+
+.game-screen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	max-height: 100vh;
+	max-width: 100vw;
+
+	&.hidden {
+		visibility: hidden;
+	}
+}
+
+.game-screen {
+	color: white;
+}
+
+.game-hud {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.copyrightScreenshots {
+	text-shadow: $general_text_shadow;
+	color: $color_primary;
+	position: absolute;
+	line-height: 10px;
+	font-weight: 600;
+	font-size: 10px;
+	opacity: 0.6;
+	z-index: -1;
+	right: 0.7%;
+	bottom: 0;
+}
+
+// Features
+@import './features/chatbox.scss';
+@import './features/speedometer.scss';
+@import './features/dialog.scss';
+@import './features/interactiveButton.scss';
+@import './features/alerts.scss';
+@import './features/toasts.scss';
+@import './features/progressBar.scss';
+
+// HUD
+@import './hud/player.scss';
+@import './hud/server.scss';
+@import './hud/calendar.scss';
+@import './hud/location';
+
+// Systems that need overlay.
+@import './systems/walkieTalkie.scss';

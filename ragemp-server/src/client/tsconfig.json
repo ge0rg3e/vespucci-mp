@@ -1,0 +1,14 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@client/*": ["./*"],
+			"@natives/*": ["./natives/*"],
+			"@general/*": ["./general/*"],
+			"@legacy/*": ["./legacy/*"],
+			"@utils/*": ["./utils/*"]
+		},
+		"types": ["../../node_modules/@ragemp/types-client", "node"]
+	}
+}

@@ -1,0 +1,1958 @@
+@import '../core/variables.scss';
+@import '../../core/variables.scss';
+
+$headingColor: #fdfdfd;
+$secondaryColor: #a8a8a8;
+$themeColor: #30ccc8;
+
+$font_size_heading: 14px;
+
+$font_size_entry_heading: 11px;
+$font_size_entry_sub-heading: 10px;
+
+.phone-app-route-vespifyMusic {
+	display: flex;
+	background-color: $background_dark;
+	color: $color_text_dark;
+
+	.status-bar {
+		background-color: transparent;
+		color: $color_text_dark;
+		z-index: 10;
+	}
+
+	.screen-content {
+		color: $color_text_dark_2;
+	}
+
+	.component-view {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+
+	.closing-area {
+		bottom: -8px !important;
+	}
+
+	.component-scrollable-view {
+		display: flex;
+		flex: 1;
+		position: relative;
+
+		.--component-container {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			height: 100%;
+			width: 100%;
+			// padding-bottom: 20px;
+
+			// Scrollbar
+			max-height: 100%;
+			overflow-y: auto;
+
+			// Content
+			display: flex;
+			flex-direction: column;
+
+			&::-webkit-scrollbar {
+				width: 1.2px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: rgba(10, 10, 10, 0.521);
+			}
+
+			&::-webkit-scrollbar-track {
+				background: rgba(rgb(194, 194, 194), 0.2);
+			}
+		}
+	}
+
+	.component-having-difficulties {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+		flex: 1;
+		min-height: 60%;
+		width: 100%;
+		padding: 16px;
+		color: rgb(190, 190, 190);
+
+		.icon {
+			.elm {
+				font-size: 20px;
+				line-height: 1;
+			}
+
+			margin-bottom: 6px;
+			color: white;
+
+			&.loading-icon {
+				.elm {
+					color: $themeColor;
+					font-size: 26px;
+				}
+				margin-bottom: 14px;
+			}
+		}
+
+		.heading {
+			font-size: 12px;
+			font-weight: 500;
+			line-height: 1.5;
+		}
+
+		.message {
+			display: block;
+			font-size: 11px;
+			line-height: 1.5;
+			width: 100%;
+
+			.bold {
+				font-weight: 500;
+			}
+		}
+	}
+
+	.component-search-bar,
+	.searching {
+		display: flex;
+		flex-wrap: nowrap !important;
+		align-items: center;
+		padding: 0 8px;
+
+		.cancel-button,
+		.go-back {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 20px;
+			height: 25px;
+			width: 25px;
+			margin-right: 4px;
+			.icon {
+				font-size: 15px;
+				line-height: 1;
+				color: $headingColor;
+			}
+		}
+
+		.input-container {
+			width: 100%;
+
+			input {
+				width: 100%;
+
+				// Clear natives
+				border: none;
+				outline: none;
+
+				background-color: #33333321;
+				border: solid 1px rgba(#fff, 0.02);
+				border-radius: 16px;
+				padding: 6px 10px;
+
+				// typography
+				color: $secondaryColor;
+				font-family: 'iOS';
+				font-size: 12px;
+				line-height: 1;
+				font-weight: 450;
+
+				&::placeholder {
+					color: $secondaryColor;
+				}
+			}
+		}
+
+		&.disabled {
+			.cancel-button,
+			.go-back {
+				opacity: 0.6;
+				pointer-events: none;
+			}
+
+			.input-container {
+				pointer-events: none;
+				opacity: 0.8;
+			}
+		}
+	}
+}
+
+.phone-app-route-vespifyMusic {
+	.component-section {
+		.--title {
+			font-size: $font_size_heading;
+			margin-bottom: 12px;
+			font-weight: 500;
+			color: white;
+		}
+
+		.--entries {
+			// Content
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+
+			// Spacing
+			width: 100%;
+		}
+	}
+
+	.component-song {
+		display: flex;
+		justify-content: flex-start;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100%;
+
+		.thumbnail {
+			background-color: #232323;
+			border-radius: 5px;
+			margin-right: 8px;
+			height: 37px;
+			width: 37px;
+
+			// Background..
+			background-size: cover;
+			background-position: center center;
+		}
+
+		.details {
+			flex: 1;
+
+			.title {
+				font-size: 12px;
+				color: $headingColor;
+				font-weight: 450;
+			}
+
+			.artist {
+				font-size: 11px;
+				color: $secondaryColor;
+			}
+		}
+		.button {
+			margin-left: 8px;
+
+			.elm {
+				font-size: 14px;
+				line-height: 1;
+				color: $themeColor;
+			}
+		}
+	}
+
+	.component-album {
+		display: block;
+
+		.content {
+			.thumbnail {
+				// In case they don't have a bg found.
+				background-color: #232323;
+				background-size: cover;
+				border-radius: 5px;
+				width: 100%;
+				aspect-ratio: 1 / 1;
+
+				// Background
+				background-size: cover;
+				background-position: center center;
+			}
+
+			.details {
+				margin-top: 6px;
+				font-size: 12px;
+				line-height: 1;
+
+				.title {
+					font-size: 11px;
+					color: $headingColor;
+					line-height: 1.2;
+					font-weight: 450;
+				}
+
+				.artist {
+					font-size: 10px;
+					color: $secondaryColor;
+					line-height: 1;
+					margin-top: 2px;
+				}
+			}
+		}
+	}
+
+	.component-artist {
+		display: flex;
+		justify-content: flex-start;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100%;
+
+		.thumbnail {
+			background-color: #232323;
+
+			border-radius: 100%;
+			margin-right: 8px;
+			height: 35px;
+			width: 35px;
+			background-size: cover;
+			background-position: center;
+		}
+
+		.details {
+			flex: 1;
+
+			.name {
+				font-size: 12px;
+				color: $headingColor;
+				line-height: 1;
+			}
+
+			.oc {
+				font-size: $font_size_entry_sub-heading;
+				color: $secondaryColor;
+			}
+		}
+	}
+
+	.component-playlist {
+		display: block;
+
+		.content {
+			.thumbnail {
+				background-color: #232323;
+				background-size: cover;
+				border-radius: 5px;
+				width: 100%;
+				aspect-ratio: 1 / 1;
+
+				// Background
+				background-size: cover;
+				background-position: center center;
+			}
+
+			.details {
+				margin-top: 6px;
+				font-size: 12px;
+				line-height: 1;
+
+				.title {
+					font-size: 11px;
+					color: $headingColor;
+					line-height: 1.25;
+					font-weight: 450;
+				}
+
+				.author {
+					font-size: 10px;
+					color: $secondaryColor;
+					line-height: 1;
+				}
+			}
+		}
+	}
+}
+
+.phone-app-route-vespifyMusic .screen-home {
+	// The gradient background behind
+	&::before {
+		content: '';
+
+		// Background
+		background: rgb(59, 51, 75);
+		background: linear-gradient(180deg, rgba(71, 71, 71, 0.6979166666666667) 58%, rgba(0, 212, 255, 0) 100%);
+
+		// Positioning
+		top: -10%;
+		position: absolute;
+		z-index: -5000;
+
+		// Appearance
+		height: 260px;
+		filter: blur(8px);
+		opacity: 0.4;
+
+		// Size
+		width: 100%;
+	}
+
+	.app-bar {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 0 12px;
+		flex-wrap: wrap;
+		height: 30px;
+
+		.logo {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			justify-content: flex-start;
+
+			.image {
+				border-radius: 100%;
+
+				display: block;
+				content: ' ';
+				background-image: url('/assets/images/phone/apps/vespifyMusic/logo-blue.svg');
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center center;
+
+				height: 18px;
+				width: 18px;
+			}
+
+			.text {
+				font-size: $font_size_heading;
+				color: $headingColor;
+				font-weight: 500;
+				margin-left: 5px;
+				line-height: 1;
+			}
+		}
+
+		.buttons {
+			display: flex;
+			flex: 1;
+			justify-content: flex-end;
+
+			.entry {
+				.elm {
+					font-size: 14px;
+					line-height: 1;
+					color: $headingColor;
+				}
+			}
+		}
+
+		&.disabled {
+			.logo {
+				opacity: 0.6;
+				pointer-events: none;
+			}
+			.buttons .entry {
+				opacity: 0.4;
+				pointer-events: none;
+			}
+		}
+	}
+
+	.sections {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+
+		// A nice to have padding at the bottom.
+		padding-bottom: 60px;
+
+		&.has-current-song {
+			padding-bottom: 20px;
+		}
+
+		.component-section {
+			padding: 0px 14px;
+
+			margin-bottom: 20px;
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
+
+			.--entries.type-song {
+				.component-song {
+					margin-bottom: 8px;
+					&:last-of-type {
+						margin-bottom: 0px;
+					}
+				}
+			}
+			.--entries.type-playlist,
+			.--entries.type-album {
+				display: flex;
+				flex-direction: row;
+
+				margin-top: -6px;
+				margin-bottom: -6px;
+				margin-left: -4px;
+				margin-right: -4px;
+
+				.component-playlist,
+				.component-album {
+					width: 50%;
+					padding: 6px 4px;
+				}
+			}
+		}
+	}
+
+	.component-current-song {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0px;
+		background-color: rgba(#101014, 1);
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.18);
+		padding-bottom: 24px;
+		padding-top: 12px;
+		padding-left: 16px;
+		padding-right: 16px;
+
+		.content {
+			width: 100%;
+
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+
+			.thumbnail {
+				height: 30px;
+				width: 30px;
+				border-radius: 6px;
+
+				// Background
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+
+				// In case is not loading
+				background-color: #232323;
+				margin-right: 8px;
+			}
+
+			.details {
+				font-size: 11px;
+				line-height: 1;
+				flex: 1;
+
+				.title {
+					color: $headingColor;
+					font-weight: 600;
+					line-height: 1.3;
+				}
+
+				.artist {
+					color: $secondaryColor;
+					font-weight: 500;
+				}
+			}
+			.button {
+				margin-left: 8px;
+				.icon {
+					color: $themeColor;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+.phone-app-route-vespifyMusic .screen-search {
+	.component-searchType {
+		// Content
+		display: flex;
+
+		// Spacing
+		margin-top: 14px;
+		margin-bottom: 14px;
+
+		padding: 0 12px;
+
+		// Negative
+		margin-left: -2px;
+		margin-right: -2px;
+
+		.entry {
+			flex: 1;
+
+			padding: 2px;
+
+			.content {
+				// Content
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				// Appearance
+				width: 100%;
+				height: 20px;
+				background-color: #1a1a23;
+				border-radius: 3px;
+
+				// Typography
+				text-transform: capitalize;
+				color: $secondaryColor;
+				font-size: 10px;
+				font-weight: 450;
+				line-height: 1;
+			}
+
+			&.active {
+				.content {
+					background-color: $themeColor;
+					color: #181818;
+				}
+			}
+		}
+
+		&.disabled {
+			opacity: 0.6;
+			pointer-events: none;
+		}
+	}
+
+	.--component-container {
+		// A nice padding to make it fit on the screen
+		padding-bottom: 40px;
+	}
+
+	.component-section {
+		padding: 0px 14px;
+
+		margin-bottom: 20px;
+		&:last-of-type {
+			margin-bottom: 0px;
+		}
+
+		.--entries.type-song,
+		.--entries.type-video {
+			.component-song {
+				margin-bottom: 8px;
+			}
+		}
+
+		.--entries.type-playlist,
+		.--entries.type-album {
+			display: flex;
+			flex-direction: row;
+
+			margin-top: -6px;
+			margin-bottom: -6px;
+			margin-left: -4px;
+			margin-right: -4px;
+
+			.component-playlist,
+			.component-album {
+				width: 50%;
+				padding: 6px 4px;
+			}
+		}
+
+		.--entries.type-artist {
+			display: flex;
+			flex-direction: column;
+
+			.component-artist {
+				margin-bottom: 6px;
+				&:last-of-type {
+					margin-bottom: 0px;
+				}
+			}
+		}
+	}
+}
+
+.phone-app-route-vespifyMusic .screen-player {
+	.component-centered-message {
+		flex: 1;
+
+		// Content
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+
+		.icon {
+			font-size: 30px;
+			color: $themeColor;
+		}
+	}
+
+	.component-header {
+		// Content
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+
+		// Spacing needed
+		margin-top: 5px;
+		padding: 0px 13px;
+
+		.go-back {
+			.icon {
+				font-size: 14px;
+				line-height: 1;
+				color: $headingColor;
+			}
+		}
+
+		.middle {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			.playing-badge {
+				background-color: rgba(#fff, 0.012);
+				border-radius: 8px;
+				padding: 8px;
+
+				min-width: 110px;
+
+				// Typography
+				font-size: 11.5px;
+				line-height: 1;
+				text-align: center;
+				font-weight: 450;
+			}
+		}
+
+		.buttons {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+
+			&.disabled {
+				pointer-events: none;
+				opacity: 0.4;
+			}
+
+			.entry {
+				// Content
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				// Size
+				width: 25px;
+
+				// Spacing between
+				margin-right: 4px;
+				&:last-of-type {
+					margin-right: 0px;
+				}
+
+				.icon {
+					font-size: 14px;
+					line-height: 1;
+					color: $headingColor;
+				}
+
+				&.speakers {
+					&.active {
+						.icon {
+							color: $themeColor;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.component-currentSong {
+		// Take all the space free.
+		flex: 1;
+
+		// Debugging
+		// background-color: red;
+
+		// Content
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+
+			max-width: 250px;
+		}
+
+		.thumbnail {
+			width: 250px;
+			height: 250px;
+
+			background-size: cover;
+			background-position: center center;
+			background-repeat: no-repeat;
+
+			border-radius: 6px;
+			position: relative;
+
+			.loading {
+				display: none;
+			}
+		}
+
+		&.loading .thumbnail {
+			.loading {
+				content: '  ';
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				position: absolute;
+				top: 0px;
+				left: 0px;
+
+				height: 100%;
+				width: 100%;
+
+				background-color: #0e0e13e0;
+
+				.icon {
+					font-size: 30px;
+					line-height: 1;
+					color: $themeColor;
+				}
+			}
+		}
+
+		.details {
+			display: flex;
+			align-items: flex-start;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			margin-top: 12px;
+			max-width: 260px;
+
+			.name {
+				color: white;
+				font-weight: 700;
+				font-size: 12px;
+				line-height: 1.5;
+			}
+
+			.artists {
+				color: #727272;
+				font-size: 12px;
+				font-weight: 500;
+				line-height: 1;
+				margin-top: 1px;
+			}
+		}
+	}
+
+	.component-queue {
+		width: 100%;
+
+		// Important to be absolute
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+
+		// Background
+		background-color: #0e0e10;
+		border-top: solid 1px rgba(#fff, 0.03);
+
+		.sub-component-header {
+			// Important
+			height: 60px;
+
+			// Content
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-direction: row;
+			padding: 0px 14px;
+			padding-bottom: 14px;
+			.bar {
+				position: absolute;
+				top: 10px;
+				left: 50%;
+				transform: translate(-50%, 0px);
+
+				// Appearance
+				width: 50px;
+				height: 3px;
+				background-color: rgba(#fff, 0.4);
+				border-radius: 8px;
+			}
+
+			.label {
+				font-size: 11px;
+				font-weight: 600;
+				line-height: 1;
+				color: $headingColor;
+				text-align: center;
+			}
+
+			.icon {
+				font-size: 14px;
+				line-height: 1;
+				color: $headingColor;
+			}
+		}
+
+		// Important to hide them by default
+		.sub-component-content {
+			height: 0px;
+			overflow: hidden;
+			transition: height 0.3s ease-in;
+			position: relative;
+		}
+
+		.sub-component-sub-header {
+			// Borders
+			border-top: solid 1px rgba(#fff, 0.06);
+			border-bottom: solid 1px rgba(#fff, 0.06);
+
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			// Padding
+			padding: 0px 14px;
+			height: 55px;
+
+			.left-side {
+				flex: 1;
+
+				// Typography
+				font-size: 11px;
+				line-height: 1;
+
+				.label {
+					font-weight: 450;
+					color: $secondaryColor;
+					margin-bottom: 4px;
+				}
+
+				.value {
+					color: $headingColor;
+					font-weight: 500;
+				}
+			}
+
+			.right-side {
+				.autoplay-switch {
+					margin-right: -6px;
+					transform-origin: center right;
+					transform: scale(0.9);
+
+					.MuiSwitch-thumb {
+						color: grey;
+					}
+
+					&.enabled {
+						.MuiSwitch-thumb {
+							color: $themeColor;
+						}
+
+						.MuiSwitch-track {
+							background-color: darken($themeColor, 10%);
+						}
+					}
+				}
+			}
+		}
+
+		.sub-component-entries {
+			position: relative;
+
+			.--container {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: flex-start;
+
+				// Important
+				padding-top: 8px;
+				padding-bottom: 8px;
+			}
+
+			.entry {
+				padding: 8px 12px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-start;
+				width: 100%;
+				position: relative;
+				.thumbnail {
+					background-size: cover;
+					background-position: center center;
+					background-repeat: no-repeat;
+					// Background it case it fails to load.
+					background-color: #232323;
+					height: 32px;
+					width: 32px;
+					margin-right: 8px;
+					border-radius: 6px;
+				}
+
+				.details {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: center;
+
+					.title {
+						font-weight: 500;
+						line-height: 1;
+						font-size: 11px;
+						margin-bottom: 3px;
+						color: $headingColor;
+					}
+
+					.information {
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+
+						// Typography
+						font-size: 11px;
+						line-height: 1;
+						color: $secondaryColor;
+
+						.dot {
+							background-color: $secondaryColor;
+							border-radius: 100%;
+							margin: 0 3px;
+							height: 4px;
+							width: 4px;
+						}
+					}
+				}
+
+				&.selected {
+					background-color: rgba(#fff, 0.04);
+				}
+
+				.loading {
+					position: absolute;
+					top: 50%;
+					right: 16px;
+					transform: translateY(-50%);
+
+					.icon {
+						font-size: 20px;
+						line-height: 1;
+						color: $themeColor;
+					}
+				}
+			}
+		}
+
+		&.expanded {
+			.sub-component-content {
+				height: 475px;
+				// Nice effect
+				padding-bottom: 20px;
+
+				// Scroll
+				max-height: 475px;
+				overflow-y: auto;
+
+				&::-webkit-scrollbar {
+					width: 2px;
+				}
+
+				&::-webkit-scrollbar-thumb {
+					background: rgba($themeColor, 0.9);
+				}
+
+				&::-webkit-scrollbar-track {
+					background: rgba(#333, 1);
+				}
+			}
+
+			.sub-component-header {
+				padding-bottom: 0px;
+				height: 55px;
+			}
+		}
+	}
+
+	.component-popout {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(10, 10, 14, 0.65);
+
+		.container {
+			margin-top: -100px; //alignment
+
+			background-color: #0e0e10;
+
+			border-radius: 8px;
+			border-top-left-radius: 12px;
+			border-top-right-radius: 12px;
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.18);
+
+			// Quick animation
+			animation: fadeIn;
+			animation-duration: 0.4s;
+		}
+
+		.content {
+			height: 200px;
+			width: 200px;
+			max-height: 200px;
+		}
+
+		&.pairing {
+			.content {
+				width: 250px;
+				height: 250px;
+				max-height: 250px;
+			}
+
+			.entry {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				flex-direction: row;
+				flex-wrap: wrap;
+
+				.label {
+					flex: 1;
+				}
+				.connected {
+					color: $themeColor;
+				}
+			}
+		}
+
+		.header {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+
+			background-color: #18181d;
+
+			border-bottom: solid 1px rgba(#fff, 0.03);
+
+			// Padding
+			padding: 12px;
+			border-top-left-radius: 12px;
+			border-top-right-radius: 12px;
+
+			// Typography
+			font-size: 12px;
+			line-height: 1;
+			font-weight: 500;
+		}
+
+		.entries {
+			display: flex;
+			flex-direction: column;
+
+			// Scroll
+			max-height: 100%;
+			overflow-y: auto;
+
+			&::-webkit-scrollbar {
+				width: 1.2px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: rgba(10, 10, 10, 0.521);
+			}
+
+			&::-webkit-scrollbar-track {
+				background: rgba(rgb(194, 194, 194), 0.2);
+			}
+
+			.entry {
+				width: 100%;
+				padding: 10px 10px;
+				border-bottom: solid 1px rgba(#fff, 0.04);
+
+				// Typography
+				font-size: 11px;
+				font-weight: 450;
+				line-height: 1;
+			}
+		}
+	}
+}
+
+.phone-app-route-vespifyMusic .screen-album {
+	.component-top-area {
+		&::before {
+			content: '';
+			position: absolute;
+			top: -10%;
+			left: 0px;
+			z-index: 400;
+			background-image: var(--vespify-album-thumbnail);
+			background-position: center;
+			background-size: contain;
+			height: 200px;
+			filter: blur(8px);
+			opacity: 0.2;
+			width: 100%;
+			pointer-events: none;
+		}
+		.appBar {
+			// Content
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			position: relative;
+			width: 100%;
+			padding: 0px 12px;
+
+			// Spacing
+			margin-bottom: 18px;
+
+			// // Debugging
+			// background-color: red;
+
+			.go-back {
+				// Positioning
+				position: absolute;
+				top: 50%;
+				left: 16px;
+				transform: translateY(-50%);
+
+				// Content
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				height: 25px;
+				width: 25px;
+
+				.icon {
+					font-size: 15px;
+					line-height: 1;
+					color: $headingColor;
+				}
+			}
+
+			.details {
+				text-align: center;
+
+				.artist {
+					font-weight: 450;
+					font-size: 11px;
+					line-height: 1;
+					margin-bottom: 2.5px;
+					color: $headingColor;
+				}
+
+				.information {
+					display: flex;
+					align-items: center;
+
+					// Typography
+					font-size: 11px;
+					color: darken($headingColor, 25%);
+					line-height: 1;
+					.dot {
+						background-color: $secondaryColor;
+						border-radius: 100%;
+						margin: 0 3px;
+						height: 4px;
+						width: 4px;
+					}
+				}
+			}
+		}
+
+		.media {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+
+			.thumbnail {
+				// Background
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				border-radius: 6px;
+
+				height: 180px;
+				width: 180px;
+			}
+
+			.title {
+				font-weight: 700;
+				font-size: 14px;
+				line-height: 1.5;
+				color: white;
+
+				// spacing
+				margin-bottom: 12px;
+				margin-top: 10px;
+
+				// Typography
+				text-align: center;
+				padding: 0px 16px;
+			}
+		}
+	}
+
+	.controls {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 16px;
+
+		.entry {
+			display: flex;
+			background-color: #3333333f;
+			justify-content: center;
+			align-items: center;
+			border-radius: 100%;
+			height: 35px;
+			width: 35px;
+
+			.icon {
+				font-size: 14px;
+				color: $headingColor;
+			}
+		}
+
+		.--play {
+			background-color: $themeColor;
+			height: 42px;
+			width: 42px;
+
+			// sPACING
+			margin-left: 6px;
+			margin-right: 6px;
+
+			.icon {
+				font-size: 16px;
+				color: #232121;
+			}
+		}
+	}
+
+	.songs {
+		width: 100%;
+
+		// Spacing..
+		padding-bottom: 30px;
+
+		.entry-song {
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: row;
+			align-items: center;
+
+			margin-bottom: 8px;
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
+
+			padding: 0 12px;
+			width: 100%;
+
+			.number {
+				font-weight: 500;
+
+				// Typography
+				line-height: 1;
+				font-size: 10.5px;
+				color: darken(white, 15%);
+
+				// Spacing
+				width: 35px;
+				text-align: center;
+			}
+
+			.content {
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				flex-direction: column;
+				flex: 1;
+
+				.title {
+					font-size: 11px;
+					line-height: 1.5;
+					font-weight: 450;
+					margin-bottom: 1px;
+					color: white;
+				}
+
+				.bottom {
+					color: darken(white, 30%);
+					display: flex;
+					font-size: 9px;
+					line-height: 1;
+					align-items: center;
+
+					.dot {
+						background-color: $secondaryColor;
+						border-radius: 100%;
+						margin: 0 3px;
+						height: 4px;
+						width: 4px;
+					}
+				}
+			}
+		}
+
+		.total {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+
+			// Typography
+			font-size: 9px;
+			line-height: 1;
+			font-weight: 500;
+			text-transform: uppercase;
+			margin-top: 14px;
+			.dot {
+				background-color: $secondaryColor;
+				border-radius: 100%;
+				border-radius: 100%;
+				margin: 0 3px;
+				height: 4px;
+				width: 4px;
+			}
+		}
+	}
+}
+
+.phone-app-route-vespifyMusic .screen-playlist {
+	.component-top-area {
+		&::before {
+			content: '';
+			position: absolute;
+			top: -10%;
+			left: 0px;
+			z-index: 400;
+			background-image: var(--vespify-playlist-thumbnail);
+			background-position: center;
+			background-size: contain;
+			height: 200px;
+			filter: blur(8px);
+			opacity: 0.2;
+			width: 100%;
+			pointer-events: none;
+		}
+		.appBar {
+			// Content
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			position: relative;
+			width: 100%;
+			padding: 0px 12px;
+
+			// Spacing
+			margin-bottom: 18px;
+
+			// // Debugging
+			// background-color: red;
+
+			.go-back {
+				// Positioning
+				position: absolute;
+				top: 50%;
+				left: 16px;
+				transform: translateY(-50%);
+
+				// Content
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				height: 25px;
+				width: 25px;
+
+				.icon {
+					font-size: 15px;
+					line-height: 1;
+					color: $headingColor;
+				}
+			}
+
+			.details {
+				text-align: center;
+
+				.artist {
+					font-weight: 450;
+					font-size: 11px;
+					line-height: 1;
+					margin-bottom: 2.5px;
+					color: $headingColor;
+				}
+
+				.information {
+					display: flex;
+					align-items: center;
+
+					// Typography
+					font-size: 11px;
+					color: darken($headingColor, 25%);
+					line-height: 1;
+					.dot {
+						background-color: $secondaryColor;
+						border-radius: 100%;
+						margin: 0 3px;
+						height: 4px;
+						width: 4px;
+					}
+				}
+			}
+		}
+
+		.media {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+
+			.thumbnail {
+				// Background
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				border-radius: 6px;
+
+				height: 180px;
+				width: 180px;
+
+				// In case it fails to load
+				background-color: #232323;
+			}
+
+			.title {
+				font-weight: 700;
+				font-size: 14px;
+				line-height: 1.5;
+				color: white;
+
+				// spacing
+				margin-bottom: 12px;
+				margin-top: 10px;
+
+				// Typography
+				text-align: center;
+				padding: 0px 16px;
+			}
+		}
+	}
+
+	.controls {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 16px;
+
+		.entry {
+			display: flex;
+			background-color: #3333333f;
+			justify-content: center;
+			align-items: center;
+			border-radius: 100%;
+			height: 35px;
+			width: 35px;
+
+			.icon {
+				font-size: 14px;
+				color: $headingColor;
+			}
+		}
+
+		.--play {
+			background-color: $themeColor;
+			height: 42px;
+			width: 42px;
+
+			// sPACING
+			margin-left: 6px;
+			margin-right: 6px;
+
+			.icon {
+				font-size: 16px;
+				color: #232121;
+			}
+		}
+	}
+
+	.songs {
+		width: 100%;
+
+		// Spacing..
+		padding-bottom: 30px;
+
+		.entry-song {
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: row;
+			align-items: center;
+
+			margin-bottom: 8px;
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
+
+			padding: 0 12px;
+			width: 100%;
+
+			.thumbnail {
+				// Appearance
+				border-radius: 4px;
+				// Spacing
+				width: 30px;
+				height: 30px;
+
+				margin-right: 8px;
+
+				// Backgroudn
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+
+				// In case it fails to load
+				background-color: #232323;
+			}
+
+			.content {
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				flex-direction: column;
+				flex: 1;
+
+				.title {
+					font-size: 11px;
+					line-height: 1.5;
+					font-weight: 450;
+					margin-bottom: 1px;
+					color: white;
+				}
+
+				.bottom {
+					color: darken(white, 30%);
+					display: flex;
+					font-size: 9px;
+					line-height: 1;
+					align-items: center;
+
+					.dot {
+						background-color: $secondaryColor;
+						border-radius: 100%;
+						margin: 0 3px;
+						height: 4px;
+						width: 4px;
+					}
+				}
+			}
+		}
+
+		.total {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+
+			// Typography
+			font-size: 9px;
+			line-height: 1;
+			font-weight: 500;
+			text-transform: uppercase;
+			margin-top: 14px;
+			.dot {
+				background-color: $secondaryColor;
+				border-radius: 100%;
+				margin: 0 3px;
+				height: 4px;
+				width: 4px;
+			}
+		}
+	}
+}
+
+.phone-app-route-vespifyMusic .screen-artist {
+	.component-header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+
+		// Padding
+		padding: 6px 6px;
+
+		width: 100%;
+
+		// Set the height of the header here
+		$height: 90px;
+
+		// Setting height
+		height: $height;
+		// background-color: rgba(red, 0.2);
+
+		z-index: 450;
+
+		.go-back {
+			// Position absolute
+			position: absolute;
+			z-index: 550;
+			top: 2px;
+			left: 7px;
+
+			// Height and width
+			height: 25px;
+			width: 25px;
+
+			// Content
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.icon {
+				font-size: 15px;
+				line-height: 1;
+				color: $headingColor;
+			}
+		}
+
+		.content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+
+			// fixes
+			position: relative;
+			width: 100%;
+			z-index: 500;
+
+			// Padding is important
+			padding: 12px 16px;
+
+			// Height is important
+			height: $height;
+
+			// Position
+			position: relative;
+
+			.name {
+				width: 100%;
+
+				// Typography
+				font-weight: 600;
+				font-size: 26px;
+				line-height: 1.2;
+				// background-color: red;
+
+				// Alignment
+				text-align: center;
+
+				// Important
+				z-index: 500;
+
+				// Color
+				color: #fff;
+			}
+		}
+
+		.background {
+			content: '';
+
+			// Background
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+
+			// In case is not loading
+			background-color: #232323;
+
+			// Debugging
+			// background: blue !important;
+
+			// Positioning
+			position: absolute;
+			top: -40px; // To cover status bar
+			left: 0px;
+
+			// Debugging
+			// background: purple !important;
+
+			// Height
+			height: calc(#{$height} + 40px);
+
+			// Appearance
+			opacity: 0.25;
+
+			// Fixes
+			z-index: 450;
+			width: 100%;
+			pointer-events: none;
+		}
+
+		.background-faded {
+			content: '';
+
+			// Positioning
+			position: absolute;
+			top: -100px; // this must be added to height
+			left: 0;
+
+			// Size
+			width: 100%;
+			height: calc(#{$height} + 100px + 2px); // 2px is to cover some weird border.
+
+			// Debugging
+			// background: yellow !important;
+
+			// Fixes
+			z-index: 460;
+			pointer-events: none;
+
+			// Creating the fading effect.
+			background: linear-gradient(to top, rgba(#0a0a0e, 1), transparent);
+			// background: linear-gradient(to top, rgba(red, 0.4), transparent); // Debugging
+		}
+	}
+
+	.component-controls {
+		// Size
+		width: 100%;
+
+		// Content
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// Important
+		position: relative;
+		z-index: 550;
+
+		// Space betwen
+		margin-bottom: 12px;
+
+		.entry {
+			// Content
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			// Border radius
+			border-radius: 20px;
+
+			// Size of the button
+			height: 30px;
+			width: 132px;
+
+			.icon {
+				width: 18px;
+			}
+
+			.text {
+				font-weight: 700;
+				text-transform: uppercase;
+				font-size: 10px;
+				line-height: 1;
+			}
+
+			margin-right: 6px;
+
+			&:last-of-type {
+				margin-right: 0px;
+			}
+
+			// Adding the custom colors..
+
+			&.--play {
+				background-color: $themeColor;
+				color: #181818;
+			}
+
+			&.--share {
+				border: 1px solid $themeColor;
+				color: $themeColor;
+			}
+		}
+	}
+
+	.component-sections {
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 30px; // To make it look nice on screen
+
+		.component-section {
+			padding: 0px 14px;
+
+			margin-bottom: 20px;
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
+
+			.--entries.type-song {
+				.component-song {
+					margin-bottom: 8px;
+					&:last-of-type {
+						margin-bottom: 0px;
+					}
+				}
+			}
+			.--entries.type-playlist,
+			.--entries.type-album {
+				display: flex;
+				flex-direction: row;
+
+				margin-top: -6px;
+				margin-bottom: -6px;
+				margin-left: -4px;
+				margin-right: -4px;
+
+				.component-playlist,
+				.component-album {
+					width: 50%;
+					padding: 6px 4px;
+				}
+			}
+
+			.--entries.type-artist {
+				display: flex;
+				flex-direction: column;
+
+				.component-artist {
+					margin-bottom: 6px;
+					&:last-of-type {
+						margin-bottom: 0px;
+					}
+				}
+			}
+		}
+	}
+}

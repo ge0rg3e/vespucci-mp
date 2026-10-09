@@ -1,0 +1,36 @@
+// Core - The mockup of the device
+@import './core/mockup.scss';
+@import './core/actionSheet.scss';
+@import './core/keyboard.scss';
+@import './core/alert.scss';
+@import './core/actionSheetDropdown.scss';
+@import './core/phoneCall.scss';
+
+// Components
+@import './components/helpers.scss';
+@import './components/navigationHeader.scss';
+@import './components/navigationFooter.scss';
+@import './components/list.scss';
+@import './components/section.scss';
+@import './components/form.scss';
+@import './components/switch.scss';
+@import './components/inputField.scss';
+@import './components/card.scss';
+@import './components/button.scss';
+@import './components/icon.scss';
+@import './components/loadingScreen.scss';
+@import './components/crash.scss';
+
+// Apps
+@import 'apps/home.scss';
+@import 'apps/lockscreen.scss';
+@import 'apps/not_found.scss';
+@import 'apps/house.scss';
+@import 'apps/houseRent.scss';
+@import 'apps/vehicles.scss';
+@import 'apps/testerToolkit.scss';
+@import 'apps/settings.scss';
+@import 'apps/phone.scss';
+@import 'apps/messages.scss';
+@import 'apps/vespify.scss';
+@import 'apps/vespifyMusic.scss';

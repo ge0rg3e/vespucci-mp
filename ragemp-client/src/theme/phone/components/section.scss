@@ -1,0 +1,37 @@
+@import '../core/variables.scss';
+
+.phone-mockup .screen-content .app-component-section {
+	padding: 12px 12px;
+	width: 100%;
+
+	.header {
+		font-size: 10px;
+		line-height: 10px;
+		text-transform: uppercase;
+		margin-bottom: 14px;
+		font-weight: 400;
+	}
+
+	.footer {
+		color: $color_text_bg_placeholder;
+		font-size: 12px;
+		line-height: 13px;
+		margin-top: 6px;
+	}
+
+	&.dark {
+		.header {
+			color: #707074;
+		}
+	}
+
+	&.light {
+		.header {
+			color: $color_text_bg_placeholder;
+		}
+	}
+
+	.app-component-data-list {
+		padding: 0 !important;
+	}
+}

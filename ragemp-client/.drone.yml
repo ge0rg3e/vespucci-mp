@@ -1,0 +1,161 @@
+# Pipeline definition
+kind: pipeline
+type: docker
+name: deployment
+
+# Parameters
+clone:
+  disable: true
+
+# Run this pipeline only on master branch and releases.
+trigger:
+  branch:
+    - master
+  event:
+    - tag
+
+# Steps
+steps:
+  - name: fetch
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      - ls
+      - git clone https://github.com/vespucci-mp/ragemp-client.git .
+      - git checkout $DRONE_COMMIT
+      - git submodule update --init --recursive
+
+  - name: install
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      # This checks if the dependencies are installing right before we proceed any further.
+      - pnpm install
+
+  - name: environment variables
+    image: hurdock/nodejs_ragemp:latest
+    environment:
+      REACT_APP_ENVIRONMENT:
+        from_secret: REACT_APP_ENVIRONMENT
+      REACT_APP_AMPLITUDE_KEY:
+        from_secret: REACT_APP_AMPLITUDE_KEY
+
+      # Logz
+      REACT_APP_LOGZ_HOST:
+        from_secret: REACT_APP_LOGZ_HOST
+      REACT_APP_LOGZ_KEY:
+        from_secret: REACT_APP_LOGZ_KEY
+
+      # Panel
+      REACT_APP_PANEL_API:
+        from_secret: REACT_APP_PANEL_API
+
+      # Assets
+      REACT_APP_ASSETS_PATH:
+        from_secret: REACT_APP_ASSETS_PATH
+
+      # Vespify
+      REACT_APP_VESPIFY_API:
+        from_secret: REACT_APP_VESPIFY_API
+      REACT_APP_VESPIFY_KEY:
+        from_secret: REACT_APP_VESPIFY_KEY
+    commands:
+      # Creating the env file to inject the variables
+      - touch ./.env
+
+      # Adding the environment variables
+      - echo "REACT_APP_ENVIRONMENT=$REACT_APP_ENVIRONMENT" >> ./.env
+      - echo "REACT_APP_AMPLITUDE_KEY=$REACT_APP_AMPLITUDE_KEY" >> ./.env
+
+      # Logz.io
+      - echo "REACT_APP_LOGZ_HOST=$REACT_APP_LOGZ_HOST" >> ./.env
+      - echo "REACT_APP_LOGZ_KEY=$REACT_APP_LOGZ_KEY" >> ./.env
+
+      # Assets
+      - echo "REACT_APP_ASSETS_PATH=$REACT_APP_ASSETS_PATH" >> ./.env
+
+      # Panel
+      - echo "REACT_APP_ASSETS_PATH=$REACT_APP_ASSETS_PATH" >> ./.env
+
+      # Vespify
+      - echo "REACT_APP_VESPIFY_API=$REACT_APP_VESPIFY_API" >> ./.env
+      - echo "REACT_APP_VESPIFY_KEY=$REACT_APP_VESPIFY_KEY" >> ./.env
+
+  - name: build
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      # This checks if the dependencies are installing right before we proceed any further.
+      - pnpm build-scss
+      - pnpm build
+
+  - name: copy
+    image: hurdock/nodejs_ragemp:latest
+    volumes:
+      - name: cef
+        path: /cef
+    commands:
+      # This is a check that will make sure that the old docker compose is still there.
+      - if [ ! -f /cef/docker-compose.yml ]; then echo "Previous docker compose is not present. Please add one to know what to decompose."; exit 1; fi
+
+      # Cleaning the directory for the source in case of any blockers.
+      - rm -rf /cef/source
+      - mkdir -p /cef/source
+
+      # Copying over the server dependencies.
+      - mv * /cef/source
+
+      # Move the other hidden required dependencies
+      - mv -T .env /cef/source/.env
+      - mv -T .docker/Dockerfile /cef/Dockerfile
+      - mv -T .docker/docker-compose.yml /cef/docker-compose-new.yml
+
+  - name: shutdown
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: cef
+        path: /cef
+    commands:
+      - cd /cef
+
+      # @TODO: In the future to make a timeout of 1 minute and maybe save all data from the server before.
+
+      # Running docker compose according to old configuration (In case things changed in the new one)
+      - docker compose down --rmi all
+
+      # Delete the old docker compose
+      - rm -rf /cef/docker-compose.yml
+
+      # Rename the new docker compose accordingly
+      - mv -T /cef/docker-compose-new.yml /cef/docker-compose.yml
+
+  - name: deploy
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: cef
+        path: /cef
+    commands:
+      - cd /cef
+      # Start the building process
+      - docker compose up -d --build
+
+  - name: cleanup
+    image: hurdock/nodejs_ragemp:latest
+    volumes:
+      - name: cef
+        path: /cef
+    commands:
+      # Delete the source code folder
+      - rm -rf /cef/source
+
+      # Delete the dockerfile cause it may be outdated
+      - rm /cef/Dockerfile
+
+volumes:
+  - name: cef
+    host:
+      path: /home/apps/client-interface
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock

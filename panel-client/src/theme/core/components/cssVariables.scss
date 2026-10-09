@@ -1,0 +1,11 @@
+:root {
+	--gapSpace: 12px;
+
+	@media (min-width: 1200px) {
+		--gapSpace: 16px;
+	}
+
+	@media (min-width: 1800px) {
+		--gapSpace: 18px;
+	}
+}

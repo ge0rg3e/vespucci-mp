@@ -1,0 +1,398 @@
+@import '../../core/variables.scss';
+
+// Anything that is inside this div id won't be visible. Is what we call "headless"
+.services-vespifyVideos {
+	display: none;
+}
+
+.services-vespifyMiniPlayer {
+	.global-component-ytb-video {
+		// Positioning
+		position: absolute;
+		top: 95px;
+		left: 18px;
+
+		display: block;
+		width: 300px;
+		max-height: 300px;
+
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.18);
+		border-radius: 16px;
+		// Small resolutions respponsiveness..
+
+		@media (max-width: 1300px) {
+			// Transform
+			transform: scale(0.7);
+		}
+
+		@media (max-width: 1600px) {
+			// Transform
+			transform: scale(0.8);
+
+			transform-origin: top left;
+		}
+
+		.media {
+			border-top-left-radius: 16px;
+			border-top-right-radius: 16px;
+			border: solid 2px rgba(0, 0, 0, 0.35);
+
+			border-bottom: none;
+			overflow: hidden;
+
+			video {
+				height: 100%;
+				width: 100%;
+				border-radius: inherit;
+			}
+		}
+
+		.component-progress-bar {
+			border-bottom-left-radius: 16px;
+			border-bottom-right-radius: 16px;
+			border: solid 2px rgba(0, 0, 0, 0.35);
+
+			background-color: rgba(#0c0c0c, 0.45);
+			padding: 8px 8px;
+
+			.rc-slider-rail {
+				border-radius: 6px !important;
+				overflow: hidden;
+			}
+			.rc-slider-track {
+				border-radius: 6px !important;
+				overflow: hidden;
+			}
+		}
+	}
+
+	&.dark-mode {
+		.global-component-ytb-video {
+			.component-progress-bar {
+				background-color: rgba(#202020, 0.65);
+				border: solid 2px rgba(0, 0, 0, 0.25);
+			}
+
+			.media {
+				border: solid 2px rgba(0, 0, 0, 0.25);
+			}
+		}
+	}
+}
+
+.global-component-ytb-video {
+	.media {
+		position: relative;
+		display: flex;
+		align-items: center;
+		video {
+			width: 100%;
+			height: 100%;
+
+			// Max height is needed cause I found a video with a very big height that fucked up.
+			max-height: 165px;
+
+			object-fit: contain;
+			object-position: center center;
+		}
+
+		.mute-warning {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			height: 30px;
+			width: 95px;
+			background-color: #fff;
+			border-radius: 4px;
+
+			color: #333;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.icon {
+				margin-right: 8px;
+				.elm {
+					font-size: 13px;
+					line-height: 1;
+				}
+			}
+
+			.text {
+				font-size: 14px;
+				font-weight: 600;
+				line-height: 1;
+			}
+		}
+
+		.component-controls {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			height: 100%;
+			width: 100%;
+			background-color: rgba(#1f1e1e, 0.65);
+			opacity: 0;
+			pointer-events: none;
+
+			&.visible {
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			// Is needed to detect when they click inside container again
+			.--container {
+				position: relative;
+				height: 100%;
+				width: 100%;
+			}
+
+			.buttons {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-end;
+
+				.entry {
+					cursor: pointer;
+					margin-right: 16px;
+					&:last-of-type {
+						margin-right: 0px;
+					}
+
+					.icon {
+						font-size: 15px;
+						line-height: 1;
+						color: #b4b4b4;
+					}
+
+					&.enabled {
+						.icon {
+							color: white;
+						}
+					}
+				}
+			}
+
+			.middle-controls {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+
+				.pause-button {
+					height: 40px;
+					width: 40px;
+					background-color: rgba(#000, 0.55);
+					border-radius: 100%;
+
+					margin: 0px 16px;
+					// Content
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					.elm {
+						font-size: 20px;
+						line-height: 1;
+						color: white;
+					}
+				}
+
+				.backward-button,
+				.forward-button {
+					height: 25px;
+					width: 25px;
+					background-color: rgba(#000, 0.55);
+					border-radius: 100%;
+
+					// Content
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					.elm {
+						font-size: 12px;
+						line-height: 1;
+						color: white;
+					}
+				}
+			}
+
+			.bottom-bar {
+				.volume {
+					position: absolute;
+					bottom: 2px;
+					right: 12px;
+					width: 50%;
+					.slider-container {
+						width: 100%;
+						margin-right: 4px;
+						margin-bottom: -1px;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						justify-content: center;
+
+						.mute-btn {
+							color: white;
+							cursor: pointer;
+							margin-right: 6px;
+							width: 18px;
+							margin-top: -1.5px;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							.icon {
+								font-size: 13px;
+								line-height: 1;
+							}
+						}
+
+						.rc-slider-disabled {
+							background-color: transparent;
+						}
+
+						.rc-slider .rc-slider-rail {
+							background: rgba(71, 71, 71, 0.6);
+							box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 2px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 1px;
+						}
+
+						.rc-slider .rc-slider-track {
+							background-color: rgba(168, 168, 168, 0.35);
+						}
+
+						.rc-slider-handle {
+							height: 10px;
+							width: 10px;
+							background-color: white;
+							margin-top: -4px !important;
+							&:hover,
+							&:active {
+								border: none;
+								box-shadow: 0px 0px 0px 6px #9c9c9c29;
+							}
+						}
+					}
+				}
+
+				.timing {
+					position: absolute;
+					bottom: 8px;
+					left: 6px;
+
+					display: flex;
+					flex-direction: row;
+
+					font-size: 11.5px;
+					line-height: 1;
+
+					.white {
+						color: white;
+					}
+
+					.grey {
+						margin-left: 3px;
+						color: rgb(197, 193, 193);
+					}
+				}
+			}
+		}
+	}
+
+	&.not-loaded {
+		.media {
+			height: 165px;
+			width: 100%;
+			background-color: #b3b0b1;
+		}
+
+		.--component-failed-loading {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			height: 100%;
+			width: 100%;
+			background-color: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: white;
+			font-size: 14px;
+			text-align: center;
+			line-height: 1.4;
+			padding: 0px 16px;
+		}
+	}
+
+	&.loaded {
+		.media {
+			background-color: #252525;
+		}
+	}
+
+	.component-progress-bar {
+		// Bugfix
+		margin-top: -1px;
+
+		.rc-slider {
+			border-radius: 0px;
+			margin: 0px;
+			padding: 0px;
+			height: 3px;
+		}
+
+		.rc-slider-disabled {
+			background-color: transparent;
+		}
+
+		.rc-slider .rc-slider-rail {
+			background: #828184;
+			border-radius: 0px;
+			height: 3px !important;
+		}
+
+		// Progress
+		.rc-slider .rc-slider-track {
+			background-color: #b3b0b1;
+			height: 3px !important;
+			border-radius: 0px;
+		}
+
+		// Button
+		.rc-slider-handle {
+			display: none;
+
+			height: 9px;
+			width: 9px;
+			background-color: rgb(226, 60, 60);
+			margin-top: -3px !important;
+			&:hover,
+			&:active {
+				border: none;
+				box-shadow: 0px 0px 0px 6px #e273733a;
+			}
+		}
+
+		&.active {
+			.rc-slider-handle {
+				display: block;
+			}
+
+			.rc-slider-track {
+				background-color: rgba(221, 45, 45, 0.699);
+			}
+
+			.rc-slider .rc-slider-rail {
+				background: #828184;
+			}
+		}
+	}
+}

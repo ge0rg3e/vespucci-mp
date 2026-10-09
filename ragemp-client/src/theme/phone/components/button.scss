@@ -1,0 +1,48 @@
+.phone-mockup .screen-content .app-component-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	background-color: #fff;
+	border: none;
+	outline: none !important;
+	font-size: 12px;
+	line-height: 12px;
+	cursor: pointer;
+	transition: all 0.4s ease-in;
+	border-radius: 7px;
+	box-shadow: $ios_light_card_shadow;
+
+	padding: 10px 18px;
+
+	&.blue {
+		background-color: #007aff;
+	}
+
+	&.red {
+		background-color: #e33434;
+	}
+
+	&.outlined.red {
+		color: #e33434;
+		border: solid 1px #e33434;
+		background-color: transparent;
+	}
+
+	&.outlined.blue {
+		color: #007aff;
+		border: solid 1px #007aff;
+		background-color: transparent;
+	}
+
+	&.disabled {
+		background-color: #808080 !important;
+		color: rgba(#fff, 0.8) !important;
+	}
+
+	&.outlined.disabled {
+		border: solid 1px #808080 !important;
+		background-color: transparent !important;
+		color: #808080 !important;
+	}
+}

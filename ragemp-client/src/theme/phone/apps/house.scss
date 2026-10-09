@@ -1,0 +1,101 @@
+@import '../../core/variables.scss';
+@import '../../core/variables.scss';
+
+$application_tone: rgb(66, 116, 92);
+
+.phone-app-route-house {
+	display: flex;
+	background-color: $background_light;
+	color: $color_text_light;
+
+	.status-bar {
+		background-color: $application_tone;
+		color: $color_text_dark;
+
+		// Bugfix battery being overlapped
+		margin-bottom: 2px;
+	}
+
+	.app-navigation-header {
+		// Bugfix battery
+		margin-top: -2px;
+
+		background-color: $application_tone;
+		border-bottom: solid 1px #ceced3;
+		color: $color_text_dark !important;
+
+		.button {
+			color: #fff !important;
+		}
+	}
+
+	.app-navigation-footer {
+		background-color: $element_bg_light;
+
+		.item {
+			&.selected {
+				.icon .elm {
+					color: $application_tone;
+				}
+
+				.label {
+					color: $application_tone;
+				}
+			}
+		}
+	}
+}
+
+.phone-app-route-house .screen {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.phone-app-route-house .screen.upgrades {
+	.app-navigation-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-left: 28px;
+		padding-right: 28px;
+
+		&.disabled-upgrade {
+			justify-content: center !important;
+		}
+
+		.text {
+			font-size: 14px;
+			line-height: 14px;
+			font-weight: 600;
+			color: $color_text_light;
+		}
+
+		.app-component-button {
+			min-width: 110px;
+			font-size: 13px;
+			line-height: 13px;
+
+			&.blue {
+				background-color: $application_tone !important;
+			}
+		}
+	}
+}
+
+.phone-app-route-house .screen.interiors {
+	.information-card {
+		.heading {
+			margin-left: 8px;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 14px;
+			color: $color_text_light;
+		}
+
+		.message {
+			font-size: 13px;
+			line-height: 18px;
+		}
+	}
+}

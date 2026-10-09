@@ -1,0 +1,362 @@
+@import '../../core/variables.scss';
+
+.game-hud .walkieTalkie {
+	position: absolute;
+
+	// Visible?
+	transition: bottom 0.4s ease-in;
+
+	// Positioning
+	bottom: -100vh;
+	right: 50px;
+
+	&.raised {
+		bottom: 16px;
+	}
+
+	// Small resolutions respponsiveness..
+	@media (max-width: 1300px) {
+		// Transform
+		transform: scale(0.7);
+	}
+
+	@media (max-width: 1600px) {
+		// Transform
+		transform: scale(0.8);
+		transform-origin: right bottom;
+	}
+
+	@media (min-width: 2000px) {
+		// Transform
+		transform: scale(1.3);
+		transform-origin: right bottom;
+	}
+
+	.component-closing-area {
+		height: 50px;
+		width: 100%;
+		// background-color: red;
+		display: block;
+		content: ' ';
+
+		position: absolute;
+		bottom: 320px;
+		right: 0px;
+		z-index: 20;
+	}
+	.component-container {
+		display: block;
+		position: relative;
+
+		// Set these boundaries.
+		height: 705px;
+		width: 240px;
+		//
+
+		// Debugging borders
+		// background-color: blue;
+
+		.mockup-svg {
+			position: relative;
+			height: 100%;
+			width: 100%;
+			z-index: 5;
+		}
+
+		.component-screen {
+			position: absolute;
+			z-index: 10;
+			bottom: 73px;
+			left: 62px;
+
+			// Exact..
+			width: 118.54px;
+			height: 89px;
+
+			.container {
+				position: relative;
+				height: 100%;
+				width: 100%;
+
+				// Typography..
+				font-size: 14px;
+				line-height: 1.3;
+				font-family: 'iOS';
+
+				color: #495531;
+			}
+		}
+
+		.component-buttons {
+			position: absolute;
+			z-index: 10;
+			bottom: 30px;
+			left: 35px;
+
+			width: 175px;
+
+			// Content
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+
+			.entry {
+				// Appearance
+				// height: 14px;
+				// width: 35px;
+				padding: 3.5px 14px;
+				background-color: #1c1d27;
+				border-radius: 8px;
+				border: solid 3px #252637;
+
+				// Content
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.icon {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					padding: 1px;
+					.elm {
+						font-size: 12px;
+						line-height: 1;
+						color: #908dad;
+					}
+
+					&.house {
+						.elm {
+							margin-top: -0.5px;
+						}
+					}
+				}
+
+				&.middle {
+					margin-left: 4px;
+					margin-right: 4px;
+				}
+			}
+		}
+	}
+}
+
+.game-hud .walkieTalkie .component-screen .container.home {
+	.header {
+		position: absolute;
+		top: 3px;
+		left: 0px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0px 6px;
+
+		.signalBars {
+			.icon {
+				font-size: 14px;
+			}
+		}
+
+		.type {
+			font-weight: 700;
+			font-size: 10px;
+			line-height: 1.1;
+			text-transform: uppercase;
+		}
+	}
+
+	.channel {
+		position: absolute;
+		bottom: 8px;
+		padding-right: 6px;
+		right: 0px;
+		width: 100%;
+
+		// Content
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: flex-end;
+
+		// Debugging
+		// background-color: red;
+
+		.prefix {
+			font-size: 14px;
+			line-height: 12px;
+			margin-right: 3px;
+			font-weight: 800;
+		}
+
+		.suffix {
+			font-size: 30px;
+			line-height: 23px;
+			font-weight: 800;
+		}
+	}
+
+	.instruction {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		width: 100%;
+		height: 65px;
+
+		// Content
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+
+		// // Debug
+		// background-color: red;
+
+		.line1 {
+			margin-top: -15px; // centering..
+			font-size: 11px;
+			line-height: 1.2;
+			font-weight: 500;
+		}
+
+		.line2 {
+			font-size: 10px;
+			line-height: 1;
+			font-weight: 500;
+
+			.icon {
+				.elm {
+					font-size: 10px;
+					line-height: 1;
+				}
+			}
+		}
+		// Debugging
+		// background-color: red;
+	}
+}
+
+.game-hud .walkieTalkie .component-screen .container.menu {
+	display: flex;
+	flex-direction: column;
+	.header {
+		font-size: 12px;
+		line-height: 1;
+		font-weight: 600;
+		padding: 3px 0px;
+		border-bottom: solid 1px rgba(#5e753e, 1);
+		text-align: center;
+	}
+
+	.options {
+		flex: 1;
+
+		.entry {
+			font-size: 11px;
+			line-height: 1;
+			font-weight: 450;
+			padding: 5.5px 8px;
+			border-bottom: solid 1px rgba(#6c8549, 1);
+
+			&:last-of-type {
+				border-bottom: none;
+			}
+		}
+	}
+}
+
+.game-hud .walkieTalkie .component-screen .container.setFrequency {
+	display: flex;
+	flex-direction: column;
+	.header {
+		font-size: 12px;
+		line-height: 1;
+		font-weight: 600;
+		padding: 6px 0px;
+		border-bottom: solid 1px rgba(#5e753e, 1);
+		text-align: center;
+	}
+
+	.content {
+		flex: 1;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.input {
+			background-color: transparent;
+			border: none;
+			outline: none;
+			width: 80px;
+			font-size: 13px;
+			line-height: 1;
+			font-family: 'Rubik';
+			text-align: center;
+
+			color: white;
+
+			&::placeholder {
+				color: #d5d5d5;
+			}
+		}
+
+		input[type='number'] {
+			-moz-appearance: textfield;
+		}
+
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+		}
+	}
+
+	.footer {
+		border-top: solid 1px rgba(#5e753e, 1);
+		display: flex;
+		justify-content: space-between;
+		// justify-content: center;
+		align-items: center;
+		padding: 4px 6px;
+
+		.type {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			margin-top: -3px;
+			// Typography
+			font-size: 10px;
+			line-height: 1;
+			text-transform: uppercase;
+			font-weight: 600;
+
+			background-color: #6f8354;
+			color: #3c4b2b;
+			padding: 4px 6px;
+			border-radius: 4px;
+
+			.icon {
+				display: block;
+				margin-right: 3px;
+				margin-top: -2px;
+				.elm {
+					font-size: 8px;
+					line-height: 1;
+				}
+			}
+		}
+
+		.button {
+			background-color: #6f8354;
+			color: #3c4b2b;
+			padding: 4px 12px;
+			border-radius: 4px;
+			font-size: 10px;
+			line-height: 1;
+			font-weight: 600;
+			cursor: pointer;
+		}
+	}
+}

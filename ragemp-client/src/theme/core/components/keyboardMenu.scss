@@ -1,0 +1,25 @@
+.shared-comp-keyboard-menu {
+	position: relative;
+
+	display: flex;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+
+	overflow-x: scroll;
+	overscroll-behavior-x: contain;
+	scrollbar-width: none;
+	scroll-snap-type: x mandatory;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	.--entry {
+		flex: 1 0 auto;
+		inline-size: 100%;
+		scroll-snap-align: start; // @IMPORTANT
+		// scroll-snap-margin-left: 16px;
+		// scroll-margin-left: 16px;
+	}
+}

@@ -1,0 +1,172 @@
+@import '../variables/theme.scss';
+
+.page-authentication {
+	justify-content: center !important;
+	align-items: center !important;
+	overflow: hidden;
+	height: 100%;
+
+	.comp-tpb-pAdjuster {
+		padding-top: 0 !important;
+	}
+
+	.layout-content {
+		justify-content: center;
+		align-items: center;
+	}
+
+	.app_version {
+		margin-top: 50px;
+	}
+
+	.box {
+		box-shadow: $card_shadow;
+		background-color: #11131e;
+		height: 580px;
+		width: 800px;
+		display: flex;
+		border-radius: 5px;
+		overflow: hidden;
+
+		@media (max-width: 900px) {
+			min-height: unset;
+			min-width: unset;
+			max-width: unset;
+			width: 95%;
+		}
+
+		.left {
+			position: relative;
+			background-color: $background_card;
+			border-bottom-left-radius: 5px;
+			border-top-left-radius: 5px;
+			flex: 1;
+
+			.backToHome {
+				display: flex;
+				position: absolute;
+				align-items: center;
+				column-gap: 5px;
+				top: -8%;
+				left: -3px;
+			}
+
+			.character {
+				position: absolute;
+				bottom: 0;
+				left: 0px;
+				height: 100%;
+				display: flex;
+				align-items: flex-end;
+				pointer-events: none;
+				height: 100%;
+				width: 100%;
+				.img {
+					object-fit: contain;
+					object-position: bottom;
+					filter: grayscale(00%);
+					height: 100%;
+					width: 100%;
+				}
+			}
+
+			@media (max-width: 1000px) {
+				display: none;
+			}
+		}
+
+		.right {
+			border-bottom-right-radius: 5px;
+			border-top-right-radius: 5px;
+			background-color: #11131e;
+			padding: 24px 26px;
+			width: 400px;
+			height: 100%;
+
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			@media (max-width: 1000px) {
+				width: 100%;
+			}
+		}
+	}
+
+	.heading {
+		font-size: 20px;
+		line-height: 1.3;
+		margin-bottom: 20px;
+		font-weight: 500;
+		color: white;
+	}
+
+	.component-alert {
+		margin-bottom: 20px;
+	}
+
+	.form-group {
+		width: 100%;
+		margin-bottom: 18px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+
+		.form-label {
+			color: #5e6272;
+			font-weight: 500;
+			font-size: 15px;
+			margin-bottom: 9px;
+		}
+
+		.MuiInput-root:before {
+			border-color: rgba(#fff, 0.1);
+		}
+
+		&.remember-me .form-component {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			width: 100%;
+			.checkbox {
+				flex: 1;
+
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+
+				.MuiCheckbox-root {
+					padding: 2px !important;
+				}
+				.label {
+					font-weight: 400;
+					font-size: 14px;
+					line-height: 1;
+					margin-left: 4px;
+				}
+			}
+
+			.forgot-password {
+				font-size: 14px;
+				line-height: 1;
+				color: $color_primary;
+				font-weight: 500;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.buttons {
+		width: 100%;
+		margin-top: 40px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.secondary {
+			margin-top: 8px;
+		}
+	}
+}

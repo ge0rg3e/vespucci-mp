@@ -1,0 +1,85 @@
+const recoils: Record<string | number, number> = {
+	'453432689': 1, // PISTOL
+	'3219281620': 1, // PISTOL MK2
+	'1593441988': 1, // COMBAT PISTOL
+	'584646201': 1, // AP PISTOL
+	'2578377531': 1, // PISTOL .50
+	'324215364': 0.2, // MICRO SMG
+	'736523883': 0.25, // SMG
+	'2024373456': 0.1, // SMG MK2
+	'4024951519': 0.1, // ASSAULT SMG
+	'3220176749': 0.2, // ASSAULT RIFLE
+	'961495388': 0.2, // ASSAULT RIFLE MK2
+	'2210333304': 0.2, // CARBINE RIFLE
+	'4208062921': 0.2, // CARBINE RIFLE MK2
+	'2937143193': 0.3, // ADVANCED RIFLE
+	'2634544996': 0.1, // MG
+	'2144741730': 0.1, // COMBAT MG
+	'3686625920': 0.1, // COMBAT MG MK2
+	'487013001': 5, // PUMP SHOTGUN
+	'1432025498': 5, // PUMP SHOTGUN MK2
+	'2017895192': 0.7, // SAWNOFF SHOTGUN
+	'3800352039': 0.4, // ASSAULT SHOTGUN
+	'2640438543': 5, // BULLPUP SHOTGUN
+	'911657153': 0.1, // STUN GUN
+	'100416529': 0.5, // SNIPER RIFLE
+	'205991906': 0.7, // HEAVY SNIPER
+	'177293209': 0.6, // HEAVY SNIPER MK2
+	'856002082': 1.2, // REMOTE SNIPER
+	'2726580491': 1.0, // GRENADE LAUNCHER
+	'1305664598': 1.0, // GRENADE LAUNCHER SMOKE
+	'2982836145': 0.0, // RPG
+	'1752584910': 0.0, // STINGER
+	'1119849093': 0.01, // MINIGUN
+	'3218215474': 1, // SNS PISTOL
+	'1627465347': 0.1, // GUSENBERG
+	'3231910285': 0.2, // SPECIAL CARBINE
+	'-1768145561': 0.15, // SPECIAL CARBINE MK2
+	'3523564046': 1, // HEAVY PISTOL
+	'2132975508': 0.2, // BULLPUP RIFLE
+	'-2066285827': 0.15, // BULLPUP RIFLE MK2
+	'137902532': 0.4, // VINTAGE PISTOL
+	'2828843422': 0.7, // MUSKET
+	'984333226': 0.2, // HEAVY SHOTGUN
+	'3342088282': 0.3, // MARKSMAN RIFLE
+	'1785463520': 0.25, // MARKSMAN RIFLE MK2
+	'1672152130': 0, // HOMING LAUNCHER
+	'1198879012': 0.9, // FLARE GUN
+	'171789620': 0.2, // COMBAT PDW
+	'3696079510': 0.9, // MARKSMAN PISTOL
+	'1834241177': 2.4, // RAILGUN
+	'3675956304': 0.3, // MACHINE PISTOL
+	'3249783761': 0.6, // REVOLVER
+	'-879347409': 0.6, // REVOLVER MK2
+	'4019527611': 0.7, // DOUBLE BARREL SHOTGUN
+	'1649403952': 0.3, // COMPACT RIFLE
+	317205821: 0.2, // AUTO SHOTGUN
+	125959754: 0.5, // COMPACT LAUNCHER
+	3173288789: 0.1 // MINI SMG
+};
+
+// @ts-ignore
+const player = mp.players.local;
+
+mp.events.add('playerWeaponShot', () => {
+	if (player.vehicle) return;
+	const campos = mp.game.cam.getGameplayCamRot(0);
+	const weap = mp.players.local.weapon;
+	if (recoils[weap]) mp.game.cam.setGameplayCamRelativePitch(campos.x + recoils[weap], 1);
+});
+
+mp.events.add('render', () => {
+	const vehicle = player.vehicle;
+
+	// 0x6E8834B52EC20C77
+	if (vehicle) mp.game.invoke('0x6E8834B52EC20C77', player, false);
+
+	// INPUT_MELEE_ATTACK_LIGHT
+	mp.game.controls.disableControlAction(0, 140, true);
+
+	// _SET_WEAPON_DAMAGE_MODIFIER
+	if (player.weapon == 1737195953) mp.game.invoke('0x4757F00BC6323CFE', 1737195953, 0.1);
+
+	// SET_PED_DROPS_WEAPONS_WHEN_DEAD
+	mp.game.invoke('0x476AE72C1D19D1A8', mp.game.player.getPed(), false);
+});

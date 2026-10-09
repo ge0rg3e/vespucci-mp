@@ -1,0 +1,198 @@
+# Pipeline definition
+kind: pipeline
+type: docker
+name: deployment
+
+# Parameters
+clone:
+  disable: true
+
+# Run this pipeline only on master branch and releases.
+# ===================
+trigger:
+  branch:
+    - master
+  event:
+    - tag
+# ===================
+# Steps
+steps:
+  - name: fetch
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      - ls
+      - git clone https://github.com/vespucci-mp/ragemp-server.git .
+      - git checkout $DRONE_COMMIT
+      - git submodule update --init --recursive
+
+  - name: install
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      # This checks if the dependencies are installing right before we proceed any further.
+      - pnpm install
+
+  - name: environment variables
+    image: hurdock/nodejs_ragemp:latest
+    environment:
+      # Server itself
+      CEF_DOMAIN:
+        from_secret: CEF_DOMAIN
+      ENVIRONMENT:
+        from_secret: ENVIRONMENT
+
+      # Loggings
+      LOGZ_HOST:
+        from_secret: LOGZ_HOST
+      LOGZ_KEY:
+        from_secret: LOGZ_KEY
+      AMPLITUDE_KEY:
+        from_secret: AMPLITUDE_KEY
+
+      # Database
+      MYSQL_DATABASE_HOST:
+        from_secret: MYSQL_DATABASE_HOST
+      MYSQL_DATABASE_NAME:
+        from_secret: MYSQL_DATABASE_NAME
+      MYSQL_DATABASE_PASSWORD:
+        from_secret: MYSQL_DATABASE_PASSWORD
+      MYSQL_DATABASE_PORT:
+        from_secret: MYSQL_DATABASE_PORT
+      MYSQL_DATABASE_USER:
+        from_secret: MYSQL_DATABASE_USER
+
+      # Socket.io
+      SOCKET_IO_ADDRESS:
+        from_secret: SOCKET_IO_ADDRESS
+      SOCKET_IO_PORT:
+        from_secret: SOCKET_IO_PORT
+      SOCKET_IO_SECRET_ACCESS_TOKEN:
+        from_secret: SOCKET_IO_SECRET_ACCESS_TOKEN
+
+      # Whitelist
+      WHITELIST:
+        from_secret: WHITELIST
+
+      # Less important
+      SEQUELIZE_LOGS:
+        from_secret: SEQUELIZE_LOGS
+      SKIP_PRODUCTION_CONFIG:
+        from_secret: SKIP_PRODUCTION_CONFIG
+
+      # Assets
+      CDN_ASSETS:
+        from_secret: CDN_ASSETS
+
+    commands:
+      # Creating the env file to inject the variables
+      - touch ./.env
+
+      # Server itself
+      - echo "CEF_DOMAIN=$CEF_DOMAIN" >> ./.env
+      - echo "ENVIRONMENT=$ENVIRONMENT" >> ./.env
+
+      # Loggings
+      - echo "AMPLITUDE_KEY=$AMPLITUDE_KEY" >> ./.env
+      - echo "LOGZ_HOST=$LOGZ_HOST" >> ./.env
+      - echo "LOGZ_KEY=$LOGZ_KEY" >> ./.env
+
+      # Database..
+      - echo "MYSQL_DATABASE_HOST=$MYSQL_DATABASE_HOST" >> ./.env
+      - echo "MYSQL_DATABASE_NAME=$MYSQL_DATABASE_NAME" >> ./.env
+      - echo "MYSQL_DATABASE_PASSWORD=$MYSQL_DATABASE_PASSWORD" >> ./.env
+      - echo "MYSQL_DATABASE_PORT=$MYSQL_DATABASE_PORT" >> ./.env
+      - echo "MYSQL_DATABASE_USER=$MYSQL_DATABASE_USER" >> ./.env
+
+      # Socket.io
+      - echo "SOCKET_IO_ADDRESS=$SOCKET_IO_ADDRESS" >> ./.env
+      - echo "SOCKET_IO_PORT=$SOCKET_IO_PORT" >> ./.env
+      - echo "SOCKET_IO_SECRET_ACCESS_TOKEN=$SOCKET_IO_SECRET_ACCESS_TOKEN" >> ./.env
+
+      # Whitelist
+      - echo "WHITELIST=$WHITELIST" >> ./.env
+
+      # Assets
+      - echo "CDN_ASSETS=$CDN_ASSETS" >> ./.env
+
+      # Other bits less important
+      - echo "SEQUELIZE_LOGS=$SEQUELIZE_LOGS" >> ./.env
+      - echo "SKIP_PRODUCTION_CONFIG=$SKIP_PRODUCTION_CONFIG" >> ./.env
+
+  - name: build
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      # This checks if the dependencies are installing right before we proceed any further.
+      - pnpm build
+
+  - name: copy
+    image: hurdock/nodejs_ragemp:latest
+    volumes:
+      - name: ragemp
+        path: /ragemp
+    commands:
+      # This is a check that will make sure that the old docker compose is still there.
+      - if [ ! -f /ragemp/docker-compose.yml ]; then echo "Previous docker compose is not present. Please add one to know what to decompose."; exit 1; fi
+
+      # Cleaning the directory for the source in case of any blockers.
+      - rm -rf /ragemp/source
+      - mkdir -p /ragemp/source
+
+      # Copying over the server dependencies.
+      - mv * /ragemp/source
+
+      # Move the other hidden required dependencies
+      - mv -T .env /ragemp/source/.env
+      - mv -T .docker/Dockerfile /ragemp/Dockerfile
+      - mv -T .docker/docker-compose.yml /ragemp/docker-compose-new.yml
+
+  - name: shutdown
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: ragemp
+        path: /ragemp
+    commands:
+      - cd /ragemp
+
+      # @TODO: In the future to make a timeout of 1 minute and maybe save all data from the server before.
+
+      # Running docker compose according to old configuration (In case things changed in the new one)
+      - docker compose down --rmi all
+
+      # Delete the old docker compose
+      - rm -rf /ragemp/docker-compose.yml
+
+      # Rename the new docker compose accordingly
+      - mv -T /ragemp/docker-compose-new.yml /ragemp/docker-compose.yml
+
+  - name: deploy
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: ragemp
+        path: /ragemp
+    commands:
+      - cd /ragemp
+      # Start the building process
+      - docker compose up -d --build
+
+  - name: cleanup
+    image: hurdock/nodejs_ragemp:latest
+    volumes:
+      - name: ragemp
+        path: /ragemp
+    commands:
+      # Delete the source code folder
+      - rm -rf /ragemp/source
+
+      # Delete the dockerfile cause it may be outdated
+      - rm /ragemp/Dockerfile
+
+volumes:
+  - name: ragemp
+    host:
+      path: /home/apps/ragemp
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock

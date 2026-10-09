@@ -1,0 +1,17 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@server/*": ["./*"],
+			"@natives/*": ["./natives/*"],
+			"@general/*": ["./general/*"],
+			"@legacy/*": ["./legacy/*"],
+			"@utils/*": ["./utils/*"],
+			"@definitions/*": ["./definitions/*"],
+			"@database/*": ["./database/*"],
+			"@modules/*": ["../../modules/*"]
+		},
+		"types": ["../../node_modules/@ragemp/types-server"]
+	}
+}

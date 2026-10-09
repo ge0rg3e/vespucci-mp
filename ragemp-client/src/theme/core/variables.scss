@@ -1,0 +1,30 @@
+$system_bg_color: #151825;
+$system_bg_color_2: #0f111b;
+$color_label: #5e6272;
+
+$card_header: #151825;
+$card_content: #0f111b;
+
+$color_primary: #f195ac;
+$color_coins: rgb(255, 134, 201);
+$color_primary_darker: #e9718f;
+$color_text_over_bg_primary: #2e1017;
+
+$color_grey: rgb(190, 190, 190);
+$color_slight_grey: rgb(185, 185, 185);
+
+$chat_text_shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+
+$general_text_shadow: 0 0 1.7px black, 0 0 1.7px black, 0 0 1.7px black, 0 0 1.7px black,
+	0 0 1.7px black;
+
+$general_slim_text_shadow: 0 0 1.3px black, 0 0 1.3px black, 0 0 1.3px black, 0 0 1.3px black,
+	0 0 1.3px black;
+
+// Helpers
+$card_shadow: rgba(0, 0, 0, 0.199) 0px 2px 1px -1px, rgba(0, 0, 0, 0.247) 0px 1px 1px 0px,
+	rgba(0, 0, 0, 0.226) 0px 1px 3px 0px;
+
+// Z-indexes
+$z_index_dialogs: 99995;
+$z_index_alerts: 99994;

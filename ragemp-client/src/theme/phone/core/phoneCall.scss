@@ -1,0 +1,474 @@
+@import '../../core/variables.scss';
+@import './variables.scss';
+
+.phoneCall-overlay.fullScreen {
+	// Variables
+	$respondBtnSize: 50px;
+	$respondBtnPadding: 4.3px;
+
+	// Positioning
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: $z_index_phoneCall_Content;
+
+	// Height
+	height: 100%;
+	width: 100%;
+
+	@keyframes hideTemp {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes slideRight {
+		0% {
+			left: $respondBtnPadding;
+		}
+		100% {
+			left: calc(100% - #{$respondBtnSize} - #{$respondBtnPadding});
+		}
+	}
+
+	.closing-area {
+		.closing-line {
+			background: rgba(#fff, 0.2) !important;
+		}
+		&:hover {
+			.closing-line {
+				background: rgba(#fff, 0.6) !important;
+				box-shadow: rgba(#000, 0.03) 0px 0px 20px 5px;
+			}
+		}
+	}
+
+	.background-blurred {
+		// Poisitoning
+		position: absolute;
+		top: 0px;
+		left: 0px;
+
+		// Height
+		height: 100%;
+		width: 100%;
+
+		// The bg color
+		// background-color: rgba(39, 48, 53, 0.85);
+		background: linear-gradient(135deg, #242e30d2 0%, #263032bb 100%);
+
+		backdrop-filter: blur(15px);
+
+		// The z-index
+		z-index: $z_index_phoneCall_bgBlur;
+
+		// Animation
+		animation: fadeIn;
+		animation-duration: 0.5s;
+	}
+
+	.layout-container {
+		// Poisitoning
+		position: absolute;
+		top: 0px;
+		left: 0px;
+
+		// Height
+		height: 100%;
+		width: 100%;
+
+		// Flex
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+
+		// The z-index
+		z-index: $z_index_phoneCall_Content;
+
+		// Animation
+		animation: fadeIn;
+		animation-duration: 0.5s;
+	}
+
+	.component-header {
+		position: absolute;
+		top: 60px;
+		left: 0px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+
+		// Debug
+		// background-color: red;
+
+		.name {
+			font-size: 20px;
+			line-height: 1.5;
+			color: #f9fdfd;
+			font-weight: 500;
+		}
+
+		.information {
+			color: #9599a3;
+
+			font-size: 16px;
+			line-height: 1;
+		}
+	}
+
+	.component-options {
+		flex: 1;
+		// background-color: purple;
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+
+		.entries {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 100%;
+			max-width: 80%;
+
+			// Debugging
+			// border: solid 1px red;
+
+			// Reducing margin bottom by content
+			margin-bottom: -22px;
+
+			.entry {
+				width: 33.3%;
+
+				.content {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					cursor: pointer;
+
+					// Spacing to keep this right.
+					margin-bottom: 22px;
+
+					&.disabled {
+						opacity: 0.4;
+						pointer-events: none;
+					}
+
+					.icon {
+						background-color: rgba(#fff, 0.2);
+						height: 55px;
+						width: 55px;
+						border-radius: 100%;
+
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+
+						.elm {
+							font-size: 22px;
+							line-height: 1;
+							color: white;
+
+							&.mute {
+								font-size: 20px;
+							}
+						}
+					}
+
+					.label {
+						font-size: 13px;
+						line-height: 1;
+						margin-top: 7px;
+						color: #e9eeed;
+					}
+				}
+			}
+		}
+	}
+
+	.component-footer {
+		position: absolute;
+		bottom: 40px;
+		left: 0px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+
+		// Debug
+		// background-color: blue;
+
+		.hangup {
+			background-color: #ff4538;
+
+			height: 55px;
+			width: 55px;
+			border-radius: 100%;
+
+			.icon {
+				transform: rotate(135deg);
+				font-size: 18px;
+				line-height: 1;
+			}
+		}
+
+		.additional-responses {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			max-width: 70%;
+			width: 100%;
+			margin-bottom: 24px;
+
+			.entry {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 8px;
+				cursor: pointer;
+
+				.icon {
+					.elm {
+						font-size: 16px;
+						line-height: 1;
+					}
+				}
+
+				.text {
+					font-size: 14px;
+					line-height: 1;
+					margin-top: 8px;
+				}
+			}
+		}
+
+		.respondCall {
+			width: 100%;
+			max-width: 70%;
+			height: 54.5px;
+			border-radius: 50px;
+			background-color: rgba(#fff, 0.11);
+			padding: 8px;
+
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding-right: 15%;
+			cursor: pointer;
+			transition: all 0.2s ease-in;
+
+			.btn {
+				border-radius: 100%;
+				background-color: white;
+				height: $respondBtnSize;
+				width: $respondBtnSize;
+
+				position: absolute;
+				top: 50%;
+				left: $respondBtnPadding;
+				transform: translateY(-50%);
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+
+				.icon {
+					color: #4aca65;
+					font-size: 20px;
+				}
+			}
+
+			.text {
+				font-size: 14px;
+				line-height: 1;
+				color: #050505;
+				font-weight: 600;
+				transition: all 0.2s ease-in;
+			}
+
+			&.accepted {
+				padding-right: 0px;
+				padding-left: 15%;
+				justify-content: flex-start;
+
+				.text {
+					animation-duration: 1s !important;
+					animation-name: hideTemp;
+					animation-timing-function: ease-in;
+					animation-fill-mode: forwards; // Make sure the animation stays this way.
+				}
+
+				.btn {
+					animation-duration: 0.3s !important;
+					animation-name: slideRight;
+					animation-timing-function: ease-in;
+					animation-fill-mode: forwards; // Make sure the animation stays this way.
+				}
+			}
+		}
+	}
+}
+
+.phoneCall-overlay.minimal {
+	// Positioning
+	position: fixed;
+	top: 50px;
+	left: 50%; /* Set left to 50% */
+	transform: translateX(-50%); /* Move the element back by half of its width */
+
+	// Height
+
+	$minimalHeight: 80px;
+
+	min-height: $minimalHeight;
+	width: 85%;
+
+	z-index: 999995;
+
+	.layout-container {
+		// Poisitoning
+		position: absolute;
+		top: 0px;
+		left: 0px;
+
+		animation: fadeIn;
+		/* referring directly to the animation's @keyframe declaration */
+		animation-duration: 0.5s;
+
+		// Height
+		width: 100%;
+
+		// The z-index
+		z-index: 99995;
+
+		// Appearance
+		background-color: rgba(18, 18, 19, 0.95);
+		border-radius: 10px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Added box shadow */
+
+		// Blur behind..
+		backdrop-filter: blur(2px); /* Apply the blur effect */
+
+		// Content
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		// Sizing
+		width: 100%;
+		min-height: 100%;
+
+		$padding: 12px;
+
+		.left-side {
+			padding: $padding;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			flex-direction: row;
+			flex: 1;
+
+			.avatar {
+				background-color: rgb(65, 65, 65);
+				height: 45px;
+				width: 45px;
+				border-radius: 100%;
+				flex-shrink: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.icon {
+					font-size: 22px;
+					line-height: 1;
+				}
+			}
+
+			.information {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: center;
+				margin-left: 12px;
+
+				.name {
+					font-size: 16px;
+					line-height: 1.5;
+					color: #f9fdfd;
+					font-weight: 500;
+				}
+
+				.status {
+					color: #8f939c;
+
+					font-size: 14px;
+					line-height: 1;
+				}
+			}
+		}
+
+		.right-side {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-end;
+
+			min-height: $minimalHeight;
+			margin-left: 8px;
+
+			padding-right: $padding;
+
+			.circle-button {
+				background-color: grey;
+
+				height: 35px;
+				width: 35px;
+				border-radius: 100%;
+
+				margin-right: 8px;
+				&:last-of-type {
+					margin-right: 0px;
+				}
+
+				.icon {
+					font-size: 15px;
+					line-height: 1;
+				}
+
+				&.red {
+					background-color: #ff4538;
+				}
+
+				&.green {
+					background-color: #2fd158;
+				}
+
+				&.hangup,
+				&.rejectCall {
+					.icon {
+						transform: rotate(135deg);
+					}
+				}
+			}
+		}
+	}
+}
