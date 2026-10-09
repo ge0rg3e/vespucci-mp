@@ -1,0 +1,42 @@
+$form_width: 38px;
+$form_height: 24px;
+
+.phone-mockup .screen-content .app-component-switch {
+	.switch-elm {
+		display: flex;
+		align-items: center;
+		width: $form_width;
+		height: $form_height;
+		background-color: #e6e6e6;
+		border-radius: 40px;
+		transition: all 0.3s linear;
+		position: relative;
+		padding: 0px 4px;
+
+		&.checked {
+			background-color: #4ed164;
+		}
+
+		.value {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transition: all 0.2s linear;
+			display: flex;
+			// coloring
+			border: 1px solid #d9dadc;
+			background-color: white;
+			// Base
+			border-radius: 40px;
+			height: calc(#{$form_height} - 2px);
+			width: calc(calc(#{$form_width} / 2) + 3px);
+
+			&.checked {
+				transform: translate(calc(calc(#{$form_width} / 2) - 3.5px), -50%);
+			}
+			&.not-checked {
+				transform: translate(1px, -50%);
+			}
+		}
+	}
+}

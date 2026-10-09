@@ -1,0 +1,152 @@
+// The actionsheet is a system of the phone, not a form component.
+
+@import './variables.scss';
+
+.phone-mockup .device-component-actionsheet {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(#000, 0.2);
+	z-index: $z_index_ActionSheet;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	animation: fadeIn;
+	animation-duration: 0.3s;
+
+	.modal {
+		padding-left: 12px;
+		padding-right: 16px; // better this way to fix when scrollbar is active
+		padding-bottom: 30px;
+		animation: slideInUp;
+		animation-duration: 0.5s;
+		min-width: 100%;
+		.content {
+			background-color: #eff0f0;
+			border-radius: 13px;
+			overflow: hidden;
+			box-shadow: $ios_light_card_shadow;
+
+			.title,
+			.description {
+				padding-left: 20px;
+				padding-right: 20px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.title {
+				padding-top: 16px;
+				letter-spacing: 0.3px;
+
+				font-size: 13px;
+				line-height: 14px;
+				margin-bottom: 4px;
+				color: darken(#848484, 10%);
+				font-weight: 500;
+			}
+
+			.description {
+				font-size: 14px;
+				line-height: 21px;
+				letter-spacing: 0.3px;
+				font-weight: 400;
+				padding-bottom: 13px;
+				color: #848484;
+			}
+
+			.options {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+
+				.entry {
+					border-top: solid 1px rgba(#b2b2b2, 0.6);
+					font-weight: 500;
+					text-align: center;
+					font-size: 15px;
+					line-height: 15px;
+					padding: 13px 20px;
+
+					cursor: pointer;
+					&.red {
+						color: $color_ios_primary_light_red;
+					}
+					&.blue {
+						color: $color_ios_primary_light_blue;
+					}
+
+					&:hover {
+						background-color: #e5e5e5;
+					}
+				}
+			}
+		}
+
+		.cancel {
+			margin-top: 12px;
+			background-color: #eff0f0;
+			border-radius: 13px;
+			font-weight: 500;
+			text-align: center;
+			font-size: 15px;
+			line-height: 15px;
+			padding: 14px 20px;
+			box-shadow: $ios_light_card_shadow;
+
+			cursor: pointer;
+			color: #fa534a;
+
+			&:hover {
+				background-color: #e5e5e5;
+			}
+		}
+	}
+
+	&.dark {
+		background-color: rgba(#000, 0.38);
+
+		.content {
+			background-color: $background_elevated_dark;
+			box-shadow: $ios_dark_card_shadow;
+
+			.title {
+				color: #c3c3c3;
+			}
+
+			.description {
+				color: #8f8f8f;
+			}
+
+			.options {
+				.entry {
+					border-color: rgba(#fff, 0.01);
+
+					&:hover {
+						background-color: rgba(#fff, 0.0022);
+					}
+
+					&.blue {
+						color: #0a84ffff;
+					}
+
+					&.red {
+						color: #e33434;
+					}
+				}
+			}
+		}
+
+		.cancel {
+			background-color: $background_elevated_dark;
+			&:hover {
+				background-color: lighten($background_elevated_dark, 0.3%);
+				color: #e33434;
+			}
+			box-shadow: $ios_dark_card_shadow;
+		}
+	}
+}

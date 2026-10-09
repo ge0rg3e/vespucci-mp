@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  client-interface:
+    container_name: client-interface
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: client-interface:latest
+    restart: always
+    ports:
+      - '5050:5000'
+    networks:
+      - my-proxy-net
+
+networks:
+  my-proxy-net:
+    name: proxynet
+    external: true

@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  panel_client:
+    container_name: panel_client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: panel_client:latest
+    restart: always
+    ports:
+      - '3024:3000'
+    networks:
+      - my-proxy-net 
+      
+networks:
+  my-proxy-net:
+    name: proxynet
+    external: true

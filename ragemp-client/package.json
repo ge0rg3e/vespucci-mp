@@ -1,0 +1,104 @@
+{
+	"name": "ragemp-client",
+	"version": "22.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "vite --host",
+		"start": "vite preview --host",
+		"build": "vite build",
+		"format": "prettier --write src/**/*.{mjs,ts,js}",
+		"watch-scss": "node-sass ./src/theme/index.scss ./public/assets/css/style.css -w --output-style compressed",
+		"build-scss": "node-sass ./src/theme/index.scss ./public/assets/css/style.css --output-style compressed",
+		"lint": "eslint ./",
+		"rebase:master": "git checkout master && git pull --rebase upstream master && git push --force-with-lease origin master",
+		"rebase": "git checkout dev && git rebase master && git push --force-with-lease origin dev"
+	},
+	"devDependencies": {
+		"@ragemp/types-cef": "github:ragempcommunity/ragemp-types#types-cef",
+		"@types/amplitude-js": "8.9.6",
+		"@types/jest": "27.4.0",
+		"@types/lodash": "4.14.178",
+		"@types/node": "17.0.15",
+		"@types/pizzicato": "^0.6.1",
+		"@types/react": "17.0.39",
+		"@types/react-color": "3.0.6",
+		"@types/react-dom": "17.0.11",
+		"@types/react-helmet": "6.1.5",
+		"@types/react-portal": "4.0.4",
+		"@types/react-router": "5.1.17",
+		"@types/react-router-dom": "5.3.2",
+		"@types/uuid": "8.3.4",
+		"@typescript-eslint/eslint-plugin": "5.30.7",
+		"@typescript-eslint/parser": "5.30.7",
+		"@vitejs/plugin-react": "1.1.4",
+		"concurrently": "7.3.0",
+		"eslint": "8.20.0",
+		"eslint-plugin-react": "7.30.1",
+		"prettier": "2.5.1",
+		"rage-rpc": "github:vespucci-mp/rage-rpc#build",
+		"sass": "1.49.7",
+		"typescript": "4.5.5",
+		"vite": "3.0.7"
+	},
+	"dependencies": {
+		"@emotion/react": "11.10.0",
+		"@emotion/styled": "11.10.0",
+		"@mui/material": "5.10.1",
+		"@mui/x-date-pickers": "5.0.0-beta.6",
+		"@vmp/i18n": "github:vespucci-mp/i18n#build",
+		"amplitude-js": "8.16.1",
+		"axios": "0.24.0",
+		"dotenv": "16.0.0",
+		"lodash": "4.17.21",
+		"moment": "2.29.1",
+		"node-sass": "^9.0.0",
+		"rc-slider": "9.7.5",
+		"react": "17.0.2",
+		"react-color": "2.19.3",
+		"react-dom": "17.0.2",
+		"react-helmet": "6.1.0",
+		"react-imask": "6.4.3",
+		"react-router-dom": "6.0.2",
+		"socket.io-client": "4.5.1",
+		"uuid": "8.3.2",
+		"yup": "0.32.11"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"prettier": {
+		"$schema": "http://json.schemastore.org/prettierrc",
+		"endOfLine": "lf",
+		"printWidth": 120,
+		"quoteProps": "as-needed",
+		"semi": true,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "none",
+		"useTabs": true,
+		"overrides": [
+			{
+				"files": "*.yml",
+				"options": {
+					"tabWidth": 2,
+					"useTabs": false
+				}
+			}
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
+}

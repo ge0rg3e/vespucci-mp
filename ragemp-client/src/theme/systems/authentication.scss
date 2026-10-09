@@ -1,0 +1,224 @@
+@import '../core/variables.scss';
+
+.system-authenticate {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	position: relative;
+	background-color: #15182565;
+	height: 100vh;
+	width: 100vw;
+	background-repeat: no-repeat;
+
+	.background {
+		transition: opacity 0.4s ease-in;
+		object-position: center center;
+		background-repeat: no-repeat;
+		object-fit: center;
+		position: fixed;
+		height: 100vh;
+		width: 100vw;
+		z-index: 1;
+		opacity: 0;
+
+		&.loaded.day-mode {
+			opacity: 0.5;
+		}
+
+		&.loaded.night-mode {
+			opacity: 0.2;
+		}
+	}
+
+	.boxed-content {
+		background: $system_bg_color;
+		z-index: 2;
+		border-radius: 8px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		height: 550px;
+		box-shadow: #0e0f13af 3px 0px 10px 2px;
+
+		// animation: bounceIn;
+		// animation-duration: 1s;
+
+		.left-side {
+			width: 380px;
+			position: relative;
+			height: 100%;
+			border-top-left-radius: 8px;
+			border-bottom-left-radius: 8px;
+			background: rgba($system_bg_color, 0.9);
+
+			.character {
+				position: absolute;
+				bottom: 0;
+				left: 0px;
+				height: 690px;
+				width: 100%;
+				object-fit: contain;
+				object-position: bottom;
+				opacity: 0;
+				filter: grayscale(00%);
+				transition: opacity 0.4s ease-in;
+
+				&.loaded {
+					opacity: 0.95;
+				}
+
+				@media (max-width: 1400px) {
+					height: 550px;
+				}
+			}
+		}
+
+		.right-side {
+			position: relative;
+			flex: 1;
+			background: $system_bg_color_2;
+			height: 100%;
+			width: 350px;
+			border-top-right-radius: 8px;
+			border-bottom-right-radius: 8px;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+
+			.logo {
+				position: absolute;
+				top: 30px;
+				left: 50%;
+				transform: translate(-50%, 10px);
+				background-size: contain;
+				height: 130px;
+				width: 110px;
+				content: ' ';
+				background-repeat: no-repeat;
+				background-image: url('/assets/images/systems/authentication/logo.png');
+				display: none;
+			}
+
+			.content {
+				width: 100%;
+				height: 100%;
+				padding: 24px;
+				display: flex;
+				flex: 1;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+
+				.heading {
+					font-weight: 800;
+					font-size: 30px;
+					text-align: center;
+					margin-bottom: 40px;
+				}
+				.auto-login {
+					width: 100%;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex-direction: column;
+
+					.text-information {
+						font-size: 14px;
+						line-height: 14px;
+						margin-bottom: 8px;
+					}
+
+					.big-number {
+						font-size: 35px;
+						line-height: 35px;
+						margin-bottom: 16px;
+						font-weight: 500;
+					}
+				}
+				.forms {
+					width: 100%;
+
+					// min-height: 220px;
+					.form-group {
+						width: 100%;
+						margin-bottom: 16px;
+
+						.label {
+							font-weight: bold;
+							font-size: 14px;
+							color: $color_label;
+							margin-bottom: 4px;
+						}
+
+						.element {
+							width: 100%;
+
+							.capsLockStatus {
+								padding: 8px;
+								.icon {
+									font-size: 15px;
+									line-height: 15px;
+									color: $color_primary;
+								}
+							}
+						}
+					}
+
+					.form-checkbox {
+						display: inline-flex;
+						flex-direction: row;
+						align-items: center;
+
+						.label {
+							color: rgba(#fff, 0.7);
+							font-size: 14px;
+						}
+
+						.MuiCheckbox-root {
+							margin-right: 4px;
+							padding: 0px;
+						}
+					}
+				}
+
+				.buttons {
+					margin-top: 16px;
+					width: 100%;
+
+					.divider {
+						width: 100%;
+						margin-top: 16px;
+						margin-bottom: 16px;
+						border-top: solid 1px rgba(255, 255, 255, 0.06);
+					}
+				}
+			}
+		}
+	}
+
+	.control-music {
+		z-index: 10;
+		position: absolute;
+		top: 30px;
+		left: 30px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 40px;
+		width: 40px;
+		border: solid 1px rgba(#fff, 0.06);
+		border-radius: 100%;
+
+		.icon {
+			font-size: 15px;
+			color: $color_primary;
+			text-shadow: $general_text_shadow;
+		}
+	}
+}

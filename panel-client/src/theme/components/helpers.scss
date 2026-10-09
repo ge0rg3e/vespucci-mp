@@ -1,0 +1,8 @@
+@import '../variables/theme.scss';
+
+.component-card {
+	background: $background_card;
+	border-radius: $background_card_radius;
+	padding: $background_card_padding;
+	box-shadow: $card_shadow;
+}

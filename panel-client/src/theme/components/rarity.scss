@@ -1,0 +1,106 @@
+@import '../variables/rarity.scss';
+
+.component-rarity-texts {
+	&.common {
+		color: $rarity_color_common;
+		text-shadow: $rarity_shadow_common;
+	}
+
+	&.uncommon {
+		color: $rarity_color_uncommon;
+		text-shadow: $rarity_shadow_uncommon;
+	}
+
+	&.rare {
+		color: $rarity_color_rare;
+		text-shadow: $rarity_shadow_rare;
+	}
+
+	&.epic {
+		color: $rarity_color_epic;
+		text-shadow: $rarity_shadow_epic;
+	}
+
+	&.mythic {
+		color: $rarity_color_mythic;
+		text-shadow: $rarity_shadow_mythic;
+	}
+
+	&.legendary {
+		color: $rarity_color_legendary;
+		text-shadow: $rarity_shadow_legendary;
+	}
+
+	&.celestial {
+		color: $rarity_color_celestial;
+		text-shadow: $rarity_shadow_celestial;
+	}
+}
+
+.component-rarity-glowing {
+	&::before {
+		// Positioning
+		position: absolute;
+		content: ' ';
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		// Sizing is needed..
+		height: 3.9625rem;
+		width: 5.005rem;
+
+		// Special effects
+		filter: blur(35px);
+		opacity: 0.25;
+	}
+
+	&.--option-glow-left {
+		&::before {
+			left: 16px !important;
+			transform: translate(-16px, -50%) !important;
+		}
+	}
+
+	&.common {
+		&::before {
+			background: $rarity_gradient_common;
+		}
+	}
+
+	&.uncommon {
+		&::before {
+			background: $rarity_gradient_uncommon;
+		}
+	}
+
+	&.rare {
+		&::before {
+			background: $rarity_gradient_rare;
+		}
+	}
+
+	&.epic {
+		&::before {
+			background: $rarity_gradient_epic;
+		}
+	}
+
+	&.mythic {
+		&::before {
+			background: $rarity_gradient_mythic;
+		}
+	}
+
+	&.legendary {
+		&::before {
+			background: $rarity_gradient_legendary;
+		}
+	}
+
+	&.celestial {
+		&::before {
+			background: $rarity_gradient_celestial;
+		}
+	}
+}

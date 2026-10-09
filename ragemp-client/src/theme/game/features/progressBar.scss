@@ -1,0 +1,80 @@
+@import '../../core/variables.scss';
+
+.game-hud .hud-progressBar {
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	transform: translate(-50%, -10%);
+	min-height: 300px;
+	min-width: 300px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		max-width: 200px;
+		width: 100%;
+
+		.label {
+			padding-left: 2px;
+			width: 100%;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 0.9;
+			margin-bottom: 4px;
+			text-shadow: $general_text_shadow;
+			font-family: 'Chalet Comprime - Cologne Eigthy';
+			text-transform: uppercase;
+		}
+
+		.bar {
+			width: 100%;
+			height: 25px;
+
+			content: ' ';
+			background-color: rgba(#2e2d2d, 0.55);
+			border-radius: 4px;
+			position: relative;
+			overflow: hidden;
+
+			// Border
+			border: solid 1px rgba(#000, 0.2);
+			box-shadow: rgba(#090a0f, 1) 0px 0px 2px 0px;
+
+			.value {
+				border-radius: inherit;
+
+				height: 100%;
+				content: ' ';
+				display: block;
+				background-color: rgba($color_primary, 0.85);
+				transition: width 0.1s ease-in;
+
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				padding-right: 4px;
+
+				.percent {
+					font-size: 16px;
+					line-height: 0.9;
+					font-family: 'Chalet Comprime - Cologne Eigthy';
+					color: #302e2e;
+				}
+			}
+		}
+	}
+
+	&.dark-mode {
+		.bar {
+			border: solid 1px rgba(#000, 0.5);
+			background-color: rgba(#2e2d2d, 0.65);
+			box-shadow: rgba(#080808, 1) 0px 0px 3px 0px;
+		}
+	}
+}

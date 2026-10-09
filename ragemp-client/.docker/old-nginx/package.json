@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "compose": "docker-compose up -d",
+    "down": "docker-compose down",
+    "deploy": "npm run down && npm run compose"
+  }
+}

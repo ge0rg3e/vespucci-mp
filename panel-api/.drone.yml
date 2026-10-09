@@ -1,0 +1,193 @@
+# Pipeline definition
+kind: pipeline
+type: docker
+name: deployment
+
+# Parameters
+clone:
+  disable: true
+
+# Run this pipeline only on master branch and releases.
+trigger:
+  branch:
+    - master
+  event:
+    - tag
+
+# Steps
+steps:
+  - name: fetch
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      - ls
+      - git clone https://github.com/vespucci-mp/panel-api.git .
+      - git checkout $DRONE_COMMIT
+      - git submodule update --init --recursive
+
+  - name: install
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      # This checks if the dependencies are installing right before we proceed any further.
+      - pnpm install
+
+  - name: environment variables
+    image: hurdock/nodejs_ragemp:latest
+    environment:
+      # Server
+      PORT:
+        from_secret: PORT
+      ENVIRONMENT:
+        from_secret: ENVIRONMENT
+
+      # SESSION
+      SESSION_SECRET:
+        from_secret: SESSION_SECRET
+      SESSION_KEYS:
+        from_secret: SESSION_KEYS
+
+      # Logz
+      LOGZ_HOST:
+        from_secret: LOGZ_HOST
+      LOGZ_KEY:
+        from_secret: LOGZ_KEY
+
+      # Database
+      MYSQL_DATABASE_HOST:
+        from_secret: MYSQL_DATABASE_HOST
+      MYSQL_DATABASE_NAME:
+        from_secret: MYSQL_DATABASE_NAME
+      MYSQL_DATABASE_PASSWORD:
+        from_secret: MYSQL_DATABASE_PASSWORD
+      MYSQL_DATABASE_PORT:
+        from_secret: MYSQL_DATABASE_PORT
+      MYSQL_DATABASE_USER:
+        from_secret: MYSQL_DATABASE_USER
+
+      # Memcache
+      MEMCACHE_SERVER:
+        from_secret: MEMCACHE_SERVER
+      MEMCACHE_USERNAME:
+        from_secret: MEMCACHE_USERNAME
+      MEMCACHE_PASSWORD:
+        from_secret: MEMCACHE_PASSWORD
+
+      # Less important
+      SEQUELIZE_LOGS:
+        from_secret: SEQUELIZE_LOGS
+      CORS_ORIGIN:
+        from_secret: CORS_ORIGIN
+      SENDGRID_API_KEY:
+        from_secret: SENDGRID_API_KEY
+
+    commands:
+      # Creating the env file to inject the variables
+      - touch ./.env
+
+      # Server
+      - echo "PORT=$PORT" >> ./.env
+      - echo "ENVIRONMENT=$ENVIRONMENT" >> ./.env
+
+      # Session
+      - echo "SESSION_SECRET=$SESSION_SECRET" >> ./.env
+      - echo "SESSION_KEYS=$SESSION_KEYS" >> ./.env
+
+        # Logz.io
+      - echo "LOGZ_HOST=$LOGZ_HOST" >> ./.env
+      - echo "LOGZ_KEY=$LOGZ_KEY" >> ./.env
+
+      # Database
+      - echo "MYSQL_DATABASE_HOST=$MYSQL_DATABASE_HOST" >> ./.env
+      - echo "MYSQL_DATABASE_USER=$MYSQL_DATABASE_USER" >> ./.env
+      - echo "MYSQL_DATABASE_PASSWORD=$MYSQL_DATABASE_PASSWORD" >> ./.env
+      - echo "MYSQL_DATABASE_PORT=$MYSQL_DATABASE_PORT" >> ./.env
+      - echo "MYSQL_DATABASE_NAME=$MYSQL_DATABASE_NAME" >> ./.env
+
+      # Memcache
+      - echo "MEMCACHE_SERVER=$MEMCACHE_SERVER" >> ./.env
+      - echo "MEMCACHE_USERNAME=$MEMCACHE_USERNAME" >> ./.env
+      - echo "MEMCACHE_PASSWORD=$MEMCACHE_PASSWORD" >> ./.env
+
+      # Others
+      - echo "SEQUELIZE_LOGS=$SEQUELIZE_LOGS" >> ./.env
+      - echo "CORS_ORIGIN=$CORS_ORIGIN" >> ./.env
+      - echo "SENDGRID_API_KEY=$SENDGRID_API_KEY" >> ./.env
+
+  - name: build
+    image: hurdock/nodejs_ragemp:latest
+    commands:
+      # This checks if the dependencies are installing right before we proceed any further.
+      - pnpm build
+
+  - name: copy
+    image: hurdock/nodejs_ragemp:latest
+    volumes:
+      - name: panel-api
+        path: /panel-api
+    commands:
+      # This is a check that will make sure that the old docker compose is still there.
+      - if [ ! -f /panel-api/docker-compose.yml ]; then echo "Previous docker compose is not present. Please add one to know what to decompose."; exit 1; fi
+
+      # Cleaning the directory for the source in case of any blockers.
+      - rm -rf /panel-api/source
+      - mkdir -p /panel-api/source
+
+      # Copying over the server dependencies.
+      - mv * /panel-api/source
+
+      # Move the other hidden required dependencies
+      - mv -T .env /panel-api/source/.env
+      - mv -T .docker/Dockerfile /panel-api/Dockerfile
+      - mv -T .docker/docker-compose.yml /panel-api/docker-compose-new.yml
+
+  - name: shutdown
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: panel-api
+        path: /panel-api
+    commands:
+      - cd /panel-api
+
+      # @TODO: In the future to make a timeout of 1 minute and maybe save all data from the server before.
+
+      # Running docker compose according to old configuration (In case things changed in the new one)
+      - docker compose down --rmi all
+
+      # Delete the old docker compose
+      - rm -rf /panel-api/docker-compose.yml
+
+      # Rename the new docker compose accordingly
+      - mv -T /panel-api/docker-compose-new.yml /panel-api/docker-compose.yml
+
+  - name: deploy
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: panel-api
+        path: /panel-api
+    commands:
+      - cd /panel-api
+      # Start the building process
+      - docker compose up -d --build
+
+  - name: cleanup
+    image: hurdock/nodejs_ragemp:latest
+    volumes:
+      - name: panel-api
+        path: /panel-api
+    commands:
+      # Delete the source code folder
+      - rm -rf /panel-api/source
+
+      # Delete the dockerfile cause it may be outdated
+      - rm /panel-api/Dockerfile
+
+volumes:
+  - name: panel-api
+    host:
+      path: /home/apps/panel-api
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock

@@ -1,0 +1,136 @@
+// The actionsheet is a system of the phone, not a form component.
+
+@import './variables.scss';
+
+.phone-mockup .device-component-alert {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(#000, 0.2);
+	z-index: $z_index_Alert;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	animation: fadeIn;
+	animation-duration: 0.3s;
+	.modal {
+		padding-left: 12px;
+		padding-right: 16px; // better this way to fix when scrollbar is active
+		padding-bottom: 30px;
+		animation: zoomIn;
+		animation-duration: 0.3s;
+		max-width: 100%;
+		min-width: 250px;
+
+		.content {
+			background-color: #eff0f0;
+			border-radius: 13px;
+			overflow: hidden;
+			box-shadow: $ios_light_card_shadow;
+
+			.title,
+			.description {
+				padding-left: 20px;
+				padding-right: 20px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.title {
+				padding-top: 18px;
+				letter-spacing: 0.3px;
+
+				font-size: 15px;
+				line-height: 17px;
+				margin-bottom: 4px;
+				color: darken(#848484, 60%);
+				font-weight: 500;
+			}
+
+			.description {
+				font-size: 13px;
+				line-height: 20px;
+				letter-spacing: 0.3px;
+				font-weight: 400;
+				padding-bottom: 18px;
+				color: darken(#848484, 20%);
+			}
+
+			.buttons {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				border-top: solid 1px rgba(#b2b2b2, 0.6);
+
+				.entry {
+					font-weight: 500;
+					text-align: center;
+					font-size: 15px;
+					line-height: 15px;
+					padding: 13px 20px;
+					flex: 1;
+					border-right: solid 1px rgba(#b2b2b2, 0.6);
+					&:last-of-type {
+						border-radius: 0;
+					}
+
+					cursor: pointer;
+
+					&.red {
+						color: $color_ios_primary_light_red;
+					}
+					&.blue {
+						color: $color_ios_primary_light_blue;
+					}
+
+					&:hover {
+						background-color: rgba(#e5e5e5, 0.8);
+					}
+				}
+			}
+		}
+	}
+
+	&.dark {
+		background-color: rgba(#000, 0.43);
+
+		.modal {
+			.content {
+				// background-color: $background_elevated_dark; // old one
+				background-color: #181818;
+
+				box-shadow: $ios_dark_card_shadow;
+
+				.title {
+					color: #c3c3c3;
+				}
+
+				.description {
+					color: #8f8f8f;
+				}
+
+				.buttons {
+					border-color: rgba(#fff, 0.02);
+					.entry {
+						border-color: rgba(#fff, 0.02);
+						&:hover {
+							background-color: rgba(#fff, 0.018);
+						}
+						&.blue {
+							color: #0a84ffff;
+						}
+
+						&.red {
+							color: #e33434;
+						}
+					}
+				}
+			}
+		}
+	}
+}

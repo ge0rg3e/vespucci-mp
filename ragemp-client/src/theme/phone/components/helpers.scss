@@ -1,0 +1,56 @@
+@import '../core/variables.scss';
+
+.phone-mockup {
+	.component-scrollable-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex: 1 0 0; // Fix to max-height with flex: 1;
+		max-height: 100%;
+		overflow-y: auto;
+		padding-bottom: 40px;
+		&::-webkit-scrollbar {
+			width: 7px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: rgba(#000, 0.6);
+		}
+
+		&::-webkit-scrollbar-track {
+			background: rgba($color_value_input, 0.9);
+		}
+
+		&.dark {
+			&::-webkit-scrollbar {
+				width: 7px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: rgba(white, 0.01);
+			}
+
+			&::-webkit-scrollbar-track {
+				background: transparent !important;
+			}
+		}
+		&.keyboardActive {
+			padding-right: 7px;
+			&::-webkit-scrollbar {
+				width: 0px;
+			}
+		}
+	}
+
+	.component-placeholder-message {
+		color: $color_text_bg_placeholder;
+		font-size: 12px;
+		line-height: 13px;
+	}
+
+	.component-container {
+		padding: 12px 12px;
+		width: 100%;
+	}
+}

@@ -1,0 +1,124 @@
+@import '../core/variables.scss';
+
+.phone-mockup .screen-content .app-navigation-header {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 45px;
+	padding: 0 4px;
+	margin-top: -20px;
+	position: relative;
+	box-shadow: $ios_light_card_shadow;
+
+	&.light {
+		color: $color_text_light;
+	}
+
+	&.dark {
+		color: $color_text_dark;
+	}
+
+	.icon {
+		min-width: 50px;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		cursor: pointer;
+		// background-color: blue;
+		.elm {
+			font-size: 12px;
+			line-height: 11px;
+			margin-right: 8px;
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+
+		.label {
+			font-size: 13px;
+			line-height: 13px;
+			margin-left: 7px;
+			font-weight: 500;
+		}
+	}
+
+	.button {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		font-weight: 500;
+		font-size: 13px;
+		height: 30px;
+		padding: 0px 10px;
+		letter-spacing: 0.5px;
+
+		&.blue {
+			color: $color_ios_primary_light_blue;
+		}
+		&.red {
+			color: $color_ios_primary_light_red;
+		}
+	}
+	.left {
+		.button {
+			justify-content: flex-start;
+		}
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 10px;
+	}
+
+	.middle {
+		pointer-events: none;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		.title {
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 14px;
+			letter-spacing: 0.4px;
+		}
+	}
+	.right {
+		pointer-events: none;
+		.button {
+			justify-content: flex-end;
+		}
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		padding-right: 10px;
+	}
+
+	.left,
+	.right,
+	.middle {
+		* {
+			pointer-events: all;
+		}
+	}
+}

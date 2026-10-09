@@ -1,0 +1,44 @@
+@import '../../variables/theme.scss';
+
+.layout-footer {
+	width: 100%;
+	background: #11131e;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	box-sizing: border-box;
+	height: 55px;
+	padding: 0px 16px;
+
+	color: $tpb_color_body;
+
+	.contents {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+
+		// Fonts
+		font-size: 13px;
+		line-height: 1.5;
+		color: #9a9fb9;
+
+		// @Responsive
+		@media (max-width: $tablet_responsive_breakpoint) {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-size: 14px;
+			text-align: center;
+			.version {
+				margin-top: 8px;
+			}
+		}
+	}
+
+	// @Responsive
+	@media (max-width: $tablet_responsive_breakpoint) {
+		height: unset;
+		padding: 16px;
+	}
+}

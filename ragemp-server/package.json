@@ -1,0 +1,98 @@
+{
+	"name": "vespucci-ragemp-server",
+	"version": "22.1.0",
+	"description": "Vespucci official server source code.",
+	"main": "index.js",
+	"scripts": {
+		"modules": "git submodule update --init --recursive && git submodule update --remote",
+		"start": "cd dist && ragemp-server.exe",
+		"build": "rollup -c --configProduction",
+		"postbuild": "npm run generate-package-json",
+		"lint": "eslint ./",
+		"lint-watch": "nodemon --watch ./ --exec npm run lint && node",
+		"dev": "rollup -w -c",
+		"generate-package-json": "node ./scripts/generate-package-json.mjs",
+		"format": "prettier --write src/**/*.{mjs,ts,js}",
+		"update": "npm run update --latest --interactive",
+		"cleanup:branch": "git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d",
+		"rebase:master": "git checkout master && git pull --rebase upstream master && git push --force-with-lease origin master",
+		"rebase": "git checkout dev && git rebase master && git push --force-with-lease origin dev"
+	},
+	"author": "Vatto",
+	"contributors": [
+		"George",
+		"AdrianT_",
+		"Ghosty"
+	],
+	"license": "ISC",
+	"dependencies": {
+		"@ragempcommunity/types-client": "github:ragempcommunity/ragemp-types#types-client",
+		"@ragempcommunity/types-server": "github:ragempcommunity/ragemp-types#types-server",
+		"@vmp/i18n": "github:vespucci-mp/i18n#build",
+		"axios": "0.25.0",
+		"colorette": "2.0.16",
+		"dotenv": "16.0.0",
+		"fs-jetpack": "4.3.1",
+		"lodash": "4.17.21",
+		"moment": "2.29.4",
+		"mysql2": "2.3.3",
+		"rage-rpc": "github:vespucci-mp/rage-rpc#build",
+		"sequelize": "6.15.1",
+		"sha256": "0.2.0",
+		"socket.io": "4.5.1",
+		"uuid": "8.3.2"
+	},
+	"devDependencies": {
+		"@ragemp/types-client": "github:ragempcommunity/ragemp-types#types-client",
+		"@ragemp/types-server": "github:ragempcommunity/ragemp-types#types-server",
+		"@rollup/plugin-commonjs": "21.0.1",
+		"@rollup/plugin-json": "4.1.0",
+		"@rollup/plugin-node-resolve": "13.0.6",
+		"@rollup/plugin-replace": "3.0.1",
+		"@swc/core": "1.2.204",
+		"@types/ip": "1.1.0",
+		"@types/lodash": "4.14.182",
+		"@types/node": "17.0.15",
+		"@types/sha256": "0.2.0",
+		"@types/uuid": "8.3.4",
+		"@typescript-eslint/eslint-plugin": "5.30.7",
+		"@typescript-eslint/parser": "5.30.7",
+		"path": "0.12.7",
+		"prettier": "2.5.1",
+		"read-pkg": "7.0.0",
+		"rollup": "2.67.1",
+		"rollup-plugin-swc3": "0.1.4",
+		"rollup-plugin-tsconfig-paths": "1.1.6",
+		"tslib": "2.5.0",
+		"typescript": "4.4.4",
+		"write-pkg": "5.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vespucci-mp/ragemp-server.git"
+	},
+	"bugs": {
+		"url": "https://github.com/vespucci-mp/ragemp-server/issues"
+	},
+	"homepage": "https://github.com/vespucci-mp/ragemp-server#readme",
+	"prettier": {
+		"$schema": "http://json.schemastore.org/prettierrc",
+		"endOfLine": "lf",
+		"printWidth": 200,
+		"quoteProps": "as-needed",
+		"semi": true,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "none",
+		"useTabs": true,
+		"overrides": [
+			{
+				"files": "*.yml",
+				"options": {
+					"tabWidth": 2,
+					"useTabs": false
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,440 @@
+@import '../../core/variables.scss';
+@import '../../core/variables.scss';
+
+$application_tone: rgba(94, 92, 230, 1);
+$application_tone_text: #7d7ceb;
+
+.phone-app-route-vehicles {
+	display: flex;
+	background-color: $background_dark;
+	color: $color_text_dark;
+
+	.status-bar {
+		background-color: $background_dark;
+		color: $color_text_dark;
+	}
+
+	.app-navigation-header {
+		color: $color_text_dark !important;
+		box-shadow: none !important;
+		border-bottom: none !important;
+		.button {
+			color: #fff !important;
+		}
+	}
+
+	.screen-content {
+		color: $color_text_dark_2;
+	}
+
+	.app-component-loading-screen {
+		.image {
+			background-image: url('/assets/images/phone/loadings/vehicles.gif');
+			height: 60px;
+			width: 120px;
+			margin-bottom: 20px;
+		}
+	}
+
+	.app-navigation-footer {
+		border-top: solid 1px rgba(#fff, 0.013);
+		.item {
+			&.selected {
+				color: #52528d;
+			}
+		}
+	}
+
+	.app-navigation-header {
+		height: 45px;
+		margin-top: -12px !important;
+		color: rgb(223, 223, 223);
+
+		.icon {
+			i {
+				font-size: 15px;
+				line-height: 15px;
+			}
+		}
+
+		.middle {
+			.title {
+				max-width: 170px;
+				text-align: center;
+			}
+		}
+		// border-bottom: solid 1px rgba(#fff, 0.01) !important;
+	}
+}
+
+.phone-app-route-vehicles .screen {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+
+	.padding-container {
+		padding: 0px 12px;
+	}
+}
+
+.phone-app-route-vehicles .screen.list {
+	.entries {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		margin-top: 10px;
+		.entry {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			width: 100%;
+			padding: 20px;
+			background-color: $background_elevated_dark;
+			border-radius: 6px;
+			margin-bottom: 8px;
+			min-height: 110px;
+			cursor: pointer;
+			position: relative;
+			transition: all 0.2s ease-in;
+			overflow: hidden;
+			border-bottom: solid 2px rgba(#474758, 0.1);
+			border-bottom-left-radius: 6px;
+			border-bottom-right-radius: 6px;
+			animation: fadeIn;
+			/* referring directly to the animation's @keyframe declaration */
+			animation-duration: 0.6s;
+
+			&::after {
+				position: absolute;
+				top: 0px;
+				right: -20px;
+				width: 170px;
+				height: 180px;
+				background-color: rgba(#14141b, 0.0025);
+
+				content: ' ';
+				transform: skew(-28deg);
+				transition: all 0.2s ease-in-out;
+			}
+
+			.model-name {
+				color: #9b9a9b;
+				font-size: 15px;
+				line-height: 15px;
+				margin-bottom: 0px;
+				font-weight: 400;
+				margin-bottom: 4px;
+				max-width: 145px;
+				line-height: 16px;
+				text-align: left;
+			}
+
+			.status {
+				font-size: 15px;
+				line-height: 15px;
+				color: #5f5f5f;
+				font-weight: 500;
+
+				&.status-1 {
+					color: $application_tone_text;
+				}
+				&.status-2 {
+					color: rgb(231, 156, 71);
+					opacity: 0.6;
+				}
+			}
+
+			.odometer {
+				font-size: 12px;
+				line-height: 12px;
+				color: #7a7a7b;
+				margin-top: auto;
+			}
+
+			.image {
+				z-index: 2;
+				position: absolute;
+				top: 0;
+				right: 10px;
+				height: 100%;
+				width: 100px;
+				display: flex;
+				align-items: flex-end;
+				justify-content: center;
+				flex-direction: column;
+				.thumbnail {
+					width: 100%;
+					height: 50px;
+					background-repeat: no-repeat;
+					object-position: center center;
+					object-fit: contain;
+					position: relative;
+					z-index: 4;
+					filter: grayscale(100%);
+					opacity: 0;
+					transition: opacity 0.4s ease-in;
+					&.loaded {
+						opacity: 1;
+					}
+				}
+				.thumbnail-shadow {
+					position: absolute;
+					bottom: 24px;
+					right: 0;
+					height: 35px;
+					width: 100%;
+					content: ' ';
+					background-color: rgba(#fff, 0.025);
+					box-shadow: rgba(#fff, 0.04) 0px 0px 50px 15px;
+					z-index: -1;
+					border-radius: 100%;
+				}
+			}
+
+			&.status-1,
+			&.status-2 {
+				.image {
+					.thumbnail {
+						filter: grayscale(0%) !important;
+					}
+					.thumbnail-shadow {
+						background-color: rgba(#fff, 0.07);
+						box-shadow: rgba(#fff, 0.1) 0px 0px 50px 15px;
+						// background-color: rgba($application_tone, 0.09);
+						// box-shadow: rgba(#5a59a7, 0.12) 0px 0px 50px 15px;
+					}
+				}
+			}
+
+			&.status-1 {
+				border-bottom-color: rgba($application_tone, 0.2);
+			}
+
+			&.status-2 {
+				border-bottom-color: rgba(231, 156, 71, 0.1);
+			}
+		}
+	}
+
+	.component-scrollable-container {
+		padding-bottom: 22px;
+	}
+}
+
+.phone-app-route-vehicles .screen.menu {
+	.image {
+		height: 167px;
+		width: 100%;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		flex-direction: column;
+		position: relative;
+
+		.thumbnail {
+			width: 100%;
+			height: 70px;
+			object-position: center center;
+			background-repeat: no-repeat;
+			object-fit: contain;
+			position: relative;
+			z-index: 4;
+			opacity: 0;
+			transition: all 0.4s ease-in;
+			filter: grayscale(0%);
+
+			&.loaded {
+				opacity: 1;
+			}
+		}
+
+		&.status-0 {
+			.thumbnail {
+				filter: grayscale(100%);
+			}
+		}
+
+		.shadow {
+			position: absolute;
+			bottom: 40px;
+			right: 0;
+			height: 35px;
+			width: 100%;
+			content: ' ';
+			background-color: rgba($application_tone, 0.04);
+			box-shadow: rgba($application_tone, 0.07) 0px 0px 50px 15px;
+			z-index: -1;
+			border-radius: 100%;
+			animation: fadeIn;
+			/* referring directly to the animation's @keyframe declaration */
+			animation-duration: 0.6s;
+		}
+
+		.text {
+			position: absolute;
+			top: 25px;
+			right: 0px;
+			z-index: -1;
+			font-size: 38px;
+			line-height: 38px;
+			font-weight: 700;
+			color: $application_tone_text;
+			opacity: 0.5;
+			width: 100%;
+			text-align: center;
+			text-transform: uppercase;
+			transform: rotate3d(0, 5, 5, 356deg);
+			text-shadow: #000 1px 1px 10px;
+
+			&.status-0 {
+				font-size: 46px;
+				line-height: 46px;
+			}
+			&.status-1 {
+				font-size: 50px;
+				line-height: 50px;
+			}
+		}
+	}
+
+	.purchase-date {
+		margin-top: 24px;
+		font-weight: 700;
+		color: $color_text_dark_2;
+		font-size: 14px;
+		line-height: 14px;
+	}
+
+	.divider {
+		border-bottom: solid 1px rgba(#fff, 0.02);
+		width: 100%;
+		margin-top: 18px;
+		margin-bottom: 18px;
+		display: block;
+	}
+
+	.odometer-info {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		.left-side {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			color: $color_text_dark_2;
+
+			.icon {
+				margin-right: 6px;
+				.elm {
+					font-size: 13px;
+					line-height: 13px;
+				}
+			}
+			.label {
+				font-weight: 600;
+				font-size: 14px;
+				line-height: 14px;
+			}
+		}
+		.right-side {
+			flex: 1;
+			align-items: center;
+			vertical-align: center;
+			text-align: right;
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 14px;
+		}
+	}
+
+	.quick-controls {
+		margin-top: 18px;
+		background-color: rgba($background_elevated_dark, 1);
+		border-radius: 6px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		overflow: hidden;
+		.entry {
+			flex: 1;
+			text-align: center;
+			cursor: pointer;
+			height: 100%;
+			padding: 14px 0px;
+			flex-direction: column;
+
+			&:first-of-type {
+				padding-left: 8px;
+			}
+			&:last-of-type {
+				padding-right: 8px;
+			}
+
+			.elm {
+				pointer-events: none;
+				font-size: 17px;
+				line-height: 17px;
+				color: rgba(#fff, 0.6);
+				transition: all 0.3s ease-in;
+			}
+
+			.label {
+				font-size: 12px;
+				line-height: 12px;
+				margin-top: 8px;
+				transition: all 0.3s ease-in;
+			}
+			&:hover {
+				.elm {
+					color: #fff;
+				}
+				.label {
+					color: #fff;
+				}
+			}
+
+			&.disabled {
+				.elm {
+					color: rgba(#fff, 0.2);
+				}
+
+				pointer-events: none;
+			}
+		}
+	}
+
+	.cta-spawn {
+		margin-top: 18px;
+		width: 100%;
+		// background-color: rgba(#fff, 0.01);
+		padding: 17px 16px;
+		font-size: 15px;
+		line-height: 15px;
+		cursor: pointer;
+		text-align: center;
+		border-radius: 8px;
+		font-weight: 700;
+		color: $application_tone_text;
+		border: solid 2px rgba($application_tone_text, 0.5);
+	}
+}
+
+.phone-app-route-vehicles .screen.actions {
+	.component-scrollable-container {
+		padding-bottom: 16px !important;
+	}
+	.app-component-data-list {
+		.variant-custom {
+			background-color: #2e2e38;
+			.elm-fa {
+				color: #fff;
+			}
+		}
+	}
+}
+
+.phone-app-route-vehicles .screen.information {
+	.component-scrollable-container {
+		// padding-bottom: 0;
+	}
+}

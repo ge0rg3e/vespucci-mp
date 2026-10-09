@@ -1,0 +1,818 @@
+@import '../../core/variables.scss';
+
+// // Fake background
+body {
+	// background-image: url('https://i.ibb.co/RHhGTJ5/R-G-ultipl-yer-06-01-2023-15-54-35.png') !important;
+	// background-image: url('https://images.hdqwalls.com/wallpapers/2020-nfs-heat-polestar-4k-u7.jpg') !important;
+	// background-size: cover !important;
+	// background-repeat: no-repeat !important;
+	// background-position: center center;
+}
+
+.system-tunning {
+	overflow: hidden;
+	z-index: 500;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+
+	// Animations
+	animation: fadeIn;
+	animation-duration: 0.4s;
+
+	.layout-content-area {
+		position: relative;
+		height: 100%;
+		width: 100%;
+
+		// Positioning..
+		max-width: 95vw;
+
+		@media (min-width: 1366px) {
+			max-width: 80vw;
+		}
+
+		@media (min-width: 1700px) {
+			max-width: 75vw;
+		}
+
+		@media (min-width: 2200px) {
+			max-width: 60vw;
+		}
+
+		margin: 0 auto;
+		overflow: hidden;
+
+		// Positioning
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+.system-tunning .layout-header {
+	// Animation
+	animation: fadeIn;
+	animation-duration: 0.8s;
+
+	width: 100%;
+	max-width: 1800px; // Needed!!
+
+	height: 120px;
+
+	@media (min-width: 1700px) {
+		height: 160px;
+	}
+
+	position: relative;
+	// background-color: blue;
+
+	// Scalling it down for small screens..
+	@media (max-width: 1700px) {
+		transform: scale(0.8);
+		transform-origin: top center;
+	}
+
+	// Positioning
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	.wrapper {
+		height: 100%;
+		width: 60%;
+
+		@media (min-width: 1400px) {
+			width: 70%;
+		}
+
+		position: relative;
+		z-index: 10;
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		// background-color: blue;
+	}
+
+	.component-menu {
+		// background-color: red;
+		flex: 1;
+		position: relative;
+		max-height: 80%;
+		.entry {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			width: 25%;
+
+			@media (min-width: 1600px) {
+				width: 20%;
+			}
+
+			@media (min-width: 1800px) {
+				width: 16.6%;
+			}
+
+			// max-height: 140px;
+			// max-width: 140px;
+
+			position: relative;
+
+			.content {
+				height: 100%;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				text-align: center;
+				margin: 0px 5px;
+				position: relative;
+
+				.badge {
+					position: absolute;
+					top: 5px;
+					right: 25px;
+
+					.elm {
+						font-size: 16px;
+						line-height: 1;
+						color: $color_primary;
+					}
+				}
+
+				.label {
+					display: block;
+					margin-top: 8px;
+
+					text-transform: uppercase;
+					font-family: 'Chalet Comprime - Cologne Eigthy';
+					font-weight: 400;
+					font-size: 20px;
+					line-height: 1;
+				}
+			}
+
+			.corners {
+				position: absolute;
+				top: 0px;
+				// left: 20px;
+				// width: 70%;
+				width: 100%;
+				left: 0px;
+				height: 100%;
+
+				// background-color: blue;
+
+				border-color: transparent;
+
+				.shared-left {
+					content: ' ';
+					border-color: inherit;
+
+					&::before {
+						content: ' ';
+						position: absolute;
+						border-top: solid 4px;
+						border-color: inherit;
+						width: 20%;
+					}
+
+					&::after {
+						content: ' ';
+						position: absolute;
+						border-left: solid 4px;
+						border-color: inherit;
+						height: 20%;
+					}
+				}
+
+				.shared-right {
+					content: ' ';
+					border-color: inherit;
+
+					&::before {
+						content: ' ';
+						position: absolute;
+						border-top: solid 4px;
+						border-color: inherit;
+						width: 20%;
+					}
+
+					&::after {
+						content: ' ';
+						position: absolute;
+						border-right: solid 4px;
+						border-color: inherit;
+						height: 20%;
+					}
+				}
+
+				.left-top {
+					&::before {
+						top: 0px;
+						left: 0px;
+					}
+
+					&::after {
+						top: 0px;
+						left: 0px;
+					}
+				}
+
+				.bottom-left {
+					content: ' ';
+					border-color: inherit;
+
+					&::before {
+						bottom: 0px;
+						left: 0px;
+					}
+
+					&::after {
+						bottom: 0px;
+						left: 0px;
+					}
+				}
+
+				.right-top {
+					&::before {
+						top: 0px;
+						right: 0px;
+					}
+
+					&::after {
+						top: 0px;
+						right: 0px;
+					}
+				}
+
+				.bottom-right {
+					content: ' ';
+					border-color: inherit;
+
+					&::before {
+						bottom: 0px;
+						right: 0px;
+					}
+
+					&::after {
+						bottom: 0px;
+						right: 0px;
+					}
+				}
+			}
+
+			.image {
+				object-fit: contain;
+				background-repeat: no-repeat;
+				background-position: center center;
+				height: 50%;
+				width: 50%;
+				opacity: 0;
+				transition: 0.3s ease-in;
+
+				&.loaded {
+					opacity: 1;
+				}
+			}
+
+			&.hovered {
+				.label-block {
+					display: flex;
+				}
+				.corners {
+					border-color: rgba(#fff, 0.5);
+				}
+			}
+
+			&.selected {
+				.corners {
+					border-color: $color_primary;
+					// Animation
+					animation: zoomInAndOut ease-in;
+					animation-iteration-count: infinite;
+					animation-duration: 0.9s;
+				}
+			}
+		}
+	}
+
+	.component-balance {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin-left: 16px;
+		height: 100%;
+		width: 130px;
+		text-shadow: $general_text_shadow;
+
+		.text {
+			font-size: 20px;
+			line-height: 1.1;
+			text-transform: uppercase;
+			font-family: 'Chalet Comprime - Cologne Eigthy';
+			font-weight: 400;
+
+			@media (min-width: 1400px) {
+				font-size: 24px;
+			}
+		}
+
+		.value {
+			font-size: 24px;
+			line-height: 1.2;
+			font-family: 'Chalet Comprime - Cologne Eigthy';
+			font-weight: 500;
+
+			text-transform: uppercase;
+			color: #6cc46c;
+
+			@media (min-width: 1400px) {
+				font-size: 28px;
+			}
+		}
+	}
+}
+
+.system-tunning .layout-header .component-shadow {
+	position: absolute;
+	z-index: 5;
+	top: 0px;
+	left: 0px;
+	content: ' ';
+	height: 300px;
+	width: 100%;
+	background-image: url('/assets/images/systems/businesses/tunning/header.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: top center;
+	// background-color: rgba(#000, 0.2);
+	opacity: 0;
+	transition: 0.3s ease-in;
+
+	&.loaded {
+		opacity: 0.8;
+	}
+
+	// Animation
+	animation: fadeIn;
+	animation-duration: 1.3s;
+}
+
+.system-tunning .layout-controls {
+	// Positioning
+	position: absolute;
+	bottom: 0px;
+	left: 140px;
+
+	// Centering..
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-end;
+	padding-bottom: 10px;
+
+	// For better positioning of shadow..
+	height: 300px;
+	min-width: 800px;
+
+	// Scalling it down for small screens..
+	@media (max-width: 1600px) {
+		transform: scale(0.6);
+		transform-origin: bottom left;
+	}
+
+	.entries {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		position: relative;
+		z-index: 15;
+
+		.entry {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-right: 8px;
+			border-radius: 7px;
+			padding: 3px 4px;
+			border: solid 3.5px rgba(#000, 1);
+			background: repeating-linear-gradient(
+				315deg,
+				rgb(15, 15, 15),
+				rgb(15, 15, 15) 10px,
+				rgb(20, 20, 20) 10px,
+				rgb(20, 20, 20) 20px
+			);
+
+			&.clickable {
+				cursor: pointer;
+			}
+
+			.key {
+				background-color: rgb(15, 15, 15);
+				border-radius: 7px;
+				padding: 4px;
+
+				font-family: 'Chalet Comprime - Hong Kong Sixty';
+				font-weight: 500;
+				font-size: 16px;
+				line-height: 1;
+
+				min-height: 38px;
+
+				padding: 0px 10px;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				color: $color_primary;
+				border: solid 2px $color_primary;
+
+				.icon {
+					font-size: 13px;
+					&.large {
+						font-size: 15px;
+					}
+				}
+			}
+
+			.label {
+				padding: 8px;
+				min-width: 120px;
+				text-align: left;
+				color: rgb(223, 223, 223);
+				color: $color_primary;
+
+				font-family: 'Chalet Comprime - Cologne Eigthy';
+				font-weight: 400;
+				font-size: 20px;
+				line-height: 1;
+			}
+		}
+	}
+
+	opacity: 0;
+	transition: all 0.3s ease-in;
+
+	&.loaded {
+		opacity: 1;
+	}
+	&::before {
+		// Positioning..
+		position: absolute;
+		bottom: 0px;
+		left: -150px;
+		z-index: 4;
+
+		content: ' ';
+
+		// Sizing
+		// max-width: 1200px;
+		min-width: 805px;
+		height: 180px;
+
+		// opacity: 0.9;
+
+		// Background image..
+		background-image: url('/assets/images/systems/businesses/tunning/controlsShadow.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: bottom left;
+
+		opacity: 0.85;
+	}
+}
+
+.system-tunning .layout-dialog {
+	// Positioning
+	position: absolute;
+	top: 38vh;
+	right: 80px;
+	z-index: 10;
+
+	&.rt {
+		top: 30vh;
+
+		@media (max-width: 1600px) {
+			top: 20vh;
+		}
+
+		@media (min-width: 1600px) and (max-width: 1800px) {
+			top: 25vh;
+		}
+	}
+
+	// Sizing
+	width: 360px;
+
+	// Styling
+	border-radius: 5px;
+	border: solid 1px rgba(#fff, 0.06);
+	background: rgba(15, 15, 15, 0.8);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+
+	// Scalling it down for small screens..
+	@media (max-width: 1600px) {
+		transform: scale(0.6);
+		transform-origin: center center;
+	}
+
+	// Scalling it down for small screens..
+	@media (min-width: 1600px) and (max-width: 1800px) {
+		transform: scale(0.8);
+		transform-origin: center center;
+	}
+
+	.content {
+		// For better in-game look..
+		text-shadow: #000 0px 0px 3px;
+		padding: 24px 16px;
+
+		.title {
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 1.2;
+			color: rgb(226, 226, 226);
+			margin-bottom: 4px;
+			font-family: 'Chalet Comprime - Cologne Eigthy';
+		}
+
+		.description {
+			color: rgb(179, 179, 179);
+			font-weight: 400;
+			font-size: 14px;
+
+			line-height: 1.5;
+		}
+
+		.prices {
+			border-top: solid 1px rgba(#fff, 0.04);
+			margin-top: 24px;
+			padding-top: 24px;
+
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			&.variant-v2 {
+				border-top: none;
+				margin-top: 16px;
+				padding-top: 0px;
+			}
+			.entry {
+				flex-basis: 50%;
+				font-family: 'Chalet Comprime - Cologne Eigthy';
+
+				.label {
+					font-weight: 500;
+					color: $color_primary;
+					font-weight: 400;
+					font-size: 22px;
+					line-height: 1.1;
+				}
+
+				.value {
+					color: rgb(226, 226, 226);
+					font-weight: 400;
+					font-size: 22px;
+					line-height: 1.2;
+				}
+			}
+		}
+
+		.settings {
+			margin-top: 8px;
+
+			&.spacing {
+				margin-top: 24px;
+				padding-top: 24px;
+			}
+
+			&.border {
+				border-top: solid 1px rgba(#fff, 0.04);
+			}
+
+			width: 100%;
+
+			&.plate {
+				padding-top: 12px;
+				margin-top: 12px;
+			}
+
+			&.paint {
+				padding-top: 4px;
+			}
+
+			.chrome-picker {
+				width: 100%;
+				font-family: 'Rubik' !important;
+				background-color: rgba(rgb(49, 49, 49), 0.3) !important;
+				padding-bottom: 6px;
+				border-radius: 4px !important;
+				overflow: hidden;
+				box-shadow: none !important;
+
+				// @targeting the "HEX" input.
+				> :nth-child(2) {
+					> :nth-child(2) {
+						> :nth-child(1) {
+							input {
+								background-color: transparent !important;
+								border: solid 1px rgba(#fff, 0.07) !important;
+								color: #fff !important;
+								font-size: 14px;
+								font-family: 'Rubik' !important;
+								border-radius: 3px !important;
+								box-shadow: none !important;
+							}
+							label {
+								display: none !important;
+							}
+						}
+
+						// The "format changer"
+						> :nth-child(2) {
+							display: none;
+							background: blue !important;
+						}
+					}
+				}
+			}
+
+			.tabs {
+				border-bottom: solid 1px rgba(#fff, 0.04);
+
+				margin-bottom: 24px;
+
+				.MuiButtonBase-root {
+					font-size: 12px !important;
+				}
+			}
+
+			.rgb-picker {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			&.paint.special {
+				.tabs {
+					margin-bottom: 8px;
+				}
+				.entries {
+					display: flex;
+					flex-direction: column;
+					max-height: 300px;
+					overflow-y: auto;
+					width: 100%;
+
+					.entry {
+						display: flex;
+						align-items: center;
+						justify-content: flex-start;
+						padding: 12px 0px;
+						border-bottom: solid 1px rgba(#fff, 0.03);
+						transition: all 0.2s ease-in;
+						cursor: pointer;
+
+						&:last-of-type {
+							margin-bottom: 0;
+							border-bottom: none;
+						}
+
+						.color {
+							height: 22px;
+							width: 22px;
+							border-radius: 4px;
+							margin-right: 8px;
+							border-radius: 100%;
+							box-shadow: rgba(#000, 0.5) 1px 1px 1px 1px;
+						}
+
+						.details {
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: flex-start;
+
+							.label {
+								font-size: 13px;
+								font-weight: 400;
+								line-height: 1.2;
+								color: rgb(226, 223, 223);
+							}
+
+							.differentType {
+								color: rgba(#fff, 0.6);
+								font-size: 14px;
+								line-height: 1;
+								margin-top: 4px;
+							}
+						}
+						&.selected {
+							.color {
+								// border: solid 3px $color_primary;
+							}
+							.details {
+								.label {
+									color: $color_primary;
+								}
+							}
+						}
+					}
+
+					&::-webkit-scrollbar {
+						width: 10px;
+					}
+
+					&::-webkit-scrollbar-thumb {
+						background: rgba(white, 0.2);
+					}
+
+					&::-webkit-scrollbar-track {
+						background: rgba(0, 0, 0, 0.09);
+					}
+				}
+			}
+		}
+	}
+
+	.options {
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		background: rgba(255, 255, 255, 0.012);
+
+		// box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+
+		height: 55px;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row;
+
+		.arrow {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 55px;
+
+			.elm {
+				font-size: 18px;
+				line-height: 1;
+			}
+		}
+
+		.value {
+			font-weight: 400;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			.current {
+				margin-left: 4px;
+
+				display: inline-flex;
+				align-items: center;
+				height: 100%;
+				.icon {
+					font-size: 13px;
+					line-height: 1;
+					color: $color_primary;
+				}
+			}
+
+			font-family: 'Chalet Comprime - Cologne Eigthy';
+			font-size: 22px;
+			line-height: 1;
+		}
+	}
+}
+
+@keyframes zoomInAndOut {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(0.85);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}

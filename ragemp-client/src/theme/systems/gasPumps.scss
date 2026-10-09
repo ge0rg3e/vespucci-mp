@@ -1,0 +1,115 @@
+@import '../core/variables.scss';
+
+// Fake background
+// body {
+// 	background-image: url('https://i.ibb.co/nsPxhwC/R-G-ulti-la-er-27-10-2022-20-32-53.png') !important;
+// 	background-size: cover !important;
+// 	background-repeat: no-repeat !important;
+// }
+
+.system-gasPumps {
+	justify-content: center;
+	flex-direction: column;
+	align-items: flex-end;
+	position: fixed;
+	row-gap: 30px;
+	display: flex;
+	right: 0;
+	top: 0;
+	padding-right: 46px;
+	padding-left: 120px;
+
+	height: 100vh;
+	width: 90vw;
+	max-width: 850px;
+
+	background: rgb(21, 24, 37);
+	background: linear-gradient(
+		90deg,
+		rgba(21, 24, 37, 0) 0%,
+		rgba(21, 24, 37, 0.6783088235294117) 27%,
+		rgba(21, 24, 37, 0.8855917366946778) 57%,
+		rgba(21, 24, 37, 1) 100%
+	);
+
+	.content {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		align-items: flex-end;
+		justify-content: flex-end;
+		max-width: 400px;
+	}
+
+	.total-price {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+		margin-bottom: 24px;
+		.label {
+			text-transform: uppercase;
+			color: rgba(#fff, 0.5);
+		}
+
+		.value {
+			justify-content: flex-end;
+			margin-top: 10px;
+			column-gap: 10px;
+			display: flex;
+			width: 100%;
+
+			.number {
+				background-color: rgba(gray, 0.2);
+				border: 3px solid rgba(gray, 0.4);
+				justify-content: center;
+				align-items: center;
+				border-radius: 3px;
+				font-weight: 500;
+				font-size: 40px;
+				line-height: 40px;
+				display: flex;
+				width: 20%;
+				aspect-ratio: 1 /1;
+			}
+		}
+	}
+
+	.info {
+		justify-content: space-between;
+		align-items: center;
+		display: flex;
+		width: 100%;
+		margin-bottom: 24px;
+		.price-liter,
+		.liters {
+			.value {
+				color: rgba(#fff, 0.8);
+				font-weight: 500;
+				font-size: 40px;
+			}
+
+			.label {
+				text-transform: uppercase;
+				color: rgba(#fff, 0.5);
+			}
+		}
+	}
+
+	.pay {
+		box-shadow: 0px 15px 20px rgba($color_primary_darker, 0.4);
+		background-color: $color_primary_darker;
+		text-transform: uppercase;
+		color: rgba(#fff, 0.8);
+		letter-spacing: 3px;
+		border-radius: 3px;
+		font-weight: 550;
+		font-size: 25px;
+		cursor: pointer;
+		outline: none;
+		height: 60px;
+		border: none;
+		width: 100%;
+		margin-top: 24px;
+	}
+}

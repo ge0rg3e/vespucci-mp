@@ -1,0 +1,286 @@
+@import '../core/variables.scss';
+@import '../../core/variables.scss';
+
+.phone-app-route-settings {
+	display: flex;
+	background-color: $background_true_dark;
+	color: $color_text_dark;
+
+	.status-bar {
+		color: $color_text_dark;
+	}
+
+	.app-navigation-header {
+		margin-bottom: 20px;
+	}
+
+	.component-view {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+
+	.closing-area {
+		bottom: -8px !important;
+	}
+
+	.component-subMenus {
+		padding: 0 10px;
+
+		.subMenu {
+			display: flex;
+			position: relative;
+			animation: fadeIn 0.3s forwards;
+			justify-content: space-between;
+			background-color: #120e14;
+			align-items: center;
+			border-radius: 6px;
+			padding: 0 10px;
+			cursor: pointer;
+			height: 36px;
+			width: 100%;
+
+			.left {
+				display: flex;
+				align-items: center;
+				column-gap: 10px;
+
+				.icon {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					border-radius: 5px;
+					height: 25px;
+					width: 25px;
+				}
+			}
+
+			.right {
+				display: flex;
+				color: rgba(#fff, 0.5);
+				align-items: center;
+				column-gap: 10px;
+			}
+
+			.divider {
+				position: absolute;
+				background-color: #1a161d;
+				height: 1.5px;
+				width: 85%;
+				bottom: 0%;
+				right: 1.5%;
+			}
+		}
+	}
+}
+
+.phone-app-route-settings .component-view.menu {
+	.header {
+		margin-bottom: 14px;
+		padding: 0 10px;
+
+		.label {
+			margin-bottom: 10px;
+			font-weight: bold;
+			line-height: 38px;
+			font-size: 25px;
+		}
+
+		.search-bar {
+			display: flex;
+			background-color: #120e14;
+			align-items: center;
+			border-radius: 8px;
+			padding: 0 10px;
+			height: 33px;
+			width: 100%;
+
+			i {
+				margin-right: 10px;
+			}
+
+			input {
+				background-color: transparent;
+				font-family: 'iOS';
+				color: #ffffff;
+				outline: none;
+				border: none;
+				height: 33px;
+			}
+		}
+	}
+
+	.profile-card {
+		display: flex;
+		background-color: #120e14;
+		justify-content: flex-start;
+		flex-direction: row;
+		align-items: center;
+		border-radius: 8px;
+		text-align: left;
+		margin-top: 14px;
+		cursor: pointer;
+		padding: 0 10px;
+		height: 55px;
+		width: 100%;
+
+		.avatar {
+			background-color: rgb(19, 19, 19);
+			border-radius: 100%;
+			margin-right: 8px;
+			height: 42px;
+			width: 42px;
+
+			// content
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.icon {
+				font-size: 18px;
+				line-height: 1;
+				color: white;
+			}
+		}
+
+		.details {
+			.username {
+				font-size: 14px;
+				line-height: 1.2;
+				font-weight: 500;
+				color: white;
+			}
+
+			.description {
+				color: rgba(#fff, 0.4);
+				font-size: 12px;
+			}
+		}
+	}
+
+	.component-subMenus .subMenu {
+		&:last-child,
+		&:nth-child(2) {
+			.divider {
+				display: none;
+			}
+		}
+	}
+}
+
+.phone-app-route-settings .component-view.numbers {
+	.blocked-numbers {
+		padding: 0 10px;
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+
+			.label {
+				text-transform: uppercase;
+				color: rgba(#fff, 0.5);
+				margin-left: 2px;
+				font-size: 11px;
+			}
+
+			.fa-plus {
+				margin-right: 2px;
+				cursor: pointer;
+				font-size: 13px;
+			}
+		}
+
+		.no-entries {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			margin: 30px 0;
+			width: 100%;
+
+			.icon {
+				color: rgba(255, 255, 255, 0.5);
+				margin-bottom: 8px;
+				font-size: 22px;
+			}
+
+			.heading {
+				font-size: 13px;
+			}
+		}
+
+		.entries {
+			margin-top: 5px;
+
+			.entry {
+				display: flex;
+				justify-content: space-between;
+				background-color: #120e14;
+				align-items: center;
+				margin-bottom: 15px;
+				border-radius: 5px;
+				padding: 0 10px;
+				height: 50px;
+				width: 100%;
+
+				.left {
+					display: flex;
+					align-items: center;
+					column-gap: 10px;
+
+					.icon {
+						color: #c53c3c;
+					}
+
+					.content {
+						display: flex;
+						align-items: flex-start;
+						justify-content: center;
+						flex-direction: column;
+
+						.number {
+							margin-bottom: -5px;
+						}
+
+						.at {
+							color: rgba(#fff, 0.5);
+							font-size: 12px;
+						}
+					}
+				}
+
+				.right {
+					width: 20px;
+
+					.unblock {
+						cursor: pointer;
+						color: #c53c3c;
+					}
+				}
+			}
+		}
+	}
+}
+
+.phone-app-route-settings .component-view.sounds {
+	.ring-tone {
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 10px;
+			width: 100%;
+
+			.label {
+				text-transform: uppercase;
+				color: rgba(#fff, 0.5);
+				margin-bottom: 4px;
+				margin-left: 2px;
+				font-size: 11px;
+			}
+		}
+	}
+}

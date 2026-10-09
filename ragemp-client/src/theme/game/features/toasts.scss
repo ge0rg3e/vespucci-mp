@@ -1,0 +1,144 @@
+@import '../../core/variables.scss';
+
+.hud-toasts {
+	position: absolute;
+
+	bottom: 24px;
+	@media (max-width: 1400px) {
+		bottom: 12px;
+	}
+
+	left: 50%;
+	z-index: $z_index_alerts;
+	width: 450px;
+	max-width: 45vw;
+
+	transform: translate(-50%, 0px);
+
+	.entry {
+		// Contents
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+		width: 100%;
+
+		// Appearance
+		border-radius: 6px;
+
+		// Colors
+		box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 2px;
+		border-bottom: solid 4.3px rgba(#000, 0.14);
+
+		box-sizing: border-box;
+		// Spacing..
+		padding: 12px 0px;
+		margin-bottom: 6px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+
+		&.visible {
+			animation: fadeIn;
+			animation-duration: 0.8s;
+		}
+
+		.icon {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			width: 50px;
+
+			.elm {
+				font-size: 18px;
+				line-height: 1;
+			}
+
+			@media (max-width: 1400px) {
+				width: 40px;
+
+				.elm {
+					font-size: 16px;
+				}
+			}
+		}
+
+		.details {
+			padding-right: 8px;
+			font-size: 13px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+
+			@media (max-width: 1400px) {
+				font-size: 11px;
+			}
+
+			.label {
+				font-weight: 500;
+				line-height: 1.3;
+				color: rgb(202, 202, 202);
+			}
+
+			.message {
+				line-height: 1.3;
+			}
+		}
+
+		&.success {
+			background: #426b52;
+
+			.label,
+			.message {
+				color: #ffffff;
+			}
+
+			.icon .elm {
+				color: #689b7d;
+			}
+		}
+
+		&.error {
+			background: #9e3f3f;
+
+			.label,
+			.message {
+				color: #ffffff;
+			}
+
+			.icon .elm {
+				color: #e9b2b2;
+			}
+		}
+
+		&.warning {
+			background: #be8926;
+
+			.label,
+			.message {
+				color: #ffffff;
+			}
+
+			.icon .elm {
+				color: rgb(243, 203, 135);
+			}
+		}
+
+		&.info {
+			background: #3c608a;
+
+			.label,
+			.message {
+				color: #ffffff;
+			}
+
+			.icon .elm {
+				color: rgb(175, 205, 240);
+			}
+		}
+	}
+}

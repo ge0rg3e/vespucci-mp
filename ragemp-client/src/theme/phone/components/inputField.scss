@@ -1,0 +1,18 @@
+@import '../core/variables.scss';
+
+.phone-mockup .screen-content .app-component-form .app-component-input-field {
+	.form-element {
+		font-weight: 400;
+		color: $color_value_input;
+		font-size: 13px;
+		line-height: 13px;
+	}
+	.value {
+		cursor: pointer;
+		flex: 1;
+		display: flex;
+		justify-content: flex-end;
+		height: 20px;
+		align-items: center !important;
+	}
+}

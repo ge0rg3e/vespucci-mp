@@ -1,0 +1,124 @@
+{
+	"pedestrians": [
+		{
+			"coords": { "x": -111.597, "y": -1110.238, "z": 24.782 },
+			"heading": -27.616,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -106.511, "y": -1098.265, "z": 24.931 },
+			"heading": -23.267,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": -100.471, "y": -1083.238, "z": 25.526 },
+			"heading": -22.912,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -100.471, "y": -1083.238, "z": 25.526 },
+			"heading": -27.616,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": -82.696, "y": -1035.954, "z": 27.103 },
+			"heading": -24.339,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -82.696, "y": -1035.954, "z": 27.103 },
+			"heading": -17.211,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": -75.212, "y": -1016.372, "z": 27.669 },
+			"heading": -22.763,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -55.926, "y": -964.09, "z": 28.365 },
+			"heading": -16.69,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": -20.439, "y": -967.703, "z": 28.339 },
+			"heading": 169.796,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -23.751, "y": -975.963, "z": 28.345 },
+			"heading": 157.793,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": -29.418, "y": -989.852, "z": 28.268 },
+			"heading": 157.793,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -36.274, "y": -1006.211, "z": 28.115 },
+			"heading": 157.621,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": -43.03, "y": -1026.285, "z": 27.725 },
+			"heading": 158.165,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -49.21, "y": -1042.727, "z": 27.272 },
+			"heading": 158.756,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": -55.382, "y": -1060.438, "z": 26.697 },
+			"heading": 161.277,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -61.109, "y": -1078.293, "z": 26.117 },
+			"heading": 159.094,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": -63.576, "y": -1086.09, "z": 25.852 },
+			"heading": 162.904,
+			"gender": "male"
+		}
+	],
+
+	"drivers": [
+		{
+			"coords": { "x": -65.29, "y": -1068.063, "z": 26.73 },
+			"heading": -15.641,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": -31.311, "y": -976.279, "z": 28.708 },
+			"heading": -17.979,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": 5.032, "y": -969.081, "z": 28.797 },
+			"heading": -107.852,
+			"gender": "male"
+		},
+		{
+			"coords": { "x": 76.27, "y": -994.79, "z": 28.8 },
+			"heading": -107.402,
+			"gender": "female"
+		},
+		{
+			"coords": { "x": 39.025, "y": -1116.833, "z": 28.588 },
+			"heading": 145.335,
+			"gender": "male"
+		}
+	],
+
+	"skins": {
+		"male": ["cs_stretch", "a_m_y_clubcust_04", "csb_isldj_00", "csb_miguelmadrazo", "csb_mjo"],
+		"female": ["ig_isldj_04_d_01", "ig_kaylee", "g_f_y_vagos_01", "s_f_y_hooker_01", "ig_jackie"]
+	},
+
+	"vehicles": ["cogcabrio", "cliffhanger", "blazer2", "comet5", "sultan"]
+}

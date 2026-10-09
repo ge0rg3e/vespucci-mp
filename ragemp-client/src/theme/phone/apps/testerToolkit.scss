@@ -1,0 +1,39 @@
+@import '../../core/variables.scss';
+@import '../../core/variables.scss';
+
+$application_tone: rgb(66, 116, 92);
+
+.phone-app-route-testerToolkit {
+	display: flex;
+	background-color: $background_light;
+	color: $color_text_light;
+
+	.status-bar {
+		color: $color_text_light;
+
+		.battery {
+			.shape,
+			.dot {
+				background-color: $battery_dark_background !important;
+			}
+			.text {
+				color: $battery_dark_bg_text_color !important;
+			}
+		}
+	}
+
+	.app-navigation-header {
+		border-bottom: solid 1px rgba(#000, 0.08);
+		color: $color_text_light !important;
+
+		.button {
+			color: #fff !important;
+		}
+	}
+}
+
+.phone-app-route-testerToolkit .screen {
+	flex-direction: column;
+	display: flex;
+	flex: 1;
+}

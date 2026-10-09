@@ -1,0 +1,56 @@
+// @import "./fonts.scss";
+
+@import './overwrites.scss';
+@import './variables.scss';
+
+* {
+	user-select: none;
+}
+
+input {
+	user-select: auto !important;
+}
+
+body {
+	background: transparent !important;
+	font-family: 'Rubik';
+	&.fake-game-background {
+		// Demo
+		height: 100vh;
+		width: 100vw;
+		background-size: cover !important;
+		background-repeat: no-repeat !important;
+		background-color: #333 !important;
+		// background-color: #050505 !important;
+	}
+}
+
+// Slider
+
+.rc-slider {
+	margin-top: 6px;
+	margin-bottom: 6px;
+	.rc-slider-rail {
+		background: #644352;
+		height: 4px;
+	}
+
+	.rc-slider-track {
+		background: rgba($color_primary, 0.8);
+		height: 4px;
+	}
+
+	.rc-slider-handle {
+		background: $color_primary;
+		height: 20px;
+		width: 20px;
+		margin-top: -8px;
+		border-radius: 50%;
+		border: none;
+		&:hover,
+		&:active {
+			border: none;
+			box-shadow: 0px 0px 0px 10px #f195ac29;
+		}
+	}
+}

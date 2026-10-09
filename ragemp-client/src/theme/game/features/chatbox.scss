@@ -1,0 +1,488 @@
+@import '../../core/variables.scss';
+
+.game-hud .chatbox {
+	// Positioning
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+
+	// Setting the max boders
+	width: 600px;
+	max-width: 45vw;
+
+	// Spacing
+	margin-left: 12px;
+	margin-bottom: 12px;
+
+	// Small resolutions respponsiveness..
+
+	@media (max-width: 1300px) {
+		// Transform
+		transform: scale(0.7);
+	}
+
+	@media (max-width: 1600px) {
+		// Spacing
+		margin-left: 8px;
+		margin-top: 8px;
+
+		// Transform
+		transform: scale(0.8);
+		transform-origin: left bottom;
+	}
+
+	opacity: 0;
+	transition: opacity 0.3s ease-in;
+
+	&.chat-visible {
+		opacity: 1;
+	}
+
+	.container {
+		// Height
+		height: 454px;
+
+		// Content
+		display: flex;
+		flex-direction: column;
+		// Reminder: do not add justify-content:flex-end. will break scrollbar
+
+		// Padding
+		padding: 8px;
+
+		// To fit in for the input-area
+		margin-bottom: 0px;
+		transition: margin-bottom 0.2s ease-in;
+
+		// Scroll...
+		max-height: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+
+		// Preventing a bug with stupid ALT+TAB (in case..)
+		outline: none !important;
+		// Not chat opened..
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		border: solid 1px transparent;
+		border-radius: 6px;
+
+		&.input-visible {
+			// Appearance
+			background-color: rgba(#000, 0.75);
+			border: solid 1px rgba(#fff, 0.12);
+			box-shadow: #000 0px 0px 4px;
+
+			// Spacing..
+			margin-bottom: 100px;
+
+			// Scrollbar
+			&::-webkit-scrollbar {
+				display: block;
+				width: 8px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: rgba($color_primary, 0.3);
+				border-radius: 16px;
+			}
+
+			&::-webkit-scrollbar-track {
+				background: rgba(177, 175, 175, 0.1);
+			}
+		}
+
+		.message {
+			// This is to make the justify-content: end. DO NOT REMOVE THIS.
+			&:first-of-type {
+				margin-top: auto !important;
+			}
+
+			// Typography
+			font-family: 'Rubik', sans-serif;
+			font-weight: 400;
+			text-shadow: $chat_text_shadow;
+
+			// Spacing
+			margin-bottom: 6px;
+
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
+
+			// Content
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-direction: column;
+
+			.--container {
+				padding: 14px 16px;
+				border-radius: 8px;
+
+				min-width: 45%;
+
+				// Background for day mode
+				border: solid 1px rgba(#fff, 0.01);
+				border-right: unset;
+				background: linear-gradient(
+					90deg,
+					rgba(0, 0, 0, 0) 1%,
+					rgba(0, 0, 0, 0.3) 15%,
+					rgba(0, 0, 0, 0.35) 50%,
+					rgba(0, 0, 0, 0) 100%
+				);
+
+				.reactions {
+					.informational {
+						// Content
+						display: flex;
+						align-items: center;
+
+						// Spacing..
+						margin-top: 5px;
+
+						.icon {
+							margin-right: 6px;
+							.elm {
+								font-size: 16px;
+								line-height: 1;
+							}
+						}
+
+						.text {
+							font-size: 14px;
+							line-height: 1;
+							font-weight: 500;
+						}
+					}
+
+					.entries {
+						margin-top: 12px;
+						padding-top: 12px;
+						display: none;
+						flex-direction: row;
+						border-top: solid 1px rgba(#fff, 0.08);
+
+						.entry {
+							margin-right: 10px;
+
+							&:last-of-type {
+								margin-right: 0px;
+							}
+						}
+					}
+
+					&.input-visible {
+						.informational {
+							display: none;
+						}
+
+						.entries {
+							display: flex;
+						}
+					}
+				}
+			}
+
+			&.dark-mode {
+				.--container {
+					// Background
+					border: solid 1px rgba(#fff, 0.01);
+					border-right: unset;
+					background: linear-gradient(
+						90deg,
+						rgba(0, 0, 0, 0) 1%,
+						rgba(0, 0, 0, 0.3) 15%,
+						rgba(0, 0, 0, 0.6) 50%,
+						rgba(0, 0, 0, 0) 100%
+					);
+				}
+			}
+
+			&.input-visible {
+				.--container {
+					// padding: 0px;
+					// border-radius: 0px;
+					background: rgba(#000, 0.55);
+					border: solid 1px rgba(#fff, 0.08);
+					box-shadow: #000 0px 0px 4px;
+				}
+			}
+
+			.content {
+				font-size: 14px;
+				line-height: 1.5;
+				font-weight: 500;
+				text-align: left;
+				word-wrap: normal;
+				overflow-wrap: break-word;
+			}
+
+			.information {
+				// Content
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-start;
+
+				// Typography
+				font-size: 14px;
+				line-height: 1;
+
+				// Spacing
+				margin-top: 3px;
+				// Text
+				color: rgb(230, 226, 226);
+
+				.sender {
+					font-weight: 400;
+				}
+
+				.badge {
+					// Content
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+
+					// Spacing
+					margin-left: 8px;
+
+					.label {
+						font-size: 13px;
+						font-weight: 500;
+						text-transform: uppercase;
+						color: inherit;
+					}
+					.icon {
+						margin-right: 6px;
+						color: inherit;
+
+						.elm {
+							font-size: 13px;
+							line-height: 1;
+							color: inherit;
+						}
+					}
+				}
+
+				.date {
+					margin-left: auto;
+					font-weight: 500;
+					font-size: 13px;
+					padding-left: 30px; // must have to be sure it looks ok.
+					line-height: 1;
+					color: rgba(#fff, 0.6);
+				}
+			}
+		}
+	}
+
+	.footer {
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		height: 0px;
+		width: 100%;
+		transition: opacity 0.2s ease-in;
+
+		&.input-visible {
+			height: unset;
+		}
+
+		.input-area {
+			margin-top: 8px;
+			width: 100%;
+
+			opacity: 0;
+			transition: opacity 0.2s ease-in;
+
+			&.visible {
+				opacity: 1;
+			}
+
+			// Content
+			display: flex;
+
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+			// Appearance
+			background-color: rgba(#000, 0.8);
+			width: 100%;
+			border-radius: 8px !important;
+			box-shadow: #000 0px 0px 4px;
+			overflow: hidden;
+			max-height: 100%;
+			height: 46px;
+
+			.input-text {
+				padding: 12px;
+				// Disable natives
+				background-color: transparent;
+				border: none !important;
+				outline: none !important;
+
+				// Height..
+				width: 100%;
+				height: 100%;
+
+				// Typography
+				font-family: 'Rubik';
+				font-size: 14px;
+				font-weight: 500;
+				color: white;
+
+				&::placeholder {
+					color: rgba(#fff, 0.6);
+					color: rgba($color_primary, 0.8);
+				}
+			}
+
+			.send-btn {
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 35px;
+				width: 35px;
+				margin-right: 8px;
+				border-radius: 6px;
+				background-color: rgba(#fff, 0.03);
+				border: solid 1px rgba(#fff, 0.04);
+				box-shadow: #000 0px 0px 10px;
+				.elm {
+					color: $color_primary;
+					font-size: 13px;
+					line-height: 1;
+				}
+			}
+		}
+
+		.channels {
+			// Content
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-end;
+
+			// Visible
+			opacity: 0;
+			transition: opacity 0.2s ease-in;
+
+			// Spacing
+			margin-top: 8px;
+			&.visible {
+				opacity: 1;
+			}
+
+			.entry {
+				display: flex;
+				align-items: center;
+				// Spacing
+				margin-right: 8px;
+				&:last-of-type {
+					margin-right: 0px;
+				}
+
+				.content {
+					cursor: pointer;
+					padding: 12px 14px;
+
+					// Background
+					background-color: rgba(#000, 0.85);
+					border: solid 1px rgba(#fff, 0.08);
+					box-shadow: #000 0px 0px 2px;
+					border-radius: 6px;
+					min-width: 80px;
+					// Content
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					// Positioning
+					position: relative;
+
+					.icon {
+						margin-right: 6px;
+
+						// Content
+						display: flex;
+						align-items: center;
+						justify-content: center;
+
+						.elm {
+							font-size: 12px;
+							line-height: 1;
+							color: rgba(#fff, 0.6);
+						}
+					}
+
+					.label {
+						// Typography
+						text-transform: uppercase;
+						font-size: 12px;
+						font-weight: 500;
+						line-height: 1;
+						color: rgba(#fff, 0.6);
+					}
+
+					// Default
+					.unread-badge {
+						display: none;
+					}
+				}
+
+				&.unread {
+					.content {
+						.unread-badge {
+							display: flex;
+							position: absolute;
+							top: -5px;
+							right: -5px;
+
+							width: 15px;
+							height: 15px;
+							border-radius: 100%;
+							overflow: hidden;
+							box-shadow: 0px 0px 10px $color_primary;
+							border: solid 1px rgba(#333, 0.2);
+							.elm {
+								font-size: 15px;
+								line-height: 15px;
+								color: $color_primary;
+								text-shadow: #000 0px 0px 3px;
+							}
+						}
+					}
+				}
+
+				&.selected {
+					.content {
+						background-color: rgba(#131212, 0.95);
+
+						.label,
+						.icon .elm {
+							color: rgba($color_primary, 1);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.game-hud .chatbox-dev-controls {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-direction: column;
+	margin-top: 8px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

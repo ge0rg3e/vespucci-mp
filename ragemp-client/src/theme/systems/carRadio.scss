@@ -1,0 +1,118 @@
+@import '../core/variables.scss';
+@import '../core/utils.scss';
+
+.system-car-radio {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	z-index: 500; // bugfix?
+
+	.entries {
+		@include on-circle($item-count: 16, $circle-size: 530px, $item-size: 105px);
+		animation: fadeIn;
+		animation-duration: 0.2s;
+		margin-bottom: 0px;
+
+		.entry {
+			display: flex;
+			padding: 4px;
+
+			.content {
+				height: 100%;
+				width: 100%;
+				background: rgba(5, 5, 4, 0.55);
+				box-shadow: #0e0f137e 0px 0px 6px 0px;
+
+				border-radius: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				opacity: 0.5;
+				filter: grayscale(80%);
+				transition: all 0.1s ease-in;
+
+				&.night-mode {
+					background: rgba(5, 5, 4, 0.55);
+					box-shadow: #0e0f139d 0px 0px 10px 0px;
+				}
+
+				&.active {
+					filter: unset;
+					opacity: 1;
+					border: solid 3px rgba($color_primary, 1);
+					box-shadow: rgba($color_primary, 0.9) 0px 0px 3px 0px !important;
+				}
+
+				&.active.off {
+					border: solid 3px rgba($color_primary, 0.3);
+					box-shadow: rgba($color_primary, 0.6) 0px 0px 1px 0px !important;
+				}
+
+				&:hover {
+					opacity: 1;
+					filter: unset;
+				}
+
+				.image {
+					opacity: 0;
+					height: 60%;
+					width: 60%;
+					transition: all 0.3s ease-in;
+					object-fit: contain;
+					background-repeat: no-repeat;
+					background-position: center center;
+
+					&.loaded {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		.centered-position {
+			position: absolute;
+			top: 50px;
+			left: 50px;
+
+			height: 100%;
+			width: 100%;
+			border-radius: 50%;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-shadow: $general_text_shadow;
+			line-height: 1.2;
+			font-family: 'Chalet Comprime - Cologne Eigthy';
+			font-family: 400;
+			pointer-events: none;
+
+			.heading {
+				font-size: 24px;
+			}
+
+			.message {
+				font-size: 20px;
+				color: rgb(218, 214, 214);
+			}
+
+			&.night-mode {
+				.message {
+					color: rgb(206, 204, 204);
+				}
+			}
+		}
+
+		@media (min-width: 1000px) and (max-width: 1340px) {
+			transform: scale(0.6);
+		}
+
+		@media (min-width: 1340px) and (max-width: 1620px) {
+			transform: scale(0.8);
+		}
+	}
+}

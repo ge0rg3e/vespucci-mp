@@ -1,0 +1,76 @@
+const prices: ExpectedAny = {
+	// Generals
+	repair: 500,
+	changePlateText: 10000,
+	neon: 40000,
+	tireSmoke: 60000,
+	xenonLights: 100000,
+	wheels: {
+		stock: 3000,
+		sport: 6000,
+		muscle: 8000,
+		lowrider: 5000,
+		suv: 10000,
+		offroad: 10000,
+		tuner: 20000,
+		bikeWheels: 8000,
+		highEnd: 9000,
+		bennyOriginal: 1000,
+		bennyBespoke: 1200,
+		openWheel: 13000,
+		street: 8000
+	},
+	colors: {
+		normal: 1000,
+		matte: 400000,
+		metallic: 100000,
+		premium: 9999999
+	},
+	mods: {
+		spoiler: 26000,
+		frontBumper: 12000,
+		rearBumper: 12000,
+		sideSkirt: 10000,
+		exhaust: 16000,
+		frame: 10000,
+		grille: 9000,
+		hood: 14000,
+		leftFender: 8000,
+		rightFender: 8000,
+		roof: 8000,
+		engine: 28000,
+		brakes: 10000,
+		transmission: 28000,
+		horn: 2000,
+		suspension: 18000,
+		armor: 2000,
+		plateHolders: 1000,
+		vanityPlates: 1000,
+		trimDesign: 9000,
+		ornaments: 1000,
+		dialDesign: 3000,
+		steeringWheel: 9000,
+		shiftLever: 2000,
+		plaques: 3000,
+		hydraulics: 28000,
+		engineBlock: 8000,
+		boost: 3000,
+		struts: 3000,
+		archCover: 5000,
+		aerials: 1000,
+		trim: 5000,
+		windows: 4000,
+		livery: 7000,
+		plate: 7000,
+		windowTint: 15000
+	},
+	multiplyingFactors: {
+		engine: 1.5,
+		brakes: 1.3,
+		transmission: 1.5,
+		suspension: 1.2,
+		armor: 3
+	}
+};
+
+export default prices;

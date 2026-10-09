@@ -1,0 +1,46 @@
+@import '../../core/variables.scss';
+
+.game-hud .hud-interaction-button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	min-height: 300px;
+	min-width: 300px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+
+	.button-container {
+		border-radius: 8px;
+		height: 33px;
+		width: 33px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		border: solid 2px rgba(#fff, 0.25);
+		animation: bounceIn;
+		animation-duration: 0.8s;
+		.text {
+			font-weight: 400;
+			font-size: 15px;
+			line-height: 15px;
+			color: rgba(#fff, 0.9);
+			text-shadow: $general_text_shadow;
+		}
+	}
+
+	.label {
+		margin-top: 11px;
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 12px;
+		text-shadow: $general_text_shadow;
+		color: $color_primary;
+		text-transform: uppercase;
+		animation: bounceIn;
+		animation-duration: 0.8s;
+	}
+}

@@ -1,0 +1,8 @@
+/dependencies
+   - .env 
+   - .conf 
+/game_resources
+ - all the game modes
+
+/source
+ - the src of the gamemode

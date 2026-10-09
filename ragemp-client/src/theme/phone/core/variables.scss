@@ -1,0 +1,55 @@
+$background_light: #efeff4;
+$element_bg_light: #fefffe;
+
+// Colors
+$color_disabled: #757575;
+$color_text_light: #151515;
+$border_color_light: #efefef;
+$border_color_dark: rgba(#fff, 0.02);
+$color_value_input: #89898b;
+$color_text_bg_placeholder: #6e6d71;
+
+$color_ios_primary_light_blue: #377aff;
+$color_ios_primary_light_red: #fa534a;
+
+// Dark theme
+$background_dark: #000000;
+$color_text_dark: #fff;
+$color_text_dark_2: #8d8d93;
+$color_text_dark_3: #47474a;
+
+// Dark Theme (true)
+$background_true_dark: #000000;
+$color_text_true_dark: #fff;
+$color_text_true_dark_2: #8c8c91;
+$color_text_true_dark_blue: #1089de;
+
+// Elevated
+$background_elevated_dark: #0d0d11;
+
+$text_elevated_dark_1: #989899;
+$text_elevated_dark_2: #5a5a5e;
+
+$background_elevated_light: white;
+
+$ios_card_border_radius: 10px;
+$ios_card_border_dark_color: #333336;
+
+// Backgrounds
+$background_dark: #0a0a0e;
+$background_dark_1: #0f0e13;
+
+$ios_light_card_shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.02), 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+$ios_dark_card_shadow: 0px 4px 5px 0px rgba(39, 39, 39, 0.0055),
+	0px 1px 2px 0px rgba(41, 41, 41, 0.0055);
+
+// Z-Indexes
+$z_index_phoneCall_Content: 5;
+$z_index_phoneCall_bgBlur: 4;
+$z_index_ActionSheet: 6;
+$z_index_Alert: 7;
+$z_index_closingLine: 995;
+
+// Battery
+$battery_dark_background: #292929;
+$battery_dark_bg_text_color: #fff;

@@ -1,0 +1,86 @@
+@import '../variables/theme.scss';
+
+.page-settings {
+	.tabs {
+		margin-bottom: 16px;
+	}
+
+	.page-content {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.card {
+			display: flex;
+			flex-direction: column;
+
+			margin-bottom: var(--gapSpace);
+
+			width: 100%;
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+
+			.content {
+				background-color: $background_card;
+				box-shadow: $card_shadow;
+				padding: 16px;
+				border-radius: 6px;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: flex-start;
+			}
+		}
+
+		.heading {
+			font-size: 15px;
+			line-height: 1.5;
+			font-weight: 500;
+			color: $color_label;
+		}
+
+		.description {
+			font-size: 13px;
+			line-height: 1.5;
+			font-weight: 400;
+			color: rgba($color_text, 0.8);
+		}
+
+		.mb {
+			margin-bottom: 16px;
+		}
+
+		.form-group {
+			width: 100%;
+			margin-bottom: 16px;
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+
+			.form-label {
+				color: #5e6272;
+				font-weight: 500;
+				font-size: 14px;
+				line-height: 1.5;
+			}
+
+			.form-description {
+				font-size: 12px;
+				line-height: 1.5;
+			}
+
+			.form-component {
+				margin-top: 8px;
+			}
+		}
+
+		.submit-btn {
+			margin-top: 18px;
+			justify-self: flex-end;
+		}
+	}
+}

@@ -1,0 +1,64 @@
+.phone-mockup .screen-content .app-component-loading-screen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	// To fit the screen better
+	margin-top: -30px;
+
+	&.fade-away {
+		animation: hideAway;
+		animation-duration: 0.4s;
+		animation-timing-function: linear;
+	}
+
+	.image {
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+
+		&.default {
+			height: 50px;
+			width: 50px;
+			// margin-bottom: 26px;
+		}
+
+		&.default.light {
+			background-image: url('/assets/images/phone/loadings/ios-light.gif');
+		}
+		&.default.dark {
+			background-image: url('/assets/images/phone/loadings/ios-dark.gif');
+		}
+	}
+
+	// .text {
+	// 	color: #fff;
+	// 	font-weight: 300;
+	// 	font-size: 14px;
+	// 	line-height: 14px;
+	// }
+
+	// &.dark {
+	// 	.text {
+	// 		color: rgba(#fff, 0.2);
+	// 	}
+	// }
+}
+
+@keyframes hideAway {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
