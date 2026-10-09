@@ -1,1 +1,4 @@
-Frumos cod. Sa ne bagam pula in el si in fondator.
+# Ca tot zici tu ca n-am terminat munca niciodata
+# Ia de aici baga-mi-as pl in tine si in codu tau
+
+# #MUIE VATTO
